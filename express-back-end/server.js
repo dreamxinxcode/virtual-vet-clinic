@@ -1,19 +1,41 @@
-const Express = require('express');
-const App = Express();
-const BodyParser = require('body-parser');
-const PORT = 8080;
+const database = require('./database');
+const apiRoutes = require('./apiRoutes');
+const userRoutes = require('./userRoutes');
 
-// Express Configuration
-App.use(BodyParser.urlencoded({ extended: false }));
-App.use(BodyParser.json());
-App.use(Express.static('public'));
+const path = require('path');
 
-// Sample GET route
-App.get('/api/data', (req, res) => res.json({
-  message: "Seems to work!",
+const express = require('express');
+const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+
+const showWidgets = require('./database');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
 }));
 
-App.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// /api/endpoints
+const apiRouter = express.Router();
+apiRoutes(apiRouter, database);
+app.use('/api', apiRouter);
+
+// /user/endpoints
+const userRouter = express.Router();
+userRoutes(userRouter, database);
+app.use('/users', userRouter);
+
+app.use(express.static(path.join(__dirname, '../public')));
+
+app.get("/test", (req, res) => {
+  res.send("🤗");
 });
+
+const port = process.env.PORT || 8080; 
+app.listen(port, (err) => console.log(err || `listening on port ${port} 😎`));
