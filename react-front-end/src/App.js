@@ -1,38 +1,52 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
+import Contentt from './components/Contentt';
+import Navigation from './components/Navigation/Navigation';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+// homepage
+// dashboard
+// book-appointment
+// clinic info
+// patient info (clinic)
+// pet info (clinic)
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      message: 'Click the button to load data!'
-    }
-  }
 
-  fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+
+export default function App(props) {
+  
+  const [message, setMessage] = useState('Hi');
+
+  const fetchData = () => {
+    axios.get('/api/names') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
       // handle success
       console.log(response.data) // The entire response from the Rails API
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        message: response.data.message
-      });
-    }) 
+      setMessage(response.data.names[0].name);
+    });
   }
 
-  render() {
     return (
+      <Router>
+
       <div className="App">
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+
+        <Navigation/>
+
+        <Switch>
+        <Route path='/' exact component={Home}></Route>
+        <Route path='/content' exact component={Contentt}></Route>
+        </Switch>
+
       </div>
+
+      </Router>
     );
-  }
 }
 
-export default App;
+const Home = () => (
+  <div>
+    <h1>Homepage</h1>     
+  </div>
+)
