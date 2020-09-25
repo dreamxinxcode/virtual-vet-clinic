@@ -10,6 +10,15 @@ const pool = new Pool({
 })
 
 
+const getNames = () => {
+  return pool.query(`
+    SELECT * FROM names;
+  `)
+  .then(res => res.rows)
+  .catch(err => console.error(err))
+};
+ exports.getNames = getNames;
+ 
 // const getUserWithEmail = (email) => {
 //   return pool.query(`
 //     SELECT *
