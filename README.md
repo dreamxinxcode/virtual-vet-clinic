@@ -1,46 +1,140 @@
-# React + Express No-Fluff Boilerplate
+# User Story
 
-A boilerplate project for anyone interested in making a project that uses React and Express.
+# Homepage
+- User can to login by email
+- User can register as a patient or clinic
+- User can login as patient or clinic
+- User can search (animal type, city, clinic name)
 
-This repository is a bootleg of @NimaBoscarino's [React Rails Boilerplate](https://github.com/NimaBoscarino/react-rails-boilerplate). It uses the same React app, but replaces the Rails server with an Express server.
+# Clinic Detail
+- User can view clinic details
+- User can view calandar (list of available/unavailable spots)
+- Clinic name
+- Address
+- Stock image
 
-Note! This boilerplate has _no fluff_! That means that there's nothing set up for you to do authentication stuff, there's no Redux stuff, and there's no React Router stuff. On the Express end, there is no session storage or database connection.
+# Chat 
+- Chat button on homepage
+- Chat with receptionist
 
-The main important bit is that the React project has `proxy` set to `localhost:8080` in the `package.json` file, and that the Express app listens to port 8080 in `server.js`. Take a look!
+# Dashboard (user)
+- Data
 
-You can (and perhaps should) rename the directories `express-back-end` and `react-front-end` if you want-- The name doesn't matter.
+# Dashboard (clinic)
+- Data
 
-## Running the projects
 
-You need **TWO** terminal windows/tabs for this (or some other plan for running two Node processes).
 
-In one terminal, `cd` into `react-front-end`. Run `npm install` or `yarn` to install the dependencies. Then run `npm start` or `yarn start`, and go to `localhost:3000` in your browser.
 
-In the other terminal, `cd` into `express-back-end`. Run `npm install` or `yarn` to install the dependencies, then `npm start` or `yarn start` to launch the server.
 
-In the browser, you can click on the button and see the data get loaded.
 
-If this doesn't work, please message me!
 
-## Next steps
 
-From here, you can start working on your project!
 
-As soon as the dependencies are installed, your Express server can serve JSON and static assets (like images) in response to API calls from the React app. You can get started on developing your React app, routing plan, etc. right away! Any request that isn't handled by React is passed on to the Express server. That means that you can call a route like `/api/users` from React using `fetch`, `axios`, or something else, and Express will receive it as though they originated from the same app. For routing, best practice is to namespace all of your data routes to `/api`, so that they don't clash with other routing schemes, like React Router.
 
-At some point, you'll likely want to install and configure a database driver for Postgres or MongoDB-- Refer to past projects for hints on how to do this.
+# Homepage 
 
-And don't forget to update the README!
+- Login
+- Register
+- Search
 
-## Example Projects
+# Register Page
 
-You might want to look at examples of projects that have used this boilerplate for hints on how to extend it. Here are a few:
+- Register doctor
+- Register patient
 
-* [Later Cart](https://github.com/bonitac/later-cart)
-* [Buddi.io](https://github.com/Danny-Tran/buddi.io)
+# Login
 
-If you'd like your project added to the list, please shoot me a message.
+- User must be able to login
+- Login by email
+- password
 
-## Contact
+# Paitient dashboard
 
-Please contact me on Slack (@garrettgsb) or Nima at `nima@lighthouselabs.com` if you have any questions, requests, or feedback, or post an issue to this repo. If you are using the boilerplate, I'd love to hear from you as well!
+- Upcoming appointment(s)
+- Previous appointment(s)
+- Create appointment button
+- Appointment waiting room (Google  hangouts link)
+- Pet(s) info 
+
+# Clinic dashboard
+
+- Upcoming appontment(s)
+- Previous appointment(s)
+- Calendar
+- Search pets
+
+# Pet info page
+
+- Name
+- Owner
+- Age
+- Type
+- Breed
+- Health conditions
+- Doctor's note
+
+# Patient calander page
+
+- Show available/unvailabe
+- Click to book (only if available)
+- Modal to describe symptoms 
+
+# Search
+
+- Doctor name
+- Clinic name
+- Pet type
+- Location
+- Rating
+
+# Click on doctor
+
+- Show doctor's calendar
+
+# Doctor calendar page
+
+- Show upcoming appointments
+- Show names
+- Doctor info (aside)
+
+# Database
+
+
+## Doctor
+
+- Name
+- email
+- Pet types
+- Clinic (VAR CHAR)
+
+## Pet Types
+
+- Title
+- Doctor(s)
+
+## Patient
+
+- Name
+- Address
+- Phone
+- email
+- Pet(s)
+
+## Pet 
+
+- Name
+- Owner
+- Age
+- Type
+- Breed
+- Health conditions
+- Doctor's note
+
+
+## Appontment
+
+- Patient (VAR CHAR)
+- Pet (VAR CHAR)
+- Symptopms (TEXT)
+- Doctor (VAR CHAR)
