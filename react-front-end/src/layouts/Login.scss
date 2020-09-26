@@ -1,0 +1,19 @@
+@import "../../public/styles/variables.scss";
+
+.login_header {
+  color: $medical-dark-blue;
+  text-align: center;
+  padding: 15px 0 15px;
+}
+
+.acount_images {
+  display: flex;
+  justify-content: space-around;
+}
+
+.account_type {
+  height: 20rem;
+  width: 20rem;
+  padding: 40px 20px;
+  border: 2px solid rgb(230, 230, 230);
+}
