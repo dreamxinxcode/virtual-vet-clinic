@@ -1,10 +1,23 @@
 import React from "react";
-import { Button, Header, Image, Modal, Form } from "semantic-ui-react";
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Form,
+  Checkbox,
+} from "semantic-ui-react";
 import "../layouts/Login.scss";
 import InputField from "../components/Input";
 
 function LoginModal() {
   const [open, setOpen] = React.useState(false);
+
+  const [email, setEmail] = React.useState("");
+
+  const handleChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <Modal
@@ -15,7 +28,8 @@ function LoginModal() {
     >
       <h2 className="login_header">Choose Account Type</h2>
       <div className="acount_images">
-        <div>
+        <label>
+          <input type="radio" name="test" value="small" checked />
           <svg
             className="account_type"
             height="464pt"
@@ -96,8 +110,10 @@ function LoginModal() {
               fill="#f9a7a7"
             />
           </svg>
-        </div>
-        <div>
+        </label>
+
+        <label>
+          <input type="radio" name="test" value="big" />
           <svg
             className="account_type"
             id="Layer_1"
@@ -211,23 +227,25 @@ function LoginModal() {
               </g>
             </g>
           </svg>
-        </div>
+        </label>
       </div>
 
       <Modal.Content image>
         <Modal.Description>
-          <Header>Default Profile Image</Header>
-          <p>Hi! Welcome back.</p>
-          <form action="#">
-            <InputField placeholder="Type your email" type="email" />
-            <InputField placeholder="Type your password" type="password" />
-          </form>
-          <Form.Input
-            fluid
-            icon="user"
-            iconPosition="left"
-            placeholder="E-mail address"
-          />
+          <h3 className="login_header">
+            Please fill out the form to get started
+          </h3>
+          <div className="two field">
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="E-mail address"
+              onChange={handleChange}
+              value={email}
+              name="email"
+            />
+          </div>
           <Form.Input
             fluid
             icon="lock"
