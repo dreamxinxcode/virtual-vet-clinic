@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
-import Contentt from './components/Contentt';
-import Navigation from './components/Navigation/Navigation';
+import Navigation from './layouts/Navigation'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -36,7 +35,6 @@ export default function App(props) {
 
         <Switch>
         <Route path='/' exact component={Home}></Route>
-        <Route path='/content' exact component={Contentt}></Route>
         </Switch>
 
       </div>
