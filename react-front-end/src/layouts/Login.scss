@@ -3,7 +3,15 @@
 .login_header {
   color: $medical-dark-blue;
   text-align: center;
-  padding: 15px 0 15px;
+  padding: 30px 0;
+  font-size: 2rem;
+}
+
+.login_header_small {
+  text-align: center;
+  color: rgb(138, 138, 138);
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .acount_images {
@@ -12,10 +20,17 @@
 }
 
 .account_type {
-  height: 20rem;
-  width: 20rem;
-  padding: 40px 20px;
+  height: 22rem;
+  width: 17rem;
+  padding: 60px 20px;
   border: 2px solid rgb(230, 230, 230);
+  border-radius: 5px;
+  transition: all 0.1s;
+}
+
+.ui.modal {
+  width: 40vw !important;
+  margin: 0;
 }
 
 [type="radio"] {
@@ -32,5 +47,44 @@
 
 /* CHECKED STYLES */
 [type="radio"]:checked + svg {
-  outline: 2px solid $medical-dark-blue;
+  border: 2px solid $medical-dark-blue;
+  background-color: rgb(236, 252, 255);
+}
+
+label {
+  position: relative;
+}
+span {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  position: absolute;
+  bottom: 25px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input {
+  outline: none !important;
+  z-index: 20;
+  height: 40px;
+  outline: none;
+  margin: 17px 0;
+}
+
+.ui.modal > .actions {
+  padding: 1rem 1rem;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  text-align: right;
+}
+.bottom_img {
+  transform: rotate(30deg);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 18rem;
+  height: 18rem;
+  opacity: 0.2;
 }
