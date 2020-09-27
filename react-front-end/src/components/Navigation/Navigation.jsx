@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import '../layouts/Navigation.scss'
-import  Login from '../components/Login/Login';
+import  Login from '../Login/Login';
 
 export default function Navigation() {
   return (
