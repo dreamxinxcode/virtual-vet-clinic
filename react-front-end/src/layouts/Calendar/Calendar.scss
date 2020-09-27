@@ -1,0 +1,28 @@
+@import "../../../public/styles/variables.scss";
+span {
+  position: relative;
+  top: 0;
+}
+.react-calendar__navigation {
+  background-color: $medical-dark-blue;
+  margin-bottom: 0;
+}
+
+.react-calendar {
+  border: 3px solid $medical-dark-blue;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.274);
+}
+.react-calendar__tile--active {
+  border-radius: 10px;
+  background-color: $medical-dark-blue;
+}
+
+.react-calendar__tile {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.react-calendar__month-view__weekdays {
+  padding: 0.5rem 0;
+  font-size: 1.15rem;
+  background-color: rgb(255, 206, 46);
+}
