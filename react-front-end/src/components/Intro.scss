@@ -1,0 +1,29 @@
+@import '../../public/styles/variables.scss';
+
+
+#intro {
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5%;
+}
+
+#intro-area {
+  width: 50%;
+  font-size: 1.5rem;
+  color: #656565;
+  line-height: 2rem;
+}
+
+#intro span {
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: $medical-blue;
+  position: relative; // Overwrite semantic ui
+}
+
+#intro svg {
+  height: 80%;
+  width: 50%;
+}
