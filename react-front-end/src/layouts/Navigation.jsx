@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../layouts/Navigation.scss";
-import Login from "../components/Login";
+import LoginModal from "./Login";
+// import pkg from "semantic-ui-react/package.json";
+
+const styleLink = document.createElement("link");
+styleLink.rel = "stylesheet";
+styleLink.href =
+  "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+document.head.appendChild(styleLink);
+
 
 export default function Navigation() {
   return (
@@ -25,7 +33,8 @@ export default function Navigation() {
           </g>
         </svg>
       </Link>
-      ,<Link to="/signup"></Link>
+      <Link to="/signup"></Link>
+      <LoginModal />
     </nav>
   );
 }
