@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Navigation from "./layouts/Navigation";
+import Intro from "./components/Intro";
+import Search from "./layouts/Search";
+import Covid from "./layouts/Covid";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -39,6 +43,8 @@ export default function App(props) {
 
 const Home = () => (
   <div>
-    <h1>Homepage</h1>
+    <Intro />
+    <Search />
+    <Covid />
   </div>
 );
