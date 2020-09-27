@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Navigation from "./layouts/Navigation";
-import Home from './layouts/Home';
+import Home from "./layouts/Home";
+import myCalendar from "./layouts/Calendar/Calendar";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -32,8 +34,8 @@ export default function App(props) {
 
         <Switch>
           <Route path="/" exact component={Home}></Route>
+          <Route path="/calendar" exact component={myCalendar}></Route>
         </Switch>
-
       </div>
     </Router>
   );
