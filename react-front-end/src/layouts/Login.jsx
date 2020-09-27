@@ -24,7 +24,7 @@ function LoginModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Show Modal</Button>}
+      trigger={<button className="login_button">LOGIN</button>}
     >
       <h2 className="login_header">Choose Account Type</h2>
       <div className="acount_images">

@@ -14,6 +14,51 @@
   font-size: 1.4rem;
 }
 
+.login_button {
+  font-weight: bold;
+  border: 3px solid white;
+  color: white;
+  background: $medical-blue;
+  cursor: pointer;
+  font-size: 1.4em;
+  padding: 1rem 2rem;
+  transition: all 0.5s;
+  border-radius: 10px;
+  width: auto;
+  position: absolute;
+  min-width: 100px;
+  outline: none;
+
+  // _________ TODO _________ \\
+  right: 5%;
+  top: 0.9%;
+
+  &::after {
+    font-size: 2.5rem;
+    content: " \00BB";
+    font-weight: 400;
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    background: white;
+    transition: all 0.5s;
+    border-radius: 10px;
+    padding: 1rem 4rem 1rem 1rem;
+    color: $medical-blue;
+
+    &::after {
+      opacity: 1;
+      transition: all 0.5s;
+      color: $medical-blue;
+    }
+  }
+}
+
 .acount_images {
   display: flex;
   justify-content: space-around;
