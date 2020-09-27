@@ -5,6 +5,8 @@ nav {
   height: 70px;
   background-color: $medical-blue;
   padding: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 nav svg {

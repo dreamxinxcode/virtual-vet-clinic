@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import Navigation from './layouts/Navigation'
+import Intro from './components/Intro/Intro';
+import Search from './components/Search/Search';
+import Covid from './components/Covid/Covid';
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -32,7 +36,6 @@ export default function App(props) {
       <div className="App">
 
         <Navigation/>
-
         <Switch>
         <Route path='/' exact component={Home}></Route>
         </Switch>
@@ -45,6 +48,8 @@ export default function App(props) {
 
 const Home = () => (
   <div>
-    <h1>Homepage</h1>     
+    <Intro />
+    <Search />
+    <Covid />
   </div>
 )
