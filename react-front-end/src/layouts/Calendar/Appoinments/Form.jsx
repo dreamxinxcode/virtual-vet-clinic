@@ -33,38 +33,39 @@ export default function Form(props) {
 
   return (
     <main className="appointment__card appointment__card--create">
-      <section className="appointment__card-left">
-        <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-          <input
-            className="appointment__create-input text--semi-bold"
-            name="name"
-            value="Hello"
-            type="text"
-            placeholder="Enter Student Name"
-            // onChange={(event) => setName(event.target.value)}
-            data-testid="student-name-input"
-          />
-          <section className="appointment__validation">HI</section>
-        </form>
-        {/* <InterviewerList
+      {/* <section className="appointment__card-left"> */}
+      <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+        <label>Appointment time:</label>
+        <input
+          className="appointment__create-input text--semi-bold"
+          name="name"
+          value="Sunday, September 27, 2020, 16:00 "
+          type="text"
+          placeholder="Enter Student Name"
+          // onChange={(event) => setName(event.target.value)}
+          data-testid="student-name-input"
+        />
+        <section className="appointment__validation"></section>
+      </form>
+      {/* <InterviewerList
           interviewers={interviewers}
           interviewer={interviewer}
           setInterviewer={setInterviewer}
         /> */}
-      </section>
-      <section className="appointment__card-right">
-        <section className="appointment__actions">
-          <Button className="ui red button" danger onClick={console.log("HI")}>
-            Cancel
-          </Button>
-          <Button
-            className="ui green button"
-            confirm
-            onClick={console.log("Validate")}
-          >
-            Confirm
-          </Button>
-        </section>
+      {/* </section> */}
+      {/* <section className="appointment__card-right"> */}
+      <section className="appointment__actions">
+        <Button className="ui red button" danger onClick={console.log("HI")}>
+          Cancel
+        </Button>
+        <Button
+          className="ui green button"
+          confirm
+          onClick={console.log("Validate")}
+        >
+          Confirm
+        </Button>
+        {/* </section> */}
       </section>
     </main>
   );

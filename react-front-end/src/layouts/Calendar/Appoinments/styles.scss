@@ -1,19 +1,21 @@
 @import "../../../../public/styles/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap");
 // @import "styles/mixins.scss";
 // @import "styles/animations.scss";
 
 $appointment-height: 11rem;
 
 .appointment {
+  font-family: "Ubuntu", sans-serif;
   &__add {
-    min-height: $appointment-height;
-    padding: 2rem 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    // &-button {
-    //   @include button-inactive--opacity;
+    margin: 50px;
+    &-button {
+      cursor: pointer;
+      fill: $medical-dark-blue;
+      width: 4rem;
+      height: 4rem;
+    }
 
     //   &:hover {
     //     @include button-active--opacity;
@@ -34,11 +36,12 @@ $appointment-height: 11rem;
 
   &__card {
     min-height: $appointment-height;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
     border-radius: 0.5rem;
     padding: 1.2rem 1.5rem;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     flex-flow: row wrap;
     color: $white;
 
@@ -57,24 +60,31 @@ $appointment-height: 11rem;
     }
 
     &--create {
-      background-color: $medical-cofee;
-      width: 50%;
+      margin: 60px 20px;
+      background-color: #fce762;
+      border: 2px solid black;
+      width: 40%;
       display: flex;
     }
 
     &--show {
-      color: rgba($booked-color, $active-opacity);
+      margin: 60px 20px;
+      width: 40%;
+      color: $medical-dark-blue;
+      display: flex;
+      flex-direction: column;
+
       background: linear-gradient(
         90deg,
-        rgba($booked-color, $active-opacity),
-        rgba($booked-color, $active-opacity) 8px,
-        rgba($booked-color, $inactive-opacity) 0,
-        rgba($booked-color, $inactive-opacity)
+        rgba($medical-blue, $active-opacity),
+        rgba($medical-blue, $active-opacity) 8px,
+        rgba($medical-blue, $inactive-opacity) 0,
+        rgba($medical-blue, $inactive-opacity)
       );
 
       &:hover {
         color: darken($white, 5%);
-        background-color: rgba($booked-color, $active-opacity);
+        background-color: $medical-dark-blue;
       }
     }
 
@@ -87,7 +97,6 @@ $appointment-height: 11rem;
 
     &--confirm {
       // @include border-card($danger-color);
-
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -113,7 +122,11 @@ $appointment-height: 11rem;
 
     &-button {
       // @include button-inactive--opacity;
-      margin-right: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+      fill: white;
+      margin-top: 1rem;
+      margin-right: 2rem;
       display: none;
 
       // &:hover {
@@ -131,14 +144,18 @@ $appointment-height: 11rem;
   }
 
   &__create-input {
-    background-color: $dark-background;
-    border: 0;
-    border-bottom: 1px solid;
-    color: $white;
-    font-size: 1.5rem;
-    height: 2rem;
-    margin-bottom: 0.25rem;
+    font-family: "Ubuntu", sans-serif;
+    background-color: #fce762;
+    border: none;
+    font-style: italic;
+    font-size: 1.9rem;
+    font-weight: bold;
+    margin: 2rem 4rem 0 0;
     width: 100%;
+
+    &:hover {
+      border: none;
+    }
 
     &:focus {
       outline: none;
@@ -170,4 +187,16 @@ $appointment-height: 11rem;
     color: $danger-color;
     margin-bottom: 1rem;
   }
+}
+
+.react-calendar {
+  font-family: "Ubuntu", sans-serif;
+  margin: 1.5rem;
+  border-radius: 5px;
+  width: 40% !important;
+}
+label {
+  font-family: "Ubuntu", sans-serif;
+  font-style: italic;
+  color: black;
 }
