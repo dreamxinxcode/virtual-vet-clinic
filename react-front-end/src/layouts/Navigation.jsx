@@ -10,6 +10,7 @@ styleLink.href =
   "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
 
+
 export default function Navigation() {
   return (
     <nav>
@@ -32,7 +33,7 @@ export default function Navigation() {
           </g>
         </svg>
       </Link>
-      ,<Link to="/signup"></Link>
+      <Link to="/signup"></Link>
       <LoginModal />
     </nav>
   );
