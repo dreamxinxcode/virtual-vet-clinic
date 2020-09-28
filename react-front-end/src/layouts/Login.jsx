@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
+import { useAppData } from "../hooks/useAppData";
 
 import {
   Button,
@@ -14,6 +15,8 @@ import "../layouts/Login.scss";
 import InputField from "../components/Input";
 
 function LoginModal() {
+  const { getMyCredentials } = useAppData;
+
   const [open, setOpen] = React.useState(false);
 
   const [email, setEmail] = React.useState("");
@@ -31,11 +34,17 @@ function LoginModal() {
       type: type,
     };
     console.log("HAHA", user);
-    axios
-      .post("/users/login", user)
-      .then((response) => {
-        console.log("SUCCESS", response.data.user);
+
+    Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
+      .then((res) => {
+        console.log("SEND login to BE", res[0].data.user);
+        console.log("GET from BE user", res[1].data);
       })
+      // axios
+      //   .post("/users/login", user)
+      //   .then((response) => {
+      //     console.log("SUCCESS", response.data.user);
+      //   })
       .catch((error) => {
         console.log("registration error", error);
       });
