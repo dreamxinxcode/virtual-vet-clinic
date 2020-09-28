@@ -33,7 +33,9 @@ function LoginModal() {
     console.log("HAHA", user);
     axios
       .post("/users/login", user)
-      .then((response) => {})
+      .then((response) => {
+        console.log("SUCCESS", response.data.user);
+      })
       .catch((error) => {
         console.log("registration error", error);
       });
@@ -51,7 +53,12 @@ function LoginModal() {
       <div className="acount_images" onChange={(e) => setType(e.target.value)}>
         <label>
           <span>Clinic</span>
-          <input type="radio" name="test" value="clinic" checked />
+          <input
+            type="radio"
+            name="test"
+            value="clinic"
+            checked={type === "clinic"}
+          />
           <svg
             className="account_type"
             id="Capa_1"
@@ -130,7 +137,12 @@ function LoginModal() {
 
         <label>
           <span>Pet owner</span>
-          <input type="radio" name="test" value="pet" />
+          <input
+            type="radio"
+            name="test"
+            value="pet"
+            checked={type === "pet"}
+          />
           <svg
             className="account_type"
             height="512"
