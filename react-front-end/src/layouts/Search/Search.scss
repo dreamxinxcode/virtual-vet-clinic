@@ -19,3 +19,18 @@
   position: absolute;
   z-index: -1;
 }
+
+#search-form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 50%;
+}
+
+#search-form button, input{
+  margin-top: 1rem;
+}
+
+#search-form button {
+  width: 100%;
+}
