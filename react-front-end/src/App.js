@@ -4,6 +4,7 @@ import "./App.css";
 import Navigation from "./layouts/Navigation";
 import Home from "./layouts/Home";
 import myCalendar from "./layouts/Calendar/Calendar";
+import Dashboard from "./layouts/Dashboard/Dashboad";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
@@ -35,6 +36,7 @@ export default function App(props) {
         <Switch>
           <Route path="/" exact component={Home}></Route>
           <Route path="/calendar" exact component={myCalendar}></Route>
+          <Route path="/dashboard" exact component={Dashboard}></Route>
         </Switch>
       </div>
     </Router>
