@@ -1,4 +1,7 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
+
 import {
   Button,
   Header,
@@ -14,9 +17,27 @@ function LoginModal() {
   const [open, setOpen] = React.useState(false);
 
   const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [type, setType] = React.useState("");
 
-  const handleChange = e => {
-    setEmail(e.target.value);
+  const validateCredentials = () => {
+    return email.length > 0 && password.length > 0;
+  };
+
+  const handleSubmit = () => {
+    const user = {
+      email: email,
+      password: password,
+      type: type,
+    };
+    console.log("HAHA", user);
+    axios
+      .post("/users/login", user)
+      .then((response) => {})
+      .catch((error) => {
+        console.log("registration error", error);
+      });
+    setOpen(false);
   };
 
   return (
@@ -27,10 +48,10 @@ function LoginModal() {
       trigger={<button className="login_button">LOGIN</button>}
     >
       <h2 className="login_header">Choose Account Type</h2>
-      <div className="acount_images">
+      <div className="acount_images" onChange={(e) => setType(e.target.value)}>
         <label>
           <span>Clinic</span>
-          <input type="radio" name="test" value="small" checked />
+          <input type="radio" name="test" value="clinic" checked />
           <svg
             className="account_type"
             id="Capa_1"
@@ -109,7 +130,7 @@ function LoginModal() {
 
         <label>
           <span>Pet owner</span>
-          <input type="radio" name="test" value="big" />
+          <input type="radio" name="test" value="pet" />
           <svg
             className="account_type"
             height="512"
@@ -185,7 +206,7 @@ function LoginModal() {
               icon="user"
               iconPosition="left"
               placeholder="E-mail address"
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
               name="email"
             />
@@ -195,6 +216,7 @@ function LoginModal() {
             icon="lock"
             iconPosition="left"
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
           />
         </Modal.Description>
@@ -225,8 +247,9 @@ function LoginModal() {
           content="LOGIN"
           labelPosition="right"
           icon="checkmark"
-          onClick={() => setOpen(false)}
+          onClick={handleSubmit}
           positive
+          disabled={!validateCredentials()}
         />
       </Modal.Actions>
     </Modal>
