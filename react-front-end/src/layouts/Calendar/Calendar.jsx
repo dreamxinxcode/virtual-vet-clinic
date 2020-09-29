@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Appointment from "../Calendar/Appoinments";
 
+import Chat from "../Chat/Chat";
+
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./Calendar.scss";
@@ -17,6 +19,7 @@ export default function myCalendar() {
     <>
       <Calendar onChange={dateHander} value={value} />
       <Appointment />
+      <Chat />
     </>
   );
 }
