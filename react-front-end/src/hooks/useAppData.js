@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useAppData = () => {
@@ -11,4 +11,8 @@ export const useAppData = () => {
       return res;
     });
   };
+
+  // useEffect(() => {
+
+  // })
 };
