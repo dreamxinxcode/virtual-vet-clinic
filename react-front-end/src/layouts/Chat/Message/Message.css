@@ -28,9 +28,11 @@
 
 .sentText {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   font-family: Helvetica;
-  color: #828282;
+  color: #e1e1e1;
+  font-style: italic;
+  margin-left: -0.4rem;
   letter-spacing: 0.3px;
 }
 

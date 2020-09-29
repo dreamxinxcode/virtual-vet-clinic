@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import queryString from "query-string";
 import io from "socket.io-client";
 
-import "./Chat.css";
+import "./Chat.scss";
 
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
@@ -28,7 +28,7 @@ const Chat = () => {
 
   useEffect(() => {
     socket = io(ENDPOINT);
-    socket.on("FromAPI", (data) => {
+    socket.on("FromAPI", data => {
       setResponse(data);
     });
   }, []);
@@ -41,7 +41,7 @@ const Chat = () => {
     // setRoom(room);
     // setName(name)
 
-    socket.emit("join", { name, room }, (error) => {
+    socket.emit("join", { name, room }, error => {
       if (error) {
         alert(error);
       }
@@ -50,8 +50,8 @@ const Chat = () => {
   // }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on("message", (message) => {
-      setMessages((messages) => [...messages, message]);
+    socket.on("message", message => {
+      setMessages(messages => [...messages, message]);
     });
 
     // socket.on("roomData", ({ users }) => {
@@ -60,7 +60,7 @@ const Chat = () => {
   }, []);
 
   // SEND MESSAGE
-  const sendMessage = (event) => {
+  const sendMessage = event => {
     event.preventDefault();
 
     if (message) {
@@ -69,17 +69,17 @@ const Chat = () => {
   };
 
   return (
-    <div className="outerContainer">
-      <div className="container">
-        <InfoBar room={room} />
-        <h1> HI {response}</h1>
-        <Messages messages={messages} name={"TIMA"} />
-        <MessageInput
-          message={message}
-          setMessage={setMessage}
-          sendMessage={sendMessage}
-        />
-      </div>
+    // <div className="outerContainer">
+    <div className="container">
+      <InfoBar room={room} />
+      <h1> HI {response}</h1>
+      <Messages messages={messages} name={"TIMA"} />
+      <MessageInput
+        message={message}
+        setMessage={setMessage}
+        sendMessage={sendMessage}
+      />
+      {/* </div> */}
       <TextContainer users={users} />
     </div>
   );
