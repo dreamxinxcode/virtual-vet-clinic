@@ -36,7 +36,7 @@ function LoginModal() {
     console.log("HAHA", user);
 
     Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
-      .then((res) => {
+      .then(res => {
         console.log("SEND login to BE", res[0].data.user);
         console.log("GET from BE user", res[1].data);
       })
@@ -45,7 +45,7 @@ function LoginModal() {
       //   .then((response) => {
       //     console.log("SUCCESS", response.data.user);
       //   })
-      .catch((error) => {
+      .catch(error => {
         console.log("registration error", error);
       });
     setOpen(false);
@@ -59,9 +59,9 @@ function LoginModal() {
       trigger={<button className="login_button">Login</button>}
     >
       <h2 className="login_header">Choose Account Type</h2>
-      <div className="acount_images" onChange={(e) => setType(e.target.value)}>
+      <div className="acount_images" onChange={e => setType(e.target.value)}>
         <label>
-          <span>Clinic</span>
+          <div className="imgDiv">Clinic</div>
           <input
             type="radio"
             name="test"
@@ -145,13 +145,13 @@ function LoginModal() {
         </label>
 
         <label>
-          <span>Pet owner</span>
           <input
             type="radio"
             name="test"
             value="pet"
             checked={type === "pet"}
           />
+          <div className="imgDiv">Pet owner</div>
           <svg
             className="account_type"
             height="512"
@@ -227,7 +227,7 @@ function LoginModal() {
               icon="user"
               iconPosition="left"
               placeholder="E-mail address"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
               value={email}
               name="email"
             />
@@ -237,7 +237,7 @@ function LoginModal() {
             icon="lock"
             iconPosition="left"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             type="password"
           />
         </Modal.Description>
