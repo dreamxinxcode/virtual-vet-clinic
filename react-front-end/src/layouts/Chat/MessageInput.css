@@ -1,15 +1,24 @@
 .formMsg {
   display: flex;
-  border-top: 2px solid #d3d3d3;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputMsg {
-  border: none;
-  border-radius: 0;
-  padding: 5%;
-  width: 80%;
-  font-size: 1.2em;
+  border: 1px solid #d3d3d3;
+  border-radius: 30px;
+  width: 85%;
+  font-size: 1em;
+  margin: 0;
+  height: 4vh;
+  /* margin-right: 1rem; */
+  outline: none;
 }
+/* .inputMsg:hover,
+.inputMsg:focus {
+  border: none;
+  border-bottom: 2px solid #d3d3d3;
+} */
 
 input:focus,
 textarea:focus,
@@ -18,12 +27,30 @@ select:focus {
 }
 
 .sendButton {
-  color: #fff !important;
+  outline: none;
+  cursor: pointer;
+  color: #21ba45 !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #2979ff;
-  padding: 20px;
+  background-color: #fff;
+  /* background: #21ba45; */
+  /* padding: 20px; */
   display: inline-block;
   border: none;
-  width: 20%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+svg {
+  fill: #21ba45;
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.2s;
+}
+
+.sendButton:hover svg {
+  transform: scale(1.2);
 }
