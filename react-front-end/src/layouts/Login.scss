@@ -25,13 +25,8 @@
   transition: all 0.5s;
   border-radius: 10px;
   width: auto;
-  // position: absolute;
   min-width: 4rem;
   outline: none;
-
-  // _________ TODO _________ \\
-  // right: 5%;
-  // top: 0.9%;
 
   &::after {
     font-size: 1.5rem;
@@ -101,7 +96,6 @@ label {
 }
 .imgDiv {
   position: absolute !important;
-  // height: 100%;
   bottom: 1.3rem;
   font-size: 1.7rem;
   font-weight: bold;
