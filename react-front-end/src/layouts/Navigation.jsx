@@ -33,7 +33,8 @@ export default function Navigation() {
           </g>
         </svg>
       </Link>
-      <Link to="/signup"></Link>
+        <Link to="/signup">
+      </Link>
       <LoginModal />
     </nav>
   );

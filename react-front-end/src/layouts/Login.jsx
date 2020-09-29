@@ -56,7 +56,7 @@ function LoginModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<button className="login_button">LOGIN</button>}
+      trigger={<button className="login_button">Login</button>}
     >
       <h2 className="login_header">Choose Account Type</h2>
       <div className="acount_images" onChange={(e) => setType(e.target.value)}>
