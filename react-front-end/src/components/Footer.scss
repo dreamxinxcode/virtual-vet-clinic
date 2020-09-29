@@ -1,0 +1,44 @@
+footer {
+  font-family: 'Poppins';
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#footer-container {
+  display: flex;
+  flex-direction: row;
+}
+
+footer svg {
+  height: 2.5rem;
+  position: relative;
+  bottom: 7px;
+}
+
+footer a {
+  font-family: 'Poppins';
+  color: #495057;
+  padding: 1rem;
+  margin: 3rem;
+  transition: scale .6s;
+}
+
+footer a::first-letter {
+  color: #6C63FF;
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+footer .fa-github {
+  font-size: 1.5rem;
+}
+
+footer a:hover, footer .fa-github:hover {
+  transition: ease-in-out .6s;
+  color: #6C63FF;
+  text-decoration: none;
+  font-weight: 900;
+  transform: scale(1.2);
+}

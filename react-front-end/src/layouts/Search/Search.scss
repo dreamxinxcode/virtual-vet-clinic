@@ -1,23 +1,11 @@
 #search-container {
   height: 70vh;
   padding: 20%;
-  display: block;
-  position: relative;
-}
-
-#search-container::after {
-  content: '';
-  background-image: url(./img/search-bg.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  background: url(./img/search-bg-0.png) no-repeat center;
   background-size: cover;
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;
+  position: relative;
 }
 
 #search-form {
@@ -33,4 +21,11 @@
 
 #search-form button {
   width: 100%;
+}
+
+#search-container svg {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
