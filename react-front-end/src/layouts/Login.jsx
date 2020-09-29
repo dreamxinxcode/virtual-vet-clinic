@@ -145,13 +145,13 @@ function LoginModal() {
         </label>
 
         <label>
+          <div className="imgDiv">Pet owner</div>
           <input
             type="radio"
             name="test"
             value="pet"
             checked={type === "pet"}
           />
-          <div className="imgDiv">Pet owner</div>
           <svg
             className="account_type"
             height="512"
