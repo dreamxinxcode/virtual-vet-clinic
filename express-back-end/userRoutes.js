@@ -2,22 +2,22 @@ const bcrypt = require("bcrypt");
 
 module.exports = function (router, database) {
   // Create a new user
-  router.post("/", (req, res) => {
-    const user = req.body;
-    user.password = bcrypt.hashSync(user.password, 12);
-    console.log("password:", user.password);
-    database
-      .addUser(user)
-      .then((user) => {
-        if (!user) {
-          res.send({ error: "error" });
-          return;
-        }
-        req.session.userId = user.id;
-        res.send("🤗");
-      })
-      .catch((e) => res.send(e));
-  });
+  // router.post("/", (req, res) => {
+  //   const user = req.body;
+  //   user.password = bcrypt.hashSync(user.password, 12);
+  //   console.log("password:", user.password);
+  //   database
+  //     .addUser(user)
+  //     .then((user) => {
+  //       if (!user) {
+  //         res.send({ error: "error" });
+  //         return;
+  //       }
+  //       req.session.userId = user.id;
+  //       res.send("🤗");
+  //     })
+  //     .catch((e) => res.send(e));
+  // });
 
   /**
    * Check if a user exists with a given username and password

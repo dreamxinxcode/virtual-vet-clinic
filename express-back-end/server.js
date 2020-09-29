@@ -1,22 +1,32 @@
-const database = require('./database');
-const apiRoutes = require('./apiRoutes');
-const userRoutes = require('./userRoutes');
+const database = require("./database");
+const apiRoutes = require("./apiRoutes");
+const userRoutes = require("./userRoutes");
+const { addUser, getUser, getUsersInRoom } = require("./chatUsers");
 
-const path = require('path');
+const path = require("path");
 
-const express = require('express');
-const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
+// ===================== CHAT
+const socket = require("socket.io");
+const http = require("http");
+
+const express = require("express");
+const cookieSession = require("cookie-session");
+const bodyParser = require("body-parser");
 
 const app = express();
 
+// ==================== CHAT
+const server = http.createServer(app);
+const io = socket(server);
 
-const showWidgets = require('./database');
+// const showWidgets = require("./database");
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1']
-}));
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1"],
+  })
+);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -24,18 +34,91 @@ app.use(bodyParser.json());
 // /api/endpoints
 const apiRouter = express.Router();
 apiRoutes(apiRouter, database);
-app.use('/api', apiRouter);
+app.use("/api", apiRouter);
 
 // /user/endpoints
 const userRouter = express.Router();
 userRoutes(userRouter, database);
-app.use('/users', userRouter);
+app.use("/users", userRouter);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.get("/test", (req, res) => {
   res.send("🤗");
 });
 
-const port = process.env.PORT || 8080; 
-app.listen(port, (err) => console.log(err || `listening on port ${port} 😎`));
+// =========================+CHAT
+// let interval;
+
+// io.on("connection", (socket) => {
+//   console.log("New client connected");
+//   if (interval) {
+//     clearInterval(interval);
+//   }
+//   interval = setInterval(() => getApiAndEmit(socket), 1000);
+//   socket.on("disconnect", () => {
+//     console.log("Client disconnected");
+//     clearInterval(interval);
+//   });
+// });
+
+const getApiAndEmit = (socket) => {
+  const response = new Date();
+  // Emitting a new message. Will be consumed by the client
+  socket.emit("FromAPI", response);
+};
+
+io.on("connect", (socket) => {
+  console.log("New client connected to CHAT");
+  socket.on("join", ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
+
+    if (error) return callback(error);
+
+    socket.join(user.room);
+
+    socket.emit("message", {
+      user: "admin",
+      text: `${user.name}, welcome to room ${user.room}.`,
+    });
+    socket.broadcast
+      .to(user.room)
+      .emit("message", { user: "admin", text: `${user.name} has joined!` });
+
+    io.to(user.room).emit("roomData", {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+
+    callback();
+  });
+
+  socket.on("sendMessage", (message, callback) => {
+    const user = getUser(socket.id);
+
+    io.to(user.room).emit("message", { user: user.name, text: message });
+
+    callback();
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+    // const user = removeUser(socket.id);
+
+    // if (user) {
+    //   io.to(user.room).emit("message", {
+    //     user: "Admin",
+    //     text: `${user.name} has left.`,
+    //   });
+    //   io.to(user.room).emit("roomData", {
+    //     room: user.room,
+    //     users: getUsersInRoom(user.room),
+    //   });
+    // }
+  });
+});
+
+const port = process.env.PORT || 8080;
+server.listen(port, (err) =>
+  console.log(err || `listening on port ${port} 😎`)
+);
