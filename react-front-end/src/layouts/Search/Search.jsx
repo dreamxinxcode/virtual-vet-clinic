@@ -11,6 +11,7 @@ export default function Search() {
       <svg viewBox="0 0 500 150" preserveAspectRatio="none" height="100%" width="100%"><path d="M-0.80,13.31 C157.97,-20.22 362.37,30.09 508.95,-0.48 L483.71,-123.84 L0.00,0.00 Z" stroke="none" fill="#fff"></path></svg>
 
       <form id='search-form' action="" method='GET'>
+      <h2 id='search-header'>Search for a Clinic</h2>
         <ClinicInput />
         <CityInput />
         <AnimalTypeSelect />

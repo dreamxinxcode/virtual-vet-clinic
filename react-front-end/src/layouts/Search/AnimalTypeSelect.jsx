@@ -36,7 +36,7 @@ const friendOptions = [
 
 const DropdownExampleSelection = () => (
   <Dropdown
-    placeholder='Select Friend'
+    placeholder='Select Animal Type'
     fluid
     selection
     options={friendOptions}
