@@ -16,11 +16,6 @@ $appointment-height: 11rem;
       width: 4rem;
       height: 4rem;
     }
-
-    //   &:hover {
-    //     @include button-active--opacity;
-    //   }
-    // }
   }
 
   &__time {
@@ -60,11 +55,20 @@ $appointment-height: 11rem;
     }
 
     &--create {
-      margin: 60px 20px;
-      background-color: #fce762;
-      border: 2px solid black;
       width: 40%;
-      display: flex;
+      position: relative;
+      background: #fff;
+      margin-bottom: 25px;
+      border-radius: 32px;
+      text-align: center;
+      cursor: pointer;
+      color: rgb(90, 90, 90);
+      box-shadow: 6px 6px 8px rgba($medical-dark-blue, 0.2);
+      font-weight: bold;
+      font-style: italic;
+      transition: all 0.1s ease-in-out;
+      border: 1px solid rgba($medical-blue, 0.4);
+      outline: none;
     }
 
     &--show {
@@ -96,7 +100,6 @@ $appointment-height: 11rem;
     }
 
     &--confirm {
-      // @include border-card($danger-color);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -104,8 +107,6 @@ $appointment-height: 11rem;
     }
 
     &--error {
-      // @include border-card($error-color);
-
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -121,17 +122,12 @@ $appointment-height: 11rem;
     margin-top: 1rem;
 
     &-button {
-      // @include button-inactive--opacity;
       width: 2rem;
       height: 2rem;
       fill: white;
       margin-top: 1rem;
       margin-right: 2rem;
       display: none;
-
-      // &:hover {
-      //   // @include button-active--opacity;
-      // }
 
       &:last-of-type {
         margin-right: 0;
@@ -145,7 +141,7 @@ $appointment-height: 11rem;
 
   &__create-input {
     font-family: "Ubuntu", sans-serif;
-    background-color: #fce762;
+    background-color: #fff;
     border: none;
     font-style: italic;
     font-size: 1.9rem;
@@ -174,12 +170,7 @@ $appointment-height: 11rem;
     }
 
     &-close {
-      // @include button-inactive--opacity;
-
       align-self: flex-start;
-      // &:hover {
-      //   // @include button-active--opacity;
-      // }
     }
   }
 

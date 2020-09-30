@@ -55,11 +55,15 @@ export default function Form(props) {
       {/* </section> */}
       {/* <section className="appointment__card-right"> */}
       <section className="appointment__actions">
-        <Button className="ui red button" danger onClick={console.log("HI")}>
+        <Button
+          className="ui red inverted button"
+          danger
+          onClick={console.log("HI")}
+        >
           Cancel
         </Button>
         <Button
-          className="ui green button"
+          className="ui inverted green button"
           confirm
           onClick={console.log("Validate")}
         >
