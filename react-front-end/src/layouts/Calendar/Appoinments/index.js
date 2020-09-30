@@ -51,39 +51,14 @@ export default function Appointment(props) {
       <div className="timeSlotHeader">
         <h2>Choose an apointment time</h2>
       </div>
-      <div className="timeSlotOuterContainer">
-        {slots}
-        {/* <TimeSlots
-          time={"10:00"}
-          value={"10:00"}
-          // setTime={(e) => setTime(timeValue)}
-          setTime={setTime}
-        />
-        <TimeSlots time={"11:00"} disabled onClick={console.log("HellO!")} />
-        <TimeSlots
-          time={"12:00"}
-          value={"12:00"}
-          setTime={setTime}
-          // setTime={(e) => setTime(value)}
-        />
-        <TimeSlots
-          time={"13:00"}
-          value={"13:00"}
-          setTime={setTime}
-          // setTime={(e) => setTime(value)}
-          disabled
-        />
-        <TimeSlots time={"14:00"} />
-        <TimeSlots time={"15:00"} />
-        <TimeSlots time={"16:00"} />
-        <TimeSlots time={"17:00"} disabled /> */}
-      </div>
+      <div className="timeSlotOuterContainer">{slots}</div>
       <Empty />
 
       {time ? (
         <Form
           name={"Tima"}
           time={time}
+          date={props.date}
           // interviewers={interviewers}
           // interviewer={interview.interviewer.id}
           // onSave={save}
