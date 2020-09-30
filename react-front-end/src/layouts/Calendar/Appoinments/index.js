@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./styles.scss";
 // import Confirm from "./Confirm";
@@ -23,31 +23,52 @@ const EMPTY = "EMPTY";
 const SAVING = "SAVING";
 const SHOW = "SHOW";
 
+// DUMMY DATA
+const times = [
+  { value: "10 : 00" },
+  { value: "11 : 00" },
+  { value: "12 : 00", disabled: false },
+  { value: "13 : 00", disabled: true },
+  { value: "14 : 00" },
+  { value: "15 : 00", disabled: true },
+  { value: "16 : 00" },
+  { value: "17 : 00", disabled: true },
+];
+
 export default function Appointment(props) {
+  const [time, setTime] = useState(null);
+
+  const slots = times.map(slot => {
+    return (
+      <TimeSlots
+        value={slot.value}
+        disabled={slot.disabled}
+        setTime={setTime}
+      />
+    );
+  });
+
   return (
     <>
       <div className="timeSlotHeader">
         <h2>Choose an apointment time</h2>
       </div>
-      <div className="timeSlotOuterContainer">
-        <TimeSlots time={"10:00"} />
-        <TimeSlots time={"11:00"} disabled onClick={console.log("HellO!")} />
-        <TimeSlots time={"12:00"} />
-        <TimeSlots time={"13:00"} disabled />
-        <TimeSlots time={"14:00"} />
-        <TimeSlots time={"15:00"} />
-        <TimeSlots time={"16:00"} />
-        <TimeSlots time={"17:00"} disabled />
-      </div>
-      <Empty />
-      <Form
-        name={"Tima"}
-        // interviewers={interviewers}
-        // interviewer={interview.interviewer.id}
-        // onSave={save}
-        // onCancel={back}
-      />
-      <Show />
+      <div className="timeSlotOuterContainer">{slots}</div>
+
+      {time ? (
+        <Form
+          name={"Tima"}
+          time={time}
+          date={props.date}
+          setTime={setTime}
+          // interviewers={interviewers}
+          // interviewer={interview.interviewer.id}
+          // onSave={save}
+          // onCancel={back}
+        />
+      ) : null}
+
+      {/* <Show /> */}
     </>
   );
 }

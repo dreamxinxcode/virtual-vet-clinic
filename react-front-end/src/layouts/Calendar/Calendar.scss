@@ -1,28 +1,37 @@
 @import "../../../public/styles/variables.scss";
-span {
-  position: relative;
-  top: 0;
-}
-.react-calendar__navigation {
-  background-color: $medical-dark-blue;
-  margin-bottom: 0;
+
+.outerBox {
+  display: block;
+  max-width: 1200px !important;
+  margin: 0 auto;
 }
 
 .react-calendar {
-  border: 3px solid $medical-dark-blue;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.274);
-}
-.react-calendar__tile--active {
-  border-radius: 10px;
-  background-color: $medical-dark-blue;
+  border: 3px solid $medical-blue;
+  box-shadow: 0 4px 15px $shadow-black;
+  padding-bottom: 7px;
+
+  &__navigation {
+    background-color: $medical-blue;
+    margin-bottom: 0;
+  }
+  &__tile {
+    font-size: 1.3rem;
+    border-radius: 10px;
+    &--active {
+      background-color: $medical-blue;
+    }
+    &--now {
+      background-color: $medical-yellow;
+    }
+  }
+  &__month-view__weekdays {
+    padding: 0.5rem 0;
+    font-size: 1.15rem;
+    background-color: $medical-yellow;
+  }
 }
 
-.react-calendar__tile {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-.react-calendar__month-view__weekdays {
-  padding: 0.5rem 0;
-  font-size: 1.15rem;
-  background-color: rgb(255, 206, 46);
+.react-calendar__month-view__days__day--weekend {
+  color: #757575 !important;
 }

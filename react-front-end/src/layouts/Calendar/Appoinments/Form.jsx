@@ -5,7 +5,7 @@ import { Button } from "semantic-ui-react";
 export default function Form(props) {
   // const {interviewers, onSave, onCancel} = props;
 
-  // const [name, setName] = useState(props.name || "");
+  // const [name, setName] =  useState(props.name || "");
   // const [interviewer, setInterviewer] = useState(props.interviewer || null);
   // const [error, setError] = useState("");
 
@@ -33,18 +33,16 @@ export default function Form(props) {
 
   return (
     <main className="appointment__card appointment__card--create">
-      {/* <section className="appointment__card-left"> */}
       <form autoComplete="off" onSubmit={event => event.preventDefault()}>
-        <label>Appointment time:</label>
-        <input
-          className="appointment__create-input text--semi-bold"
-          name="name"
-          value="Sunday, September 27, 2020, 16:00 "
-          type="text"
-          placeholder="Enter Student Name"
-          // onChange={(event) => setName(event.target.value)}
-          data-testid="student-name-input"
-        />
+        <h3 className="formHeader">
+          <label className="labelForForm">Appointment date: </label>
+          {props.date.toDateString().toString()}
+        </h3>
+
+        <h3 className="formHeader">
+          <label className="labelForForm">Appointment time:</label> {props.time}
+        </h3>
+
         <section className="appointment__validation"></section>
       </form>
       {/* <InterviewerList
@@ -56,18 +54,18 @@ export default function Form(props) {
       {/* <section className="appointment__card-right"> */}
       <section className="appointment__actions">
         <Button
-          className="ui red inverted button"
-          danger
-          onClick={console.log("HI")}
-        >
-          Cancel
-        </Button>
-        <Button
-          className="ui inverted green button"
+          className="ui big inverted green button"
           confirm
           onClick={console.log("Validate")}
         >
           Confirm
+        </Button>
+        <Button
+          className="ui big red inverted button"
+          danger
+          onClick={() => props.setTime("")}
+        >
+          Cancel
         </Button>
         {/* </section> */}
       </section>

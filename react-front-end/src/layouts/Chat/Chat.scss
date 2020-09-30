@@ -1,48 +1,21 @@
 @import "../../../public/styles/variables.scss";
 
-.outerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  /* background-color: #1a1a1d; */
-}
-
-h1 {
-  background-color: rgb(255, 206, 46);
+.chatHeader {
+  background-color: $medical-yellow;
   margin: 0;
   padding: 5px;
 }
 
-.container {
+.chatContainer {
+  height: 53vh;
+  width: 40%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: absolute;
   top: 6.5rem;
   right: 1.5rem;
-  min-height: -17rem;
-  flex-direction: column;
-  justify-content: space-between;
-  background: #ffffff;
   border-radius: 8px;
-  height: 53vh;
-  width: 40%;
   border: 2px solid $medical-dark-blue;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.274);
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .outerContainer {
-    height: 100%;
-  }
-
-  .container {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 1200px) {
-  .container {
-    width: 60%;
-  }
+  box-shadow: 0 4px 15px $shadow-black;
 }

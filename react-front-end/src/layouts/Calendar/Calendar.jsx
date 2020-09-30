@@ -61,13 +61,13 @@ const state = {
 // ==================================  ==================================== \\
 
 export default function myCalendar() {
-  const [value, onChange] = useState(new Date());
-  console.log(value);
+  const [date, setDate] = useState(new Date());
+  console.log(date);
 
   return (
-    <div>
-      <Calendar onChange={onChange} value={value} />
-      <Appointment />
+    <div className="outerBox">
+      <Calendar onChange={setDate} date={date} />
+      <Appointment setDate={setDate} date={date} />
       <Chat />
     </div>
   );

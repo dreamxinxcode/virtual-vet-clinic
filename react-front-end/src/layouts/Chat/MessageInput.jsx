@@ -10,9 +10,11 @@ const MessageInput = ({ setMessage, sendMessage, message }) => (
       placeholder="Type a message..."
       value={message}
       onChange={({ target: { value } }) => setMessage(value)}
-      onKeyPress={event => (event.key === "Enter" ? sendMessage(event) : null)}
+      onKeyPress={(event) =>
+        event.key === "Enter" ? sendMessage(event) : null
+      }
     />
-    <button className="sendButton" onClick={e => sendMessage(e)}>
+    <button className="sendButton" onClick={(e) => sendMessage(e)}>
       <svg
         id="Capa_1"
         enable-background="new 0 0 465.882 465.882"
