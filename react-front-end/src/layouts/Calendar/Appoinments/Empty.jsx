@@ -1,5 +1,4 @@
 import React from "react";
-// import sdf from "./images/add.png"
 export default function Empty(props) {
   return (
     <main className="appointment__add">
