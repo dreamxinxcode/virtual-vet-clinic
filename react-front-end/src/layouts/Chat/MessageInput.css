@@ -44,7 +44,7 @@ select:focus {
   justify-content: center;
   transition: all 0.2s;
 }
-svg {
+.formMsg svg {
   fill: #21ba45;
   width: 2rem;
   height: 2rem;
