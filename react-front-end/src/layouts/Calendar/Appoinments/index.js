@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import "./styles.scss";
 // import Confirm from "./Confirm";
@@ -36,9 +37,21 @@ const times = [
 ];
 
 export default function Appointment(props) {
+  const { date } = props;
+
   const [time, setTime] = useState(null);
 
-  const slots = times.map(slot => {
+  const save = (date, time) => {
+    const booking = { date, time };
+    console.log("Sending day and time to book apppoitment", date, time);
+    axios
+      .put("/api/bookings", booking)
+      .then((res) => console.log("returned from BE put/bookings", res));
+  };
+
+  // const getSlots = (date) => {};
+
+  const slots = times.map((slot) => {
     return (
       <TimeSlots
         value={slot.value}
@@ -59,8 +72,9 @@ export default function Appointment(props) {
         <Form
           name={"Tima"}
           time={time}
-          date={props.date}
+          date={date}
           setTime={setTime}
+          onSave={save}
           // interviewers={interviewers}
           // interviewer={interview.interviewer.id}
           // onSave={save}

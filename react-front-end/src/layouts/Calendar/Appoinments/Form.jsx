@@ -33,7 +33,7 @@ export default function Form(props) {
 
   return (
     <main className="appointment__card appointment__card--create">
-      <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+      <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <h3 className="formHeader">
           <label className="labelForForm">Appointment date: </label>
           {props.date.toDateString().toString()}
@@ -56,7 +56,7 @@ export default function Form(props) {
         <Button
           className="ui big inverted green button"
           confirm
-          onClick={console.log("Validate")}
+          onClick={() => props.onSave(props.date, props.time)}
         >
           Confirm
         </Button>
