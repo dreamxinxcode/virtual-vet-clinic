@@ -65,7 +65,7 @@ export default function myCalendar() {
   console.log(date);
 
   return (
-    <div>
+    <div className="outerBox">
       <Calendar onChange={setDate} date={date} />
       <Appointment setDate={setDate} date={date} />
       <Chat />
