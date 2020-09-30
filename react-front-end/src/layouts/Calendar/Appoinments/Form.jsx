@@ -36,10 +36,11 @@ export default function Form(props) {
       {/* <section className="appointment__card-left"> */}
       <form autoComplete="off" onSubmit={event => event.preventDefault()}>
         <label>Appointment time:</label>
+        <h3>{props.time}</h3>
         <input
           className="appointment__create-input text--semi-bold"
           name="name"
-          value="Sunday, September 27, 2020, 16:00 "
+          value="Sunday, September 27, 2020"
           type="text"
           placeholder="Enter Student Name"
           // onChange={(event) => setName(event.target.value)}

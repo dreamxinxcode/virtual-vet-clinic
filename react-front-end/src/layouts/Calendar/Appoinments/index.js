@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./styles.scss";
 // import Confirm from "./Confirm";
@@ -24,13 +24,21 @@ const SAVING = "SAVING";
 const SHOW = "SHOW";
 
 export default function Appointment(props) {
+  const [time, setTime] = useState(null);
+
+  const showBookingForm = () => {
+    // setTime(timeValue);
+    console.log(time);
+  };
+
+  const timeValue = "10:00";
   return (
     <>
       <div className="timeSlotHeader">
         <h2>Choose an apointment time</h2>
       </div>
       <div className="timeSlotOuterContainer">
-        <TimeSlots time={"10:00"} />
+        <TimeSlots time={"10:00"} value={timeValue} onClick={setTime} />
         <TimeSlots time={"11:00"} disabled onClick={console.log("HellO!")} />
         <TimeSlots time={"12:00"} />
         <TimeSlots time={"13:00"} disabled />
@@ -40,13 +48,17 @@ export default function Appointment(props) {
         <TimeSlots time={"17:00"} disabled />
       </div>
       <Empty />
-      <Form
-        name={"Tima"}
-        // interviewers={interviewers}
-        // interviewer={interview.interviewer.id}
-        // onSave={save}
-        // onCancel={back}
-      />
+
+      {time ? (
+        <Form
+          name={"Tima"}
+          // interviewers={interviewers}
+          // interviewer={interview.interviewer.id}
+          // onSave={save}
+          // onCancel={back}
+        />
+      ) : null}
+
       <Show />
     </>
   );
