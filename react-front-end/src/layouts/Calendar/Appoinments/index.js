@@ -24,17 +24,27 @@ const SAVING = "SAVING";
 const SHOW = "SHOW";
 
 // DUMMY DATA
-// const times = [
-//   { value: "10: 00", disabled: "false" },
-//   { value: "11: 00", disabled: "true" },
-//   { value: "12: 00", disabled: "false" },
-//   { value: "13: 00", disabled: "true" },
-//   { value: "14: 00", disabled: "false" },
-//   { value: "15: 00", disabled: "false" },
-// ];
+const times = [
+  { value: "10: 00" },
+  { value: "11: 00" },
+  { value: "12: 00", disabled: false },
+  { value: "13: 00", disabled: true },
+  { value: "14: 00" },
+  { value: "15: 00", disabled: true },
+];
 
 export default function Appointment(props) {
   const [time, setTime] = useState(null);
+
+  const slots = times.map((slot) => {
+    return (
+      <TimeSlots
+        value={slot.value}
+        disabled={slot.disabled}
+        setTime={setTime}
+      />
+    );
+  });
 
   return (
     <>
@@ -42,7 +52,8 @@ export default function Appointment(props) {
         <h2>Choose an apointment time</h2>
       </div>
       <div className="timeSlotOuterContainer">
-        <TimeSlots
+        {slots}
+        {/* <TimeSlots
           time={"10:00"}
           value={"10:00"}
           // setTime={(e) => setTime(timeValue)}
@@ -65,7 +76,7 @@ export default function Appointment(props) {
         <TimeSlots time={"14:00"} />
         <TimeSlots time={"15:00"} />
         <TimeSlots time={"16:00"} />
-        <TimeSlots time={"17:00"} disabled />
+        <TimeSlots time={"17:00"} disabled /> */}
       </div>
       <Empty />
 
