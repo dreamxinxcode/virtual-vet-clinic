@@ -5,6 +5,7 @@ import GoogleHangoutsButton from './GoogleHangoutsButton';
 export default function Sidebar() {
   return (
     <div id="sidebar">
+      
         <GoogleHangoutsButton />
     </div>
   )
