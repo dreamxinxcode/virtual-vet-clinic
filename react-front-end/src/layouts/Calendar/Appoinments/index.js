@@ -35,7 +35,7 @@ export default function Appointment(props) {
         <TimeSlots time={"12:00"} />
         <TimeSlots time={"13:00"} disabled />
         <TimeSlots time={"14:00"} />
-        <TimeSlots time={"15:00"} disabled />
+        <TimeSlots time={"15:00"} />
         <TimeSlots time={"16:00"} />
         <TimeSlots time={"17:00"} disabled />
       </div>
