@@ -18,6 +18,8 @@ const Row = styled.div`
 `;
 
 const Video = styled.video`
+  width: auto;
+  height: auto;
 `;
 
 function AppointmentRoom() {
@@ -139,6 +141,7 @@ function AppointmentRoom() {
   return (
       <div id="video-container">
         {UserVideo}
+        
         {PartnerVideo}
 
         {Object.keys(users).map(key => {
