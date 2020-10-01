@@ -8,14 +8,15 @@ const Message = ({ message: { text, user }, name }) => {
   let isSentByCurrentUser = false;
 
   const trimmedName = name.trim().toLowerCase();
-
-  if (user === trimmedName) {
+  const myName = localStorage.getItem("userName");
+  if (user === myName) {
     isSentByCurrentUser = true;
   }
-
+  let date = Date.now();
   return isSentByCurrentUser ? (
     <div className="messageContainer justifyEnd">
-      <p className="sentText pr-10">{trimmedName}</p>
+      <p className="sentText pr-10">{myName}</p>
+      <p className="sentText pr-10">{date.toLocaleString()}</p>
       <div className="messageBox backgroundBlue">
         <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
       </div>
@@ -26,6 +27,7 @@ const Message = ({ message: { text, user }, name }) => {
         <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
       </div>
       <p className="sentText pl-10 ">{user}</p>
+      <p className="sentText pr-10">{date.toLocaleString()}</p>
     </div>
   );
 };

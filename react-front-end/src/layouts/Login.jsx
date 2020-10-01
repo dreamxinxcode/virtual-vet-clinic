@@ -35,11 +35,12 @@ function LoginModal() {
     };
 
     Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
-      .then(res => {
+      .then((res) => {
+        localStorage.setItem("userName", res[0].data.user.email);
         console.log("SEND login to BE", res[0].data.user);
         console.log("GET from BE user", res[1].data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("registration error", error);
       });
     setOpen(false);
@@ -53,7 +54,7 @@ function LoginModal() {
       trigger={<button className="login-button">Login</button>}
     >
       <h2 className="login-header">Choose Account Type</h2>
-      <div className="login-imgBox" onChange={e => setType(e.target.value)}>
+      <div className="login-imgBox" onChange={(e) => setType(e.target.value)}>
         <label className="login-label">
           <div className="login-Imgbox">Clinic</div>
           <input
@@ -221,7 +222,7 @@ function LoginModal() {
               icon="user"
               iconPosition="left"
               placeholder="E-mail address"
-              onChange={e => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
               name="email"
             />
@@ -231,7 +232,7 @@ function LoginModal() {
             icon="lock"
             iconPosition="left"
             placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
           />
         </Modal.Description>
