@@ -1,79 +1,158 @@
 @import "../../../public/styles/variables.scss";
 
-.chatHeader {
-  background-color: $medical-yellow;
-  margin: 0;
-  padding: 5px;
-}
+.chat {
+  &-infoBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $medical-blue;
+    border-radius: 4px 4px 0 0;
+    height: 50px;
+    width: 100%;
 
-.chatContainer {
-  height: 53vh;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 8px;
-  border: 2px solid $medical-blue;
-  box-shadow: 0 4px 15px $shadow-black;
-  transition: all 0.5s ease;
+    &-onlineIcon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: #fff;
+      fill: rgb(41, 199, 26);
+      padding: 5px;
+      margin-right: 1rem;
+    }
+
+    &-leftInnerContainer {
+      flex: 0.5;
+      display: flex;
+      align-items: center;
+      margin-left: 5%;
+      color: white;
+    }
+
+    &-rightInnerContainer {
+      display: flex;
+      flex: 0.5;
+      justify-content: flex-end;
+      margin-right: 5%;
+    }
+
+    &-closeIcon {
+      width: 1.2rem;
+      height: 1.2rem;
+      fill: #fff;
+    }
+  }
+
+  &-roomName {
+    margin-top: 0;
+  }
+
+  &-header {
+    background-color: $medical-yellow;
+    margin: 0;
+    padding: 5px;
+  }
+  &-container {
+    height: 53vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    border: 2px solid $medical-blue;
+    box-shadow: 0 4px 15px $shadow-black;
+    transition: all 0.5s ease;
+  }
+  &-messages {
+    padding: 5% 0;
+    overflow: auto;
+    flex: auto;
+  }
+  &-button {
+    cursor: pointer;
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    min-width: 60px !important;
+    min-height: 60px;
+    background: $medical-dark-blue;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 6px 6px 12px rgba(79, 209, 197, 0.64);
+    transition: all 0.3s ease-in-out 0s;
+    outline: none;
+    &:after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 6px solid #00ffcb;
+      position: absolute;
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: ring 1.5s infinite;
+    }
+    &:hover::after {
+      animation: none;
+      display: none;
+    }
+    &-logo {
+      fill: #fff;
+      height: 30px;
+      height: 30px;
+    }
+  }
+  &-formMsg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-msgSend {
+    border: 1px solid #d3d3d3;
+    border-radius: 30px;
+    width: 85%;
+    font-size: 1em;
+    margin: 0;
+    height: 4vh;
+    outline: none;
+    &::-webkit-input-placeholder {
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.2;
+    }
+  }
+  &-sendButton {
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #fff;
+    display: inline-block;
+    border: none;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+  &-btnSend {
+    fill: #16c2d5;
+    width: 2rem;
+    height: 2rem;
+    transition: all 0.2s;
+  }
 }
 
 .hidden {
   opacity: 0;
+  visibility: hidden;
 }
-
 .show {
   opacity: 1;
-}
-
-.buttonToShow {
-  position: absolute;
-  top: 100px;
-  right: 20px;
-  min-width: 60px !important;
-  min-height: 60px;
-  font-family: "Nunito", sans-serif;
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1.3px;
-  font-weight: 700;
-  color: #313133;
-  background: #4fd1c5;
-  background: linear-gradient(
-    90deg,
-    rgba(129, 230, 217, 1) 0%,
-    rgba(79, 209, 197, 1) 100%
-  );
-  border: none;
-  border-radius: 1000px;
-  box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
-  transition: all 0.3s ease-in-out 0s;
-  cursor: pointer;
-  outline: none;
-  padding: 10px;
-}
-
-.buttonToShow:after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  border: 6px solid #00ffcb;
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: ring 1.5s infinite;
-}
-.chatLogo {
-  fill: #fff;
-  height: 30px;
-  height: 30px;
-}
-.buttonToShow:hover::after {
-  animation: none;
-  display: none;
 }
 
 @keyframes ring {

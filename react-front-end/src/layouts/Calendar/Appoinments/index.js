@@ -82,8 +82,8 @@ export default function Appointment(props) {
 
   return (
     <div className="timeBox">
-      <div className="timeSlotOuterContainer">
-        <h2 className="timeSlotHeader">Choose an apointment time</h2>
+      <div className="timeSlot-outerContainer">
+        <h2 className="timeSlot-header">Choose an apointment time</h2>
         <div className="timeSlots">{slots}</div>
       </div>
 

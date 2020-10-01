@@ -1,35 +1,10 @@
 @import "../../../../public/styles/variables.scss";
 
-.timeContainer {
+.timeBox {
   display: flex;
-  margin: 1.5rem;
-  flex-direction: column;
   justify-content: space-between;
-  background: #ffffff;
-  border-radius: 8px;
-  height: 5vh;
-
-  border: 2px solid $medical-dark-blue;
-  box-shadow: 0 4px 15px $shadow-black;
-}
-
-.timeSlotOuterContainer {
-  display: flex;
-  border: 3px solid $medical-blue;
-  border-radius: 10px;
-  width: 63%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
-}
-.timeSlotHeader {
-  text-transform: uppercase;
-  background-color: $medical-blue;
-  padding: 0.7rem;
-  margin: 0;
-  margin-top: 5rem;
-  color: #fff;
-  // margin-bottom: 2rem;
+  align-items: center;
+  width: 100%;
 }
 
 .timeSlot {
@@ -48,26 +23,55 @@
   transition: all 0.1s ease-in-out;
   border: 2px solid rgba($medical-blue, 0.4);
   outline: none;
-}
-span {
-  font-size: 18px;
-  font-weight: semibold;
-}
-.timeSlot:hover {
-  opacity: 0.3;
-  box-shadow: -3px -3px 5px rgba(255, 255, 255, 0.8),
-    3px 3px 5px rgba(76, 139, 255, 0.582);
-}
-.timeSlot:active {
-  opacity: 1;
-  box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
-    inset 4px 4px 8px rgba(0, 0, 0, 0.1);
-  color: #79e3b6;
+
+  &-outerContainer {
+    display: flex;
+    border: 3px solid $medical-blue;
+    border-radius: 10px;
+    width: 63%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+
+  &:hover {
+    opacity: 0.3;
+    box-shadow: -3px -3px 5px rgba(255, 255, 255, 0.8),
+      3px 3px 5px rgba(76, 139, 255, 0.582);
+  }
+  &:active {
+    opacity: 1;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5),
+      inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+    color: #79e3b6;
+  }
+
+  &:disabled {
+    box-shadow: inset -3px -3px 10px rgba(255, 255, 255, 0.5),
+      inset 4px 4px 16px rgba(0, 0, 0, 0.1);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  &-header {
+    width: 100%;
+    text-transform: uppercase;
+    background-color: $medical-blue;
+    padding: 0.7rem;
+    margin: 0;
+    color: #fff;
+  }
+
+  &-time {
+    font-size: 18px;
+    font-weight: semibold;
+  }
 }
 
-.timeSlot:disabled {
-  box-shadow: inset -3px -3px 10px rgba(255, 255, 255, 0.5),
-    inset 4px 4px 16px rgba(0, 0, 0, 0.1);
-  color: #e0e0e0;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+.timeSlots {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }

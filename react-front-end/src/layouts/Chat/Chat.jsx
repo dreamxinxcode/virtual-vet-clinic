@@ -80,9 +80,9 @@ const Chat = () => {
 
   return (
     <>
-      <button className="buttonToShow" onClick={handleClick}>
+      <button className="chat-button" onClick={handleClick}>
         <svg
-          className="chatLogo"
+          className="chat-button-logo"
           version="1.1"
           id="Capa_1"
           xmlns="http://www.w3.org/2000/svg"
@@ -135,9 +135,9 @@ const Chat = () => {
           <g></g>
         </svg>
       </button>
-      <div className={`chatContainer ` + isHidden}>
+      <div className={`chat-container ` + isHidden}>
         <InfoBar room={room} />
-        <h1 className="chatHeader"> Welcome to chat! {response}</h1>
+        <h1 className="chat-header"> Welcome to chat! {response}</h1>
         <Messages messages={messages} name={"TIMA"} />
         <MessageInput
           message={message}

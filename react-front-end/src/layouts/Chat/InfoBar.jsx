@@ -1,15 +1,12 @@
 import React from "react";
 
-import onlineIcon from "./0_Icons/on.png";
 import closeIcon from "./0_Icons/close.png";
 
-import "./InfoBar.scss";
-
 const InfoBar = ({ room }) => (
-  <div className="infoBar">
-    <div className="leftInnerContainer">
+  <div className="chat-infoBar">
+    <div className="chat-infoBar-leftInnerContainer">
       <svg
-        className="onlineIcon"
+        className="chat-infoBar-onlineIcon"
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
@@ -74,12 +71,12 @@ const InfoBar = ({ room }) => (
         <g></g>
         <g></g>
       </svg>
-      <h3>{room}</h3>
+      <h3 className="chat-roomName">{room}</h3>
     </div>
-    <div className="rightInnerContainer">
+    <div className="chat-infoBar-rightInnerContainer">
       <a href="/calendar">
         <svg
-          className="closeIcon"
+          className="chat-infoBar-closeIcon"
           height="365.696pt"
           viewBox="0 0 365.696 365.696"
           width="365.696pt"
