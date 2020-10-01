@@ -29,11 +29,11 @@ select:focus {
 .sendButton {
   outline: none;
   cursor: pointer;
-  color: #21ba45 !important;
+  color: #16c2d5 !important;
   text-transform: uppercase;
   text-decoration: none;
   background-color: #fff;
-  /* background: #21ba45; */
+  /* background: #16c2d5; */
   /* padding: 20px; */
   display: inline-block;
   border: none;
@@ -45,7 +45,7 @@ select:focus {
   transition: all 0.2s;
 }
 .formMsg svg {
-  fill: #21ba45;
+  fill: #16c2d5;
   width: 2rem;
   height: 2rem;
   transition: all 0.2s;

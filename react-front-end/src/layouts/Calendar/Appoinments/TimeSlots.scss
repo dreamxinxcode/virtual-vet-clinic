@@ -8,32 +8,37 @@
   background: #ffffff;
   border-radius: 8px;
   height: 5vh;
-  width: 20%;
+
   border: 2px solid $medical-dark-blue;
   box-shadow: 0 4px 15px $shadow-black;
 }
 
 .timeSlotOuterContainer {
   display: flex;
+  border: 3px solid $medical-blue;
+  border-radius: 10px;
+  width: 63%;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 1.5rem;
-  width: 40%;
+  margin: 1.5rem 0;
 }
 .timeSlotHeader {
-  width: 40%;
   text-transform: uppercase;
+  background-color: $medical-blue;
+  padding: 0.7rem;
+  margin: 0;
   margin-top: 5rem;
-  margin-bottom: 2rem;
+  color: #fff;
+  // margin-bottom: 2rem;
 }
 
 .timeSlot {
-  width: 40%;
+  width: 25%;
   height: 50px;
   position: relative;
   background: #fff;
-  margin-bottom: 25px;
-  border-radius: 32px;
+  margin: 1.5rem 0.5rem;
+  border-radius: 15px;
   text-align: center;
   cursor: pointer;
   color: rgb(90, 90, 90);
@@ -45,7 +50,7 @@
   outline: none;
 }
 span {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: semibold;
 }
 .timeSlot:hover {
