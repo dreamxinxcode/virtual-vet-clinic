@@ -32,6 +32,7 @@ export default function Form(props) {
   // }
 
   return (
+
     <div className="appointment__card appointment__card--create">
       <form autoComplete="off" onSubmit={event => event.preventDefault()}>
         <div className="header"> Appoinment ticket </div>
@@ -54,7 +55,7 @@ export default function Form(props) {
         <Button
           className="ui large inverted green button"
           confirm
-          onClick={console.log("Validate")}
+          onClick={() => props.onSave(props.date, props.time)}
         >
           Confirm
         </Button>

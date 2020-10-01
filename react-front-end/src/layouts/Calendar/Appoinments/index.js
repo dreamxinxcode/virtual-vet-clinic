@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import "./styles.scss";
 // import Confirm from "./Confirm";
@@ -13,41 +14,67 @@ import TimeSlots from "./TimeSlots";
 // // import useVisualMode from "hooks/useVisualMode";
 
 // identifiers to switch to any mode
-const CONFIRM = "CONFIRM";
-const CREATE = "CREATE";
-const DELETE = "DELETE";
-const EDIT = "EDIT";
+// const CONFIRM = "CONFIRM";
+// const CREATE = "CREATE";
+// const DELETE = "DELETE";
+// const EDIT = "EDIT";
 // const ERROR_DELETE = "ERROR_DELETE";
 // const ERROR_SAVE = "ERROR_SAVE";
-const EMPTY = "EMPTY";
-const SAVING = "SAVING";
-const SHOW = "SHOW";
+// const EMPTY = "EMPTY";
+// const SAVING = "SAVING";
+// const SHOW = "SHOW";
 
 // DUMMY DATA
 const times = [
-  { value: "9:00" },
-  { value: "10:00" },
-  { value: "11:00" },
-  { value: "12:00", disabled: false },
-  { value: "1:00", disabled: true },
-  { value: "2:00" },
-  { value: "3:00", disabled: true },
-  { value: "4:00" },
-  { value: "5:00", disabled: true },
+  { id: 10, hour: "10:00", disabled: true },
+  { id: 11, hour: "11:00" },
+  { id: 12, hour: "12:00" },
+  { id: 13, hour: "13:00", disabled: true },
+  { id: 14, hour: "14:00" },
+  { id: 15, hour: "15:00" },
 ];
 
-export default function Appointment(props) {
-  const [time, setTime] = useState(null);
+let apislots = [11, 12];
 
-  const slots = times.map(slot => {
+export default function Appointment(props) {
+  const { date, setDate } = props;
+
+  const [time, setTime] = useState(null);
+  const [currentSlots, setCurrentSlots] = useState([]);
+
+  const save = (date, time) => {
+    const booking = { date, time };
+    axios
+      .put("/api/bookings", booking)
+      .then((res) => console.log("returned from BE put/bookings", res));
+  };
+
+  const slots = times.map((slot) => {
     return (
       <TimeSlots
-        value={slot.value}
-        disabled={slot.disabled}
+        value={slot.id}
+        hour={slot.hour}
+        disabled={apislots.includes([slot.id]) ? true : null}
+        // disabled={slot.disabled}
         setTime={setTime}
       />
     );
   });
+
+  // const hourExtracter = (hourArr) => {
+  //   const bookedHours = [];
+  //   for (const key of hourArr) bookedHours.push(key.hour);
+  //   return bookedHours;
+  // };
+
+  // useEffect(() => {
+  //   axios.get("/api/bookings", date).then((res) => {
+  //     const slots = hourExtracter(res.data);
+  //     setCurrentSlots([...slots]);
+  //     console.log("response on Date change", res.data);
+  //     console.log("CurrentSlots Updated", currentSlots);
+  //   });
+  // }, [date]);
 
   return (
     <div className="timeBox">
@@ -60,12 +87,9 @@ export default function Appointment(props) {
         <Form
           name={"Tima"}
           time={time}
-          date={props.date}
+          date={date}
           setTime={setTime}
-          // interviewers={interviewers}
-          // interviewer={interview.interviewer.id}
-          // onSave={save}
-          // onCancel={back}
+          onSave={save}
         />
       ) : null}
 
