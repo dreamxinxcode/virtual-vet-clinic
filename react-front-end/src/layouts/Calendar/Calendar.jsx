@@ -66,9 +66,13 @@ export default function myCalendar() {
 
   return (
     <div className="outerBox">
-      <Calendar onChange={setDate} date={date} />
-      <Appointment setDate={setDate} date={date} />
-      <Chat />
+      <div className="innerLeftBox">
+        <Calendar onChange={setDate} date={date} />
+        <Chat />
+      </div>
+      <div className="innerRightBox">
+        <Appointment setDate={setDate} date={date} />
+      </div>
     </div>
   );
 }

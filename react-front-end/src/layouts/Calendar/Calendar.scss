@@ -1,7 +1,10 @@
 @import "../../../public/styles/variables.scss";
 
 .outerBox {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   max-width: 1200px !important;
   margin: 0 auto;
 }
@@ -9,14 +12,17 @@
 .react-calendar {
   border: 3px solid $medical-blue;
   box-shadow: 0 4px 15px $shadow-black;
-  padding-bottom: 7px;
+  width: 70%;
+  margin-right: 4rem;
+  background: url("../Calendar/Appoinments/images/ANIMALS.png") center center;
+  background-size: cover;
 
   &__navigation {
     background-color: $medical-blue;
     margin-bottom: 0;
   }
   &__tile {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     border-radius: 10px;
     &--active {
       background-color: $medical-blue;
@@ -29,9 +35,21 @@
     padding: 0.5rem 0;
     font-size: 1.15rem;
     background-color: $medical-yellow;
+    margin-bottom: 1rem;
+  }
+  &__month-view__days__day--weekend {
+    color: #cccccc !important;
   }
 }
 
-.react-calendar__month-view__days__day--weekend {
-  color: #757575 !important;
+.innerLeftBox {
+  margin: 21px 0;
+  height: auto;
+  width: 100%;
+  display: flex;
 }
+// .innerRightBox {
+//   width: 100%;
+//   display: flex;
+//   justify-content: flex-end;
+// }

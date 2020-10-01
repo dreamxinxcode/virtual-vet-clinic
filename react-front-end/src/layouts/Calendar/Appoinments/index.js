@@ -25,14 +25,15 @@ const SHOW = "SHOW";
 
 // DUMMY DATA
 const times = [
-  { value: "10 : 00" },
-  { value: "11 : 00" },
-  { value: "12 : 00", disabled: false },
-  { value: "13 : 00", disabled: true },
-  { value: "14 : 00" },
-  { value: "15 : 00", disabled: true },
-  { value: "16 : 00" },
-  { value: "17 : 00", disabled: true },
+  { value: "9:00" },
+  { value: "10:00" },
+  { value: "11:00" },
+  { value: "12:00", disabled: false },
+  { value: "1:00", disabled: true },
+  { value: "2:00" },
+  { value: "3:00", disabled: true },
+  { value: "4:00" },
+  { value: "5:00", disabled: true },
 ];
 
 export default function Appointment(props) {
@@ -49,11 +50,11 @@ export default function Appointment(props) {
   });
 
   return (
-    <>
-      <div className="timeSlotHeader">
-        <h2>Choose an apointment time</h2>
+    <div className="timeBox">
+      <div className="timeSlotOuterContainer">
+        <h2 className="timeSlotHeader">Choose an apointment time</h2>
+        <div className="timeSlots">{slots}</div>
       </div>
-      <div className="timeSlotOuterContainer">{slots}</div>
 
       {time ? (
         <Form
@@ -69,6 +70,6 @@ export default function Appointment(props) {
       ) : null}
 
       {/* <Show /> */}
-    </>
+    </div>
   );
 }
