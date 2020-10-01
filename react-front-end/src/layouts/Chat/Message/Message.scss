@@ -1,0 +1,120 @@
+@import "../../../../public/styles/variables";
+
+.message-box {
+  background: #fff;
+  border-radius: 20px;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.123);
+  max-width: 80%;
+  &-send {
+    color: #fff;
+    background-color: darken($medical-dark-blue, 3);
+  }
+}
+
+.message-text {
+  text-align: left;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 0;
+  float: left;
+  font-size: 1.3em;
+  word-wrap: break-word;
+}
+
+.message-text img {
+  vertical-align: middle;
+}
+
+.messageContainer {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 5%;
+  margin: 10px 0;
+}
+
+.sentText {
+  display: flex;
+  align-items: flex-end;
+  font-family: Helvetica;
+  color: #444444;
+  font-style: italic;
+  margin-left: -0.4rem;
+  letter-spacing: 0.3px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.justifyStart {
+  justify-content: flex-start;
+}
+
+.justifyEnd {
+  justify-content: flex-end;
+}
+
+.colorWhite {
+  color: white;
+}
+
+.colorDark {
+  color: #353535;
+}
+
+.backgroundBlue {
+  background: #2979ff;
+}
+
+.backgroundLight {
+  background: #f3f3f3;
+}
+
+.message-time {
+  font-style: italic;
+  font-size: 0.8em;
+  float: right;
+  color: rgb(112, 112, 112);
+  font-weight: bold;
+  &-send {
+    font-style: italic;
+    font-size: 0.8em;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+.message-label-from {
+  font-size: 0.9em;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border: 2px solid darken($medical-dark-blue, 3);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: darken($medical-dark-blue, 3);
+  color: #fff;
+}
+
+.message-label-to {
+  font-size: 0.9em;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border: 1px solid darken($medical-dark-blue, 3);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+}
+
+.message-messageBox {
+  padding: 0.2rem 1rem;
+}
