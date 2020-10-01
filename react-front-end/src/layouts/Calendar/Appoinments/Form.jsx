@@ -32,18 +32,17 @@ export default function Form(props) {
   // }
 
   return (
-    <main className="appointment__card appointment__card--create">
-      <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
+
+    <div className="appointment__card appointment__card--create">
+      <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+        <div className="header"> Appoinment ticket </div>
         <h3 className="formHeader">
-          <label className="labelForForm">Appointment date: </label>
+          <label className="labelForForm">Date: </label>
           {props.date.toDateString().toString()}
         </h3>
-
         <h3 className="formHeader">
-          <label className="labelForForm">Appointment time:</label> {props.time}
+          <label className="labelForForm">Time:</label> {props.time}
         </h3>
-
-        <section className="appointment__validation"></section>
       </form>
       {/* <InterviewerList
           interviewers={interviewers}
@@ -54,14 +53,14 @@ export default function Form(props) {
       {/* <section className="appointment__card-right"> */}
       <section className="appointment__actions">
         <Button
-          className="ui big inverted green button"
+          className="ui large inverted green button"
           confirm
           onClick={() => props.onSave(props.date, props.time)}
         >
           Confirm
         </Button>
         <Button
-          className="ui big red inverted button"
+          className="ui large red inverted button"
           danger
           onClick={() => props.setTime("")}
         >
@@ -69,6 +68,6 @@ export default function Form(props) {
         </Button>
         {/* </section> */}
       </section>
-    </main>
+    </div>
   );
 }

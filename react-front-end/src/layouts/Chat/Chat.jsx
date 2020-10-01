@@ -68,18 +68,33 @@ const Chat = () => {
     }
   };
 
+  const [isHidden, setIsHidden] = useState("hidden");
+
+  let handleClick = () => {
+    if (isHidden === "hidden") {
+      setIsHidden("show");
+    } else {
+      setIsHidden("hidden");
+    }
+  };
+
   return (
-    <div className="chatContainer">
-      <InfoBar room={room} />
-      <h1 className="chatHeader"> Welcome to chat! {response}</h1>
-      <Messages messages={messages} name={"TIMA"} />
-      <MessageInput
-        message={message}
-        setMessage={setMessage}
-        sendMessage={sendMessage}
-      />
-      <TextContainer users={users} />
-    </div>
+    <>
+      <button className="buttonToShow" onClick={handleClick}>
+        Hello
+      </button>
+      <div className={`chatContainer ` + isHidden}>
+        <InfoBar room={room} />
+        <h1 className="chatHeader"> Welcome to chat! {response}</h1>
+        <Messages messages={messages} name={"TIMA"} />
+        <MessageInput
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+        />
+        <TextContainer users={users} />
+      </div>
+    </>
   );
 };
 

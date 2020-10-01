@@ -77,11 +77,11 @@ export default function Appointment(props) {
   // }, [date]);
 
   return (
-    <>
-      <div className="timeSlotHeader">
-        <h2>Choose an apointment time</h2>
+    <div className="timeBox">
+      <div className="timeSlotOuterContainer">
+        <h2 className="timeSlotHeader">Choose an apointment time</h2>
+        <div className="timeSlots">{slots}</div>
       </div>
-      <div className="timeSlotOuterContainer">{slots}</div>
 
       {time ? (
         <Form
@@ -94,6 +94,6 @@ export default function Appointment(props) {
       ) : null}
 
       {/* <Show /> */}
-    </>
+    </div>
   );
 }

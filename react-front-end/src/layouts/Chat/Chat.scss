@@ -8,14 +8,28 @@
 
 .chatContainer {
   height: 53vh;
-  width: 40%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: absolute;
-  top: 6.5rem;
-  right: 1.5rem;
   border-radius: 8px;
-  border: 2px solid $medical-dark-blue;
+  border: 2px solid $medical-blue;
   box-shadow: 0 4px 15px $shadow-black;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1;
+}
+
+.buttonToShow {
+  position: absolute;
+  top: 100px;
+  right: 7px;
+  width: 50px !important;
+  height: 50px;
+  border-radius: 50%;
 }
