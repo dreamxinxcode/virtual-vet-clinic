@@ -7,7 +7,7 @@ import "./Chat.scss";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import InfoBar from "./InfoBar";
-import TextContainer from "./TextContainer";
+// import TextContainer from "./TextContainer";
 
 const ENDPOINT = "http://localhost:8080";
 
@@ -29,7 +29,7 @@ const Chat = () => {
 
   useEffect(() => {
     socket = io(ENDPOINT);
-    socket.on("FromAPI", (data) => {
+    socket.on("FromAPI", data => {
       setResponse(data);
     });
   }, []);
@@ -43,7 +43,7 @@ const Chat = () => {
     // setName(name)
 
     name = localStorage.getItem("userName");
-    socket.emit("join", { name, room }, (error) => {
+    socket.emit("join", { name, room }, error => {
       if (error) {
         alert(error);
       }
@@ -52,8 +52,8 @@ const Chat = () => {
   // }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on("message", (message) => {
-      setMessages((messages) => [...messages, message]);
+    socket.on("message", message => {
+      setMessages(messages => [...messages, message]);
     });
 
     // socket.on("roomData", ({ users }) => {
@@ -62,7 +62,7 @@ const Chat = () => {
   }, []);
 
   // SEND MESSAGE
-  const sendMessage = (event) => {
+  const sendMessage = event => {
     event.preventDefault();
 
     if (message) {
@@ -146,7 +146,7 @@ const Chat = () => {
           setMessage={setMessage}
           sendMessage={sendMessage}
         />
-        <TextContainer users={users} />
+        {/* <TextContainer users={users} /> */}
       </div>
     </>
   );
