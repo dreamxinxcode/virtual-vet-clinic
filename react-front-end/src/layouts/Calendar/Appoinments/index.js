@@ -14,22 +14,22 @@ import TimeSlots from "./TimeSlots";
 // // import useVisualMode from "hooks/useVisualMode";
 
 // identifiers to switch to any mode
-const CONFIRM = "CONFIRM";
-const CREATE = "CREATE";
-const DELETE = "DELETE";
-const EDIT = "EDIT";
+// const CONFIRM = "CONFIRM";
+// const CREATE = "CREATE";
+// const DELETE = "DELETE";
+// const EDIT = "EDIT";
 // const ERROR_DELETE = "ERROR_DELETE";
 // const ERROR_SAVE = "ERROR_SAVE";
-const EMPTY = "EMPTY";
-const SAVING = "SAVING";
-const SHOW = "SHOW";
+// const EMPTY = "EMPTY";
+// const SAVING = "SAVING";
+// const SHOW = "SHOW";
 
 // DUMMY DATA
 const times = [
-  { id: 10, hour: "10:00" },
+  { id: 10, hour: "10:00", disabled: true },
   { id: 11, hour: "11:00" },
   { id: 12, hour: "12:00" },
-  { id: 13, hour: "13:00" },
+  { id: 13, hour: "13:00", disabled: true },
   { id: 14, hour: "14:00" },
   { id: 15, hour: "15:00" },
 ];
@@ -44,7 +44,6 @@ export default function Appointment(props) {
 
   const save = (date, time) => {
     const booking = { date, time };
-    console.log("Sending day and time to book apppoitment", date, time);
     axios
       .put("/api/bookings", booking)
       .then((res) => console.log("returned from BE put/bookings", res));
@@ -56,25 +55,26 @@ export default function Appointment(props) {
         value={slot.id}
         hour={slot.hour}
         disabled={apislots.includes([slot.id]) ? true : null}
+        // disabled={slot.disabled}
         setTime={setTime}
       />
     );
   });
 
-  const hourExtracter = (hourArr) => {
-    const bookedHours = [];
-    for (const key of hourArr) bookedHours.push(key.hour);
-    return bookedHours;
-  };
+  // const hourExtracter = (hourArr) => {
+  //   const bookedHours = [];
+  //   for (const key of hourArr) bookedHours.push(key.hour);
+  //   return bookedHours;
+  // };
 
-  useEffect(() => {
-    axios.get("/api/bookings", date).then((res) => {
-      const slots = hourExtracter(res.data);
-      setCurrentSlots([...slots]);
-      console.log("response on Date change", res.data);
-      console.log("CurrentSlots Updated", currentSlots);
-    });
-  }, [date]);
+  // useEffect(() => {
+  //   axios.get("/api/bookings", date).then((res) => {
+  //     const slots = hourExtracter(res.data);
+  //     setCurrentSlots([...slots]);
+  //     console.log("response on Date change", res.data);
+  //     console.log("CurrentSlots Updated", currentSlots);
+  //   });
+  // }, [date]);
 
   return (
     <>
