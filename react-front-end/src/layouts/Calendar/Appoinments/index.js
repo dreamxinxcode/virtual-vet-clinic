@@ -49,10 +49,10 @@ export default function Appointment(props) {
     const booking = { date, time };
     axios
       .put("/api/bookings", booking)
-      .then((res) => console.log("returned from BE put/bookings", res));
+      .then(res => console.log("returned from BE put/bookings", res));
   };
 
-  const slots = times.map((slot) => {
+  const slots = times.map(slot => {
     return (
       <TimeSlots
         key={slot.id}
@@ -65,14 +65,14 @@ export default function Appointment(props) {
     );
   });
 
-  const hourExtracter = (hourArr) => {
+  const hourExtracter = hourArr => {
     const bookedHours = [];
     for (const key of hourArr) bookedHours.push(key.hour);
     return bookedHours;
   };
 
   useEffect(() => {
-    axios.get("/api/bookings", date).then((res) => {
+    axios.get("/api/bookings", date).then(res => {
       const slots = hourExtracter(res.data);
       setCurrentSlots([...slots]);
       console.log("response on Date change", res.data);
