@@ -26,18 +26,18 @@ import TimeSlots from "./TimeSlots";
 
 // DUMMY DATA
 const times = [
-  { id: 9, hour: "15:00" },
-  { id: 10, hour: "10:00", disabled: true },
+  { id: 9, hour: "09:00" },
+  { id: 10, hour: "10:00" },
   { id: 11, hour: "11:00" },
   { id: 12, hour: "12:00" },
-  { id: 13, hour: "13:00", disabled: true },
+  { id: 13, hour: "13:00" },
   { id: 14, hour: "14:00" },
   { id: 15, hour: "15:00" },
   { id: 16, hour: "16:00" },
   { id: 17, hour: "17:00" },
 ];
 
-let apislots = [11, 12];
+let apislots = [11, 12, 13];
 
 export default function Appointment(props) {
   const { date, setDate } = props;
@@ -49,31 +49,31 @@ export default function Appointment(props) {
     const booking = { date, time };
     axios
       .put("/api/bookings", booking)
-      .then(res => console.log("returned from BE put/bookings", res));
+      .then((res) => console.log("returned from BE put/bookings", res));
   };
 
-  const slots = times.map(slot => {
+  const slots = times.map((slot) => {
     return (
       <TimeSlots
         key={slot.id}
         value={slot.id}
         hour={slot.hour}
-        // disabled={apislots.includes([slot.id]) ? true : null}
-        disabled={slot.disabled}
+        disabled={currentSlots.find((id) => slot.id === id) ? true : null}
+        // disabled={slot.disabled}
         setTime={setTime}
       />
     );
   });
 
-  const hourExtracter = hourArr => {
+  const hourExtracter = (hourArr) => {
     const bookedHours = [];
     for (const key of hourArr) bookedHours.push(key.hour);
     return bookedHours;
   };
 
   useEffect(() => {
-    axios.get("/api/bookings", date).then(res => {
-      const slots = hourExtracter(res.data);
+    axios.get("/api/bookings", date).then((res) => {
+      const slots = hourExtracter(res.data.times);
       setCurrentSlots([...slots]);
       console.log("response on Date change", res.data);
       console.log("CurrentSlots Updated", currentSlots);
