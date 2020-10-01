@@ -65,12 +65,12 @@ export default function myCalendar() {
   console.log("date checnged", date);
 
   return (
-    <div className="outerBox">
-      <div className="innerLeftBox">
+    <div className="pageLayout">
+      <div className="pageLayout-innerTop">
         <Calendar onChange={setDate} date={date} />
         <Chat />
       </div>
-      <div className="innerRightBox">
+      <div className="innerBottom">
         <Appointment setDate={setDate} date={date} />
       </div>
     </div>

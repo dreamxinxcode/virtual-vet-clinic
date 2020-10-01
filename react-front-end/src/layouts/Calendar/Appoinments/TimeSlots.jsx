@@ -10,7 +10,7 @@ function TimeSlots(props) {
       className="timeSlot"
       disabled={props.disabled ? true : false}
     >
-      <span>{hour}</span>
+      <span className="timeSlot-time">{hour}</span>
     </button>
   );
 }

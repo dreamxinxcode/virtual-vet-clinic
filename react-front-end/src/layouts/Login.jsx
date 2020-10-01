@@ -33,18 +33,12 @@ function LoginModal() {
       password: password,
       type: type,
     };
-    console.log("HAHA", user);
 
     Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
       .then(res => {
         console.log("SEND login to BE", res[0].data.user);
         console.log("GET from BE user", res[1].data);
       })
-      // axios
-      //   .post("/users/login", user)
-      //   .then((response) => {
-      //     console.log("SUCCESS", response.data.user);
-      //   })
       .catch(error => {
         console.log("registration error", error);
       });
@@ -56,12 +50,12 @@ function LoginModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<button className="login_button">Login</button>}
+      trigger={<button className="login-button">Login</button>}
     >
-      <h2 className="login_header">Choose Account Type</h2>
-      <div className="acount_images" onChange={e => setType(e.target.value)}>
-        <label>
-          <div className="imgDiv">Clinic</div>
+      <h2 className="login-header">Choose Account Type</h2>
+      <div className="login-imgBox" onChange={e => setType(e.target.value)}>
+        <label className="login-label">
+          <div className="login-Imgbox">Clinic</div>
           <input
             type="radio"
             name="test"
@@ -69,7 +63,7 @@ function LoginModal() {
             checked={type === "clinic"}
           />
           <svg
-            className="account_type"
+            className="login-accImage"
             id="Capa_1"
             enable-background="new 0 0 512 512"
             height="512"
@@ -144,8 +138,8 @@ function LoginModal() {
           </svg>
         </label>
 
-        <label>
-          <div className="imgDiv">Pet owner</div>
+        <label className="login-label">
+          <div className="login-Imgbox">Pet owner</div>
           <input
             type="radio"
             name="test"
@@ -153,7 +147,7 @@ function LoginModal() {
             checked={type === "pet"}
           />
           <svg
-            className="account_type"
+            className="login-accImage"
             height="512"
             viewBox="0 0 512 512"
             width="512"
@@ -218,7 +212,7 @@ function LoginModal() {
 
       <Modal.Content image>
         <Modal.Description>
-          <p className="login_header_small">
+          <p className="login-header_small">
             Please fill out the form to get started
           </p>
           <div className="two field">
@@ -242,31 +236,14 @@ function LoginModal() {
           />
         </Modal.Description>
       </Modal.Content>
-      <p className="noAccount">
-        Don't have an account?
-        <a className="linkSignup" href="/register">
-          Signup
-        </a>
-      </p>
 
       <Modal.Actions>
-        {/* <svg
-          className="bottom_img"
-          id="Capa_1"
-          enable-background="new 0 0 512 512"
-          height="512"
-          viewBox="0 0 512 512"
-          width="512"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g>
-            <path d="m418.39 323.634c-21.469-18.063-40.599-38.268-56.861-60.052-12-16.074-27.75-29.396-45.549-38.526-18.415-9.445-39.155-14.438-59.979-14.438s-41.565 4.993-59.979 14.438c-17.798 9.13-33.549 22.452-45.549 38.526-16.262 21.784-35.393 41.988-56.861 60.052-23.587 19.846-36.662 48.909-35.874 79.739 1.335 52.242 43.216 95.28 95.345 97.979 1.784.093 3.561.139 5.336.139 18.878-.001 37.16-5.206 53.168-15.186 12.796-7.977 27.933-12.188 43.835-12.188h.254.693c15.917-.077 31.184 4.169 44.046 12.188 17.514 10.919 37.736 16.122 58.505 15.048 52.127-2.698 94.007-45.736 95.344-97.979.788-30.83-12.287-59.893-35.874-79.74z" />
-            <path d="m222.419 85.916-24.11-57.901c-4.399-10.564-14.637-17.436-26.081-17.504-.058 0-.115-.001-.173-.001-11.374 0-21.613 6.733-26.115 17.19l-24.241 56.296c-4.245 8.326-6.486 17.644-6.486 26.989 0 14.688 5.686 28.741 16.009 39.573 10.482 10.999 24.371 17.219 39.107 17.515.389.008.776.012 1.165.012 14.814 0 28.752-5.685 39.357-16.079 10.891-10.675 16.889-24.953 16.889-40.205v-1.314c0-8.54-1.79-16.805-5.321-24.571z" />
-            <path d="m391.468 85.917-24.111-57.902c-4.399-10.564-14.637-17.436-26.081-17.504-.058 0-.115-.001-.173-.001-11.374 0-21.613 6.733-26.115 17.19l-24.241 56.296c-4.245 8.326-6.486 17.644-6.486 26.989 0 14.688 5.686 28.741 16.009 39.573 10.482 10.999 24.371 17.219 39.107 17.515.389.008.776.012 1.165.012 14.814 0 28.752-5.685 39.357-16.079 10.891-10.675 16.889-24.953 16.889-40.205v-1.314c0-8.538-1.789-16.803-5.32-24.57z" />
-            <path d="m107.207 205.513-24.11-57.899c-4.398-10.564-14.635-17.436-26.079-17.505-11.453-.074-21.764 6.678-26.291 17.189l-24.24 56.296c-4.246 8.326-6.487 17.644-6.487 26.989 0 14.688 5.686 28.741 16.009 39.573 10.483 11 24.372 17.22 39.107 17.515.389.008.776.012 1.165.012 14.814 0 28.752-5.685 39.358-16.079 10.891-10.676 16.889-24.954 16.889-40.205v-1.313c0-8.54-1.791-16.805-5.321-24.573z" />
-            <path d="m506.679 205.513-24.11-57.899c-4.399-10.565-14.636-17.437-26.08-17.505-.059-.001-.115-.001-.174-.001-11.374 0-21.613 6.733-26.116 17.19l-24.241 56.296c-4.245 8.325-6.486 17.643-6.486 26.988 0 14.688 5.686 28.741 16.009 39.573 10.482 11 24.371 17.22 39.107 17.515.389.008.776.012 1.165.012 14.814 0 28.751-5.685 39.357-16.079 10.892-10.675 16.89-24.953 16.89-40.205v-1.313c0-8.54-1.79-16.805-5.321-24.572z" />
-          </g>
-        </svg> */}
+        <p className="login-noAccount">
+          Don't have an account?
+          <a className="login-linkSignup" href="/register">
+            Signup
+          </a>
+        </p>
         <Button color="red" onClick={() => setOpen(false)}>
           CANCEL
         </Button>

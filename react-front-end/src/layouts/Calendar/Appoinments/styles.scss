@@ -1,7 +1,5 @@
 @import "../../../../public/styles/variables.scss";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap");
-// @import "styles/mixins.scss";
-// @import "styles/animations.scss";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 $appointment-height: 11rem;
@@ -50,128 +48,122 @@ $appointment-height: 11rem;
       outline: none;
       display: flex;
       justify-content: space-between;
-      // border: 3px solid $medical-blue;
       box-shadow: 0 4px 15px $shadow-black;
       transition: all 0.2s;
     }
 
-    &--show {
-      margin: 60px 20px;
-      width: 40%;
-      color: $medical-dark-blue;
-      display: flex;
-      flex-direction: column;
+    // &--show {
+    //   margin: 60px 20px;
+    //   width: 40%;
+    //   color: $medical-dark-blue;
+    //   display: flex;
+    //   flex-direction: column;
 
-      background: linear-gradient(
-        90deg,
-        rgba($medical-blue, $active-opacity),
-        rgba($medical-blue, $active-opacity) 8px,
-        rgba($medical-blue, $inactive-opacity) 0,
-        rgba($medical-blue, $inactive-opacity)
-      );
+    //   background: linear-gradient(
+    //     90deg,
+    //     rgba($medical-blue, $active-opacity),
+    //     rgba($medical-blue, $active-opacity) 8px,
+    //     rgba($medical-blue, $inactive-opacity) 0,
+    //     rgba($medical-blue, $inactive-opacity)
+    //   );
 
-      &:hover {
-        color: darken($white, 5%);
-        background-color: $medical-dark-blue;
-      }
-    }
+    //   &:hover {
+    //     color: darken($white, 5%);
+    //     background-color: $medical-dark-blue;
+    //   }
+    // }
 
-    &--status {
-      background-color: $dark-background;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    // &--status {
+    //   background-color: $dark-background;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    // }
 
-    &--confirm {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-    }
+    // &--confirm {
+    //   display: flex;
+    //   flex-direction: column;
+    //   justify-content: space-between;
+    //   align-items: center;
+    // }
 
-    &--error {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    // &--error {
+    //   display: flex;
+    //   justify-content: space-between;
+    //   align-items: center;
+    // }
   }
 
-  &:last-of-type &__add,
-  &:last-of-type &__card {
-    display: none;
-  }
+  // &:last-of-type &__add,
+  // &:last-of-type &__card {
+  //   display: none;
+  // }
 
-  &__actions {
-    margin-top: 1rem;
+  // &__actions {
+  //   margin-top: 1rem;
 
-    &-button {
-      width: 2rem;
-      height: 2rem;
-      fill: white;
-      margin-top: 1rem;
-      margin-right: 2rem;
-      display: none;
+  //   &-button {
+  //     width: 2rem;
+  //     height: 2rem;
+  //     fill: white;
+  //     margin-top: 1rem;
+  //     margin-right: 2rem;
+  //     display: none;
 
-      &:last-of-type {
-        margin-right: 0;
-      }
-    }
-  }
+  //     &:last-of-type {
+  //       margin-right: 0;
+  //     }
+  //   }
+  // }
 
-  &__card:hover &__actions-button {
-    display: inline;
-  }
+  // &__card:hover &__actions-button {
+  //   display: inline;
+  // }
 
-  &__create-input {
-    font-family: "Ubuntu", sans-serif;
-    background-color: #fff;
-    border: none;
-    font-style: italic;
-    font-size: 1.9rem;
-    font-weight: bold;
-    margin: 2rem 4rem 0 0;
-    width: 100%;
+  // &__create-input {
+  //   font-family: "Ubuntu", sans-serif;
+  //   background-color: #fff;
+  //   border: none;
+  //   font-style: italic;
+  //   font-size: 1.9rem;
+  //   font-weight: bold;
+  //   margin: 2rem 4rem 0 0;
+  //   width: 100%;
 
-    &:hover {
-      border: none;
-    }
+  //   &:hover {
+  //     border: none;
+  //   }
 
-    &:focus {
-      outline: none;
-    }
-  }
+  //   &:focus {
+  //     outline: none;
+  //   }
+  // }
 
-  &__status-image {
-    margin-right: 2rem;
-    animation: rotate 1s linear infinite;
-  }
+  // &__status-image {
+  //   margin-right: 2rem;
+  //   animation: rotate 1s linear infinite;
+  // }
 
-  &__error {
-    &-message {
-      display: flex;
-      flex-direction: column;
-    }
+  // &__error {
+  //   &-message {
+  //     display: flex;
+  //     flex-direction: column;
+  //   }
 
-    &-close {
-      align-self: flex-start;
-    }
-  }
+  //   &-close {
+  //     align-self: flex-start;
+  //   }
+  // }
 
-  &__validation {
-    color: $danger-color;
-    margin-bottom: 1rem;
-  }
+  // &__validation {
+  //   color: $danger-color;
+  //   margin-bottom: 1rem;
+  // }
 }
 
-.react-calendar {
-  font-family: "Ubuntu", sans-serif;
-  border-radius: 5px;
-}
 .appointment__actions {
   width: 50%;
   margin: 0 auto;
-  font-family: "Fredoka One", cursive;
   display: flex;
   justify-content: space-between;
   align-self: flex-end;
@@ -194,16 +186,6 @@ $appointment-height: 11rem;
   color: rgb(194, 194, 194);
   text-shadow: none;
 }
-.timeBox {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.timeSlotHeader {
-  width: 100%;
-}
 
 .header {
   border-top-left-radius: 10px;
@@ -214,13 +196,6 @@ $appointment-height: 11rem;
   color: rgb(0, 0, 0);
   background-color: $medical-yellow;
   margin-bottom: 3rem;
-}
-.timeSlots {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
 }
 form {
   font-family: "Poppins", sans-serif;

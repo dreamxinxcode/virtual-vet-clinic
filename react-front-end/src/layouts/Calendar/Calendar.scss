@@ -1,15 +1,23 @@
 @import "../../../public/styles/variables.scss";
 
-.outerBox {
+.pageLayout {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   max-width: 1200px !important;
   margin: 0 auto;
+
+  &-innerTop {
+    margin: 21px 0;
+    height: auto;
+    width: 100%;
+    display: flex;
+  }
 }
 
 .react-calendar {
+  border-radius: 10px;
   border: 3px solid $medical-blue;
   box-shadow: 0 4px 15px $shadow-black;
   width: 75%;
@@ -21,6 +29,7 @@
     background-color: $medical-blue;
     margin-bottom: 0;
   }
+
   &__tile {
     font-size: 1.5rem;
     border-radius: 10px;
@@ -40,11 +49,4 @@
   &__month-view__days__day--weekend {
     color: #cccccc !important;
   }
-}
-
-.innerLeftBox {
-  margin: 21px 0;
-  height: auto;
-  width: 100%;
-  display: flex;
 }
