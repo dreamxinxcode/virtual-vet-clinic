@@ -62,7 +62,7 @@ const state = {
 
 export default function myCalendar() {
   const [date, setDate] = useState(new Date());
-  console.log(date);
+  console.log("date checnged", date);
 
   return (
     <div className="outerBox">

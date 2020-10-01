@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./styles.scss";
@@ -26,20 +26,21 @@ const SHOW = "SHOW";
 
 // DUMMY DATA
 const times = [
-  { value: "10 : 00" },
-  { value: "11 : 00" },
-  { value: "12 : 00", disabled: false },
-  { value: "13 : 00", disabled: true },
-  { value: "14 : 00" },
-  { value: "15 : 00", disabled: true },
-  { value: "16 : 00" },
-  { value: "17 : 00", disabled: true },
+  { id: 10, hour: "10:00" },
+  { id: 11, hour: "11:00" },
+  { id: 12, hour: "12:00" },
+  { id: 13, hour: "13:00" },
+  { id: 14, hour: "14:00" },
+  { id: 15, hour: "15:00" },
 ];
 
+let apislots = [11, 12];
+
 export default function Appointment(props) {
-  const { date } = props;
+  const { date, setDate } = props;
 
   const [time, setTime] = useState(null);
+  const [currentSlots, setCurrentSlots] = useState([]);
 
   const save = (date, time) => {
     const booking = { date, time };
@@ -49,17 +50,31 @@ export default function Appointment(props) {
       .then((res) => console.log("returned from BE put/bookings", res));
   };
 
-  // const getSlots = (date) => {};
-
   const slots = times.map((slot) => {
     return (
       <TimeSlots
-        value={slot.value}
-        disabled={slot.disabled}
+        value={slot.id}
+        hour={slot.hour}
+        disabled={apislots.includes([slot.id]) ? true : null}
         setTime={setTime}
       />
     );
   });
+
+  const hourExtracter = (hourArr) => {
+    const bookedHours = [];
+    for (const key of hourArr) bookedHours.push(key.hour);
+    return bookedHours;
+  };
+
+  useEffect(() => {
+    axios.get("/api/bookings", date).then((res) => {
+      const slots = hourExtracter(res.data);
+      setCurrentSlots([...slots]);
+      console.log("response on Date change", res.data);
+      console.log("CurrentSlots Updated", currentSlots);
+    });
+  }, [date]);
 
   return (
     <>
@@ -75,10 +90,6 @@ export default function Appointment(props) {
           date={date}
           setTime={setTime}
           onSave={save}
-          // interviewers={interviewers}
-          // interviewer={interview.interviewer.id}
-          // onSave={save}
-          // onCancel={back}
         />
       ) : null}
 

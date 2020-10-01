@@ -2,7 +2,7 @@ import React from "react";
 import "./TimeSlots.scss";
 
 function TimeSlots(props) {
-  const { value, setTime, disabled } = props;
+  const { value, hour, setTime, disabled } = props;
 
   return (
     <button
@@ -10,7 +10,7 @@ function TimeSlots(props) {
       className="timeSlot"
       disabled={disabled ? true : false}
     >
-      <span>{props.value}</span>
+      <span>{hour}</span>
     </button>
   );
 }
