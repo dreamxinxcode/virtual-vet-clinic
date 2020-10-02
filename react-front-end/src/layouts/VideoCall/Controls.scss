@@ -1,0 +1,32 @@
+
+#controls {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+#hangup-button {
+  background: none;
+  border: none;
+  z-index: 9999;
+  padding: .75rem;
+  border-radius: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+#hangup-button:hover {
+  background-color: rgba(149, 228, 252, 0.25);
+  padding: .75rem;
+  border-radius: 50%;
+}
+
+#hangup-button:active {
+  outline: none;
+}
+
+#hangup-svg {
+  height: 4rem;
+  width: auto;
+}
