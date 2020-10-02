@@ -16,19 +16,19 @@ const Message = ({ message: { text, user }, name }) => {
   let time = date.toString();
 
   return isSentByCurrentUser ? (
-    <div className="messageContainer justifyEnd">
-      <div className="message-box message-box-send">
-        <p className="sentText message-label-to">{myName}</p>
+    <div className="message-container message-container-right justifyEnd">
+      <div className="message-box message-box-right">
+        <p className="sentText message-label-right">{myName}</p>
         <div className="message-messageBox">
-          <p className="message-text message-text-send">
+          <p className="message-text message-text-right">
             {ReactEmoji.emojify(text)}
           </p>
-          <span className="message-time-send">{time}</span>
+          <span className="message-time-right">{time}</span>
         </div>
       </div>
     </div>
   ) : (
-    <div className="messageContainer justifyStart">
+    <div className="message-container justifyStart">
       <div className="message-box">
         <p className="sentText message-label-from ">{user}</p>
         <div className="message-messageBox">
