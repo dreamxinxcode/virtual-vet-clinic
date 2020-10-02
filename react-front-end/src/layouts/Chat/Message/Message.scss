@@ -50,23 +50,6 @@
 .justifyEnd {
   justify-content: flex-end;
 }
-
-.colorWhite {
-  color: white;
-}
-
-.colorDark {
-  color: #353535;
-}
-
-.backgroundBlue {
-  background: #2979ff;
-}
-
-.backgroundLight {
-  background: #f3f3f3;
-}
-
 .message-time {
   font-style: italic;
   font-size: 0.8em;
@@ -82,7 +65,7 @@
   }
 }
 
-.message-label-from {
+.message-label-left {
   padding: 0 0.5rem;
   font-size: 0.9em;
   border-top-right-radius: 20px;
