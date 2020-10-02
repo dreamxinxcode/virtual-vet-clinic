@@ -1,6 +1,6 @@
 import React from "react";
 import "./Intro.scss";
-import Search from "../layouts/Search/Search";
+import Search from "../Search/Search";
 import { Link } from 'react-router-dom';
 
 export default function Intro() {
