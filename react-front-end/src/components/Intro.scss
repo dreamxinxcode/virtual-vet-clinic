@@ -1,12 +1,14 @@
 @import '../../public/styles/variables.scss';
 
-
 #intro {
   height: 70vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   padding: 5%;
+
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 #intro-area {
