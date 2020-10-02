@@ -97,7 +97,7 @@ function AppointmentRoom() {
 
   }
 
-  function acceptCall() {
+  const acceptCall = () => {
     setCallAccepted(true);
     const peer = new Peer({
       initiator: false,
@@ -117,15 +117,17 @@ function AppointmentRoom() {
 
   let UserVideo;
   if (stream) {
+    console.log('User video has been rendered')
     UserVideo = (
-      <Video playsInline muted ref={userVideo} autoPlay />
+      <Video className='user-video' playsInline muted ref={userVideo} autoPlay />
     );
   }
 
   let PartnerVideo;
   if (callAccepted) {
+    console.log('Partner viseo has been rendered')
     PartnerVideo = (
-      <Video playsInline ref={partnerVideo} autoPlay />
+      <Video className='partner-video' playsInline ref={partnerVideo} autoPlay />
     );
   }
 
