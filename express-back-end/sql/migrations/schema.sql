@@ -14,15 +14,15 @@ CREATE TABLE clinics (
   image VARCHAR(255)
 );
 
-CREATE TABLE clinic_pet_types (
-  id SERIAL PRIMARY KEY NOT NULL,
-  clinic_id INTEGER REFERENCES clinics(id) ON DELETE CASCADE NOT NULL,
-  pet_type_id INTEGER REFERENCES pet_types(type) NOT NULL
-);
-
 CREATE TABLE pet_types (
   id SERIAL PRIMARY KEY NOT NULL,
   type VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE clinic_pet_types (
+  id SERIAL PRIMARY KEY NOT NULL,
+  clinic_id INTEGER REFERENCES clinics(id) ON DELETE CASCADE NOT NULL,
+  pet_type_id INTEGER REFERENCES pet_types(id) NOT NULL
 );
 
 CREATE TABLE pets (
