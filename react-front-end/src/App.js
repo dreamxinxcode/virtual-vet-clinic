@@ -7,6 +7,7 @@ import myCalendar from "./layouts/Calendar/Calendar";
 import Dashboard from "./layouts/Dashboard/Dashboad";
 import Footer from './components/Footer';
 import AppointmentRoom from "./layouts/Dashboard/AppointmentRoom";
+import Register from "./layouts/Register/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -39,6 +40,7 @@ export default function App(props) {
           <Route path="/calendar" exact component={myCalendar}></Route>
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/appointment" exact component={AppointmentRoom}></Route>
+          <Route path="/register" exact component={Register}></Route>
 
         </Switch>
 
