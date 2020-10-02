@@ -1,6 +1,8 @@
 const database = require("./database");
 const apiRoutes = require("./apiRoutes");
 const userRoutes = require("./userRoutes");
+const fs = require("fs");
+
 const { addUser, getUser, getUsersInRoom } = require("./chatUsers");
 
 const path = require("path");
@@ -118,6 +120,49 @@ io.on("connect", (socket) => {
   });
 });
 
+// ------------- DB RESET-------------------------------------
+
+// READ FILE ===========
+function read(file) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(
+      file,
+      {
+        encoding: "utf-8",
+      },
+      (error, data) => {
+        if (error) return reject(error);
+        resolve(data);
+      }
+    );
+  });
+}
+
+// DB PART ========
+Promise.all([
+  read(path.resolve(__dirname, `sql/migrations/schema.sql`)),
+  read(path.resolve(__dirname, `sql/migrations/seeds/seeds.sql`)),
+])
+  .then(([create, seed]) => {
+    app.get("/api/debug/reset", (request, response) => {
+      database.pool
+        .query(create)
+        .then(() => database.pool.query(seed))
+        .then(() => {
+          console.log("Database Reset");
+          response.status(200).send("Database Reset");
+        });
+    });
+  })
+  .catch((error) => {
+    console.log(`Error setting up the reset route: ${error}`);
+  });
+
+app.close = function () {
+  return database.pool.end();
+};
+
+// ============== PORT ===================
 const port = process.env.PORT || 8080;
 server.listen(port, (err) =>
   console.log(err || `listening on port ${port} 😎`)
