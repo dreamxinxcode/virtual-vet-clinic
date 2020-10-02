@@ -30,7 +30,7 @@ const Message = ({ message: { text, user }, name }) => {
   ) : (
     <div className="message-container justifyStart">
       <div className="message-box">
-        <p className="sentText message-label-from ">{user}</p>
+        <p className="sentText message-label-left ">{user}</p>
         <div className="message-messageBox">
           <p className="message-text">{ReactEmoji.emojify(text)}</p>
           <span className="message-time">{time}</span>
