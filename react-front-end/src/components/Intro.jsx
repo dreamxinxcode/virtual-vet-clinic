@@ -1,6 +1,7 @@
 import React from "react";
 import "./Intro.scss";
 import Search from "../layouts/Search/Search";
+import { Link } from 'react-router-dom';
 
 export default function Intro() {
   return (
@@ -12,7 +13,9 @@ export default function Intro() {
           and affordable alternative to in-person vet visits.
         </p>
         <button className="ui purple button">Find a vet</button>
-        <button className="ui inverted purple button">Sign up</button>
+        <Link to='/register'>
+          <button className="ui inverted purple button">Sign up</button>
+        </Link>
       </div>
       <svg
         data-aos="fade-right"
