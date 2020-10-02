@@ -57,8 +57,6 @@ CREATE TABLE pets
   image VARCHAR(255)
 );
 
-
-
 CREATE TABLE appointments
 (
   id SERIAL PRIMARY KEY NOT NULL,

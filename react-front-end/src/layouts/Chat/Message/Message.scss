@@ -6,7 +6,7 @@
   color: black;
   border: 1px solid rgba(0, 0, 0, 0.123);
   max-width: 80%;
-  &-send {
+  &-right {
     color: #fff;
     background-color: darken($medical-dark-blue, 3);
   }
@@ -26,7 +26,7 @@
   vertical-align: middle;
 }
 
-.messageContainer {
+.message-container {
   display: flex;
   justify-content: flex-start;
   padding: 0 5%;
@@ -41,14 +41,6 @@
   font-style: italic;
   margin-left: -0.4rem;
   letter-spacing: 0.3px;
-}
-
-.pl-10 {
-  padding-left: 10px;
-}
-
-.pr-10 {
-  padding-right: 10px;
 }
 
 .justifyStart {
@@ -81,7 +73,7 @@
   float: right;
   color: rgb(112, 112, 112);
   font-weight: bold;
-  &-send {
+  &-right {
     font-style: italic;
     font-size: 0.8em;
     float: right;
@@ -91,6 +83,7 @@
 }
 
 .message-label-from {
+  padding: 0 0.5rem;
   font-size: 0.9em;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
@@ -103,7 +96,8 @@
   color: #fff;
 }
 
-.message-label-to {
+.message-label-right {
+  padding: 0 0.5rem;
   font-size: 0.9em;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
