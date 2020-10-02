@@ -6,45 +6,45 @@ DROP TABLE IF EXISTS owners CASCADE;
 
 CREATE TABLE clinics (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCAR(255) NOT NULL,
-  address VARCAR(255) NOT NULL,
-  telephone VARCAR(255) NOT NULL,
-  email VARCAR(255) NOT NULL,
-  password VARCAR(255) NOT NULL,
-  image VARCAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  telephone VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  image VARCHAR(255)
+);
+
+CREATE TABLE pet_types (
+  id SERIAL PRIMARY KEY NOT NULL,
+  type VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE clinic_pet_types (
   id SERIAL PRIMARY KEY NOT NULL,
   clinic_id INTEGER REFERENCES clinics(id) ON DELETE CASCADE NOT NULL,
-  pet_type_id INTEGER REFERENCES pet_types(type) NOT NULL
-);
-
-CREATE TABLE pet_types (
-  id SERIAL PRIMARY KEY NOT NULL,
-  type VARCAR(255) NOT NULL
+  pet_type_id INTEGER REFERENCES pet_types(id) NOT NULL
 );
 
 CREATE TABLE pets (
   id SERIAL PRIMARY KEY NOT NULL,
   type_id INTEGER REFERENCES pet_types(id) ON DELETE CASCADE,
   owner_id INTEGER REFERENCES owners(id) ON DELETE CASCADE,
-  name VARCAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
   age INTEGER NOT NULL,
-  gender VARCAR(255) NOT NULL, -- Refactor
-  breed VARCAR(255) NOT NULL,
-  weight VARCAR(255) NOT NULL,
-  info  VARCAR(255) NOT NULL,
-  image VARCAR(255) NOT NULL
+  gender VARCHAR(255) NOT NULL,
+  breed VARCHAR(255) NOT NULL,
+  weight VARCHAR(255) NOT NULL,
+  info  VARCHAR(255) NOT NULL,
+  image VARCHAR(255)
 );
 
 CREATE TABLE owners (
   id SERIAL PRIMARY KEY NOT NULL,
-  first_name VARCAR(255) NOT NULL,
-  last_name VARCAR(255) NOT NULL,
-  email VARCAR(255) NOT NULL,
-  telephone VARCAR(255) NOT NULL,
-  password VARCAR(255) NOT NULL
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  telephone VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE appointments (
