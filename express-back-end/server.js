@@ -167,3 +167,30 @@ const port = process.env.PORT || 8080;
 server.listen(port, (err) =>
   console.log(err || `listening on port ${port} 😎`)
 );
+
+
+
+// Video
+const videoUsers = {};
+
+io.on('connection', socket => {
+  if (!videoUsers[socket.id]) {
+    videoUsers[socket.id] = socket.id;
+    console.log('Connection to video chat with no user id', socket.id);
+  }
+  socket.emit("yourID", socket.id);
+  io.sockets.emit("allUsers", videoUsers);
+  socket.on('disconnect', () => {
+      delete videoUsers[socket.id];
+  })
+
+  socket.on("callUser", (data) => {
+      console.log('Connecting on event called callUser');
+      io.to(data.userToCall).emit('hey', {signal: data.signalData, from: data.from});
+  })
+
+  socket.on("acceptCall", (data) => {
+      console.log('Accepting call on event acceptCall');
+      io.to(data.to).emit('callAccepted', data.signal);
+  })
+});
