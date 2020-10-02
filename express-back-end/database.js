@@ -9,6 +9,8 @@ const pool = new Pool({
   database: "oufhcqcl",
 });
 
+exports.pool = pool;
+
 const getNames = () => {
   return pool
     .query(
