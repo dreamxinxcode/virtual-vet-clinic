@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import './LogoutButton.scss';
 
 const Logout = (props) => {
   // const buttonClass = classnames("button", {
@@ -17,11 +18,10 @@ const Logout = (props) => {
   return (
     <>
       <button
-        // className={buttonClass}
+        id="logout-button"
         onClick={() => handleLogout()}
-        // disabled={props.disabled}
       >
-        LOGOUT
+        Logout
       </button>
     </>
   );
