@@ -14,7 +14,7 @@ import {
 import "../layouts/Login.scss";
 import InputField from "../components/Input";
 
-function LoginModal() {
+function LoginModal(props) {
   const { getMyCredentials } = useAppData;
 
   const [open, setOpen] = React.useState(false);
@@ -34,11 +34,16 @@ function LoginModal() {
       type: type,
     };
 
-    Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
+    // Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
+    Promise.all([axios.post("/users/login", user)])
       .then((res) => {
         localStorage.setItem("userName", res[0].data.user.email);
-        console.log("SEND login to BE", res[0].data.user);
-        console.log("GET from BE user", res[1].data);
+        props.setLogStatus(true);
+        console.log(
+          "RECIEVED user details from BE",
+          res[0].data.user,
+          res[0].data.type
+        );
       })
       .catch((error) => {
         console.log("registration error", error);
