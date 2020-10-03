@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 #search-container {
   height: 70vh;
@@ -12,6 +12,7 @@
 }
 
 #search-form {
+  z-index: 1000000;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -19,22 +20,23 @@
   background-color: rgba(0, 0, 0, 0.25);
   padding: 2rem;
   border-radius: 10px;
-  font-family: 'Poppins' !important;
+  font-family: "Poppins" !important;
 }
 
 #search-header {
-  font-family: 'Poppins' !important;
+  font-family: "Poppins" !important;
   color: #f2f3f4;
   font-weight: 400;
   font-size: 2.5rem;
 }
 
-#search-form button, input{
+#search-form button,
+input {
   margin-top: 1rem;
 }
 
 #search-form input::-webkit-input-placeholder {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 14px;
 }
 

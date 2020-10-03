@@ -1,46 +1,22 @@
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import React from "react";
+import "./AnimalTypeSelect.scss";
 
-const friendOptions = [
-  {
-    key: 'Bird',
-    text: 'Bird',
-    value: 'Bird',
-    // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },
-  {
-    key: 'Cat',
-    text: 'Cat',
-    value: 'Cat',
-    // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },
-  {
-    key: 'Dog',
-    text: 'Dog',
-    value: 'Dog',
-    // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },
-  {
-    key: 'Fish',
-    text: 'Fish',
-    value: 'Fish',
-    // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },  
-  {
-    key: 'Reptile',
-    text: 'Reptile',
-    value: 'Reptile',
-    // image: { avatar: true, src: '/images/avatar/small/jenny.jpg' },
-  },  
-]
+const DropdownExampleSelection = props => (
+  <select
+    className="select-animal"
+    name="cars"
+    id="animals"
+    onChange={e => props.setAnimalType(e.target.value)}
+  >
+    <option value="" disabled selected>
+      Select an animal type...
+    </option>
+    <option value="Bird">Bird</option>
+    <option value="Cat">Cat</option>
+    <option value="Dog">Dog</option>
+    <option value="Fish">Fish</option>
+    <option value="Reptile">Reptile</option>
+  </select>
+);
 
-const DropdownExampleSelection = () => (
-  <Dropdown
-    placeholder='Select Animal Type'
-    fluid
-    selection
-    options={friendOptions}
-  />
-)
-
-export default DropdownExampleSelection
+export default DropdownExampleSelection;
