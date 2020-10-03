@@ -81,15 +81,18 @@ exports.getUserWithId = getUserWithId;
 
 const getUserAppointments = (userID, type) => {
   if (type === "clinic") {
-    console.log('clinic ')
+    console.log('clinic', userID)
     return pool
     .query(
       `
-    SELECT * 
+    SELECT CONCAT(owners.first_name + ' ' + owners.last_name) as owner_full_name,  
     FROM appointments
+    JOIN owners ON owners.id = appointments.owner_id
+    JOIN pets ON pets.owner_id = owners.id
     WHERE clinic_id = $1
+    ;
     `,
-      [userID]
+    [userID]
     )
     .then((res) => {
       return res.rows;
@@ -100,7 +103,7 @@ const getUserAppointments = (userID, type) => {
     });
   }
 
-  console.log('owner')
+  console.log('owner', userID)
   return pool
     .query(
     `
