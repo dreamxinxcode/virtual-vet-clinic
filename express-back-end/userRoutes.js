@@ -24,76 +24,64 @@ module.exports = function (router, database) {
    * @param {String} email
    * @param {String} password encrypted
    */
-  const login = function (email, password, type) {
+  const login = function (email, type, password) {
     return database.getUserWithEmail(email, type).then((user) => {
-      if (bcrypt.compareSync(password, user.password)) {
-        return user;
-      }
-      return null;
+      // if (bcrypt.compareSync(password, user.password)) {
+      //   return user;
+      // }
+
+      return user;
     });
   };
   exports.login = login;
 
   router.post("/login", (req, res) => {
-    console.log("coming from FE credentials", req.body);
     const { email, password, type } = req.body;
-    req.session.userId = 999;
-    res.send({
-      user: { name: "Tima", email, id: 999, type },
-    });
-    // login(email, password, type)
-    //   .then((user) => {
-    //     if (!user) {
-    //       res.send({ error: "error" });
-    //       return;
-    //     }
-    //     req.session.userId = user.id;
+    login(req.body.email, req.body.type, req.body.password)
+      .then((user) => {
+        if (!user) {
+          res.send({ error: "error" });
+          return;
+        }
+        req.session.userId = user.id;
+        req.session.userType = type;
 
-    //     res.send({ user: { name: user.name, email: user.email, id: user.id } });
-    //   })
-    //   .catch((e) => res.send(e));
+        res.send({
+          user,
+          type,
+        });
+      })
+      .catch((e) => res.send(e));
   });
 
   router.post("/logout", (req, res) => {
     req.session.userId = null;
+    req.session.userType = null;
     res.send({});
   });
 
   router.get("/me", (req, res) => {
     const userId = req.session.userId;
+    const type = req.session.userType;
     if (!userId) {
       res.send({ message: "not logged in" });
       return;
     }
-    console.log("sending my credentials to  FE on GET users/me");
-    res.send({
-      user: {
-        name: "Tima",
-        email: "tima.xpl@gmail.com",
-        id: userId,
-      },
-    });
+    database
+      .getUserWithId(userId, type)
+      .then((user) => {
+        if (!user) {
+          res.send({ error: "no user with that id" });
+          return;
+        }
+
+        res.send({
+          user,
+          type,
+        });
+      })
+      .catch((e) => res.send(e));
   });
-
-  //   database
-  //     .getUserWithId(userId)
-  //     .then((user) => {
-  //       if (!user) {
-  //         res.send({ error: "no user with that id" });
-  //         return;
-  //       }
-
-  //       res.send({
-  //         user: {
-  //           name: user.name,
-  //           email: user.email,
-  //           tel: user.tel,
-  //           id: userId,
-  //         },
-  //       });
-  //     })
-  //     .catch((e) => res.send(e));
-  // });
 
   return router;
 };
