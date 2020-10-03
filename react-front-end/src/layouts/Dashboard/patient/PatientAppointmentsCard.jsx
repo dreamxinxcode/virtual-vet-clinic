@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Dashboard.scss';
 import Appointment from './Appointment';
+import axios from 'axios';
 
 const data = [
     {
@@ -30,9 +31,25 @@ const data = [
 ]
 
 export default function PatientAppointmentsCard() {
-  const appointmentsList = data.map(appointment => 
-    <Appointment appointment={appointment} key={appointment.id} />
-  )
+  const [accountType, setAccountType] = useState('pet');
+  const [appointmentsList, setAppointmentsList] = useState([]);
+
+  useEffect(() => {
+    Promise.all([
+      axios.get('/users/me'),
+      axios.get('/api/appointments')
+    ])
+      .then((res) => {
+        setAccountType('pet')
+        console.log(res[1].data.appointments)
+        const apts = res[1].data.appointments.map(appointment => 
+          <Appointment appointment={appointment} key={appointment.id} />
+        );
+        console.log(apts)
+        setAppointmentsList([...apts]);
+      })
+      .catch(err => console.log(err))
+  }, []);
   
   return (
     <div className="dashboard-card">

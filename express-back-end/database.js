@@ -103,9 +103,10 @@ const getUserAppointments = (userID, type) => {
   console.log('owner')
   return pool
     .query(
-      `
-    SELECT * 
+    `
+    SELECT clinics.name as clinic_name, pets.name as pet_name, appointments.date_apt as appointment_date, appointments.time_id as appointment_time
     FROM appointments
+    JOIN clinics ON clinics.id = appointments.clinic_id
     JOIN pets ON appointments.pet_id = pets.id
     JOIN owners on owners.id = pets.owner_id
     WHERE pets.owner_id = $1

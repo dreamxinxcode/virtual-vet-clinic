@@ -3,10 +3,10 @@ import React from 'react';
 export default function Appointment (props) {
   return (
     <tr>
-      <td>{props.appointment.clinic_id}</td>
-      <td>{props.appointment.pet_id}</td>
-      <td>{props.appointment.date}</td>
-      <td>{props.appointment.time}</td>
+      <td>{props.appointment.clinic_name}</td>
+      <td>{props.appointment.pet_name}</td>
+      <td>{props.appointment.appointment_date}</td>
+      <td>{props.appointment.appointment_time}:00 {props.appointment.appointment_time > 5 ? 'am' : 'pm'}</td>
     </tr>
   )
 }
