@@ -5,7 +5,7 @@ import Navigation from "./layouts/Navigation";
 import Home from "./layouts/Home";
 import myCalendar from "./layouts/Calendar/Calendar";
 import Dashboard from "./layouts/Dashboard/Dashboad";
-import Footer from './components/Footer';
+import Footer from './layouts/Footer';
 import VideoCall from "./layouts/VideoCall";
 import Register from "./layouts/Register/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
