@@ -1,5 +1,5 @@
 import React from 'react';
-import Intro from "../components/Intro";
+import Intro from "../layouts/Homepage/Intro";
 import Search from "../layouts/Search/Search";
 
 export default function Home () {

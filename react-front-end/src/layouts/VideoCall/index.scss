@@ -1,0 +1,19 @@
+#video-container {
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  position: relative;
+}
+
+#user-video {
+
+}
+
+#partner-video {
+  height: 100px;
+  width: auto;
+  position: absolute;
+  bottom: 140;
+  right: 60;
+  z-index: 9999;
+}

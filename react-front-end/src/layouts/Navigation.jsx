@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import { Link } from "react-router-dom";
 import "../layouts/Navigation.scss";
 import LoginModal from "./Login";
+import Logout from "./Logout";
 // import pkg from "semantic-ui-react/package.json";
 
 const styleLink = document.createElement("link");
@@ -11,6 +14,15 @@ styleLink.href =
 document.head.appendChild(styleLink);
 
 export default function Navigation() {
+  const [logStatus, setLogStatus] = useState(false);
+
+  useEffect(() => {
+    axios.get("/users/me").then((res) => {
+      console.log(res.data);
+      if (res.data.user) setLogStatus(true);
+    });
+  }, []);
+
   return (
     <nav>
       <Link to="/">
@@ -33,7 +45,11 @@ export default function Navigation() {
         </svg>
       </Link>
       <Link to="/signup"></Link>
-      <LoginModal />
+      {logStatus ? (
+        <Logout setLogStatus={setLogStatus} />
+      ) : (
+        <LoginModal setLogStatus={setLogStatus} />
+      )}
     </nav>
   );
 }

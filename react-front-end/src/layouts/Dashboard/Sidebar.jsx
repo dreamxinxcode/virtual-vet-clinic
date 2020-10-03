@@ -1,12 +1,11 @@
 import React from 'react';
 import './Sidebar.scss';
-import GoogleHangoutsButton from './GoogleHangoutsButton';
+import JoinButton from './JoinButton';
 
 export default function Sidebar() {
   return (
     <div id="sidebar">
-      
-        <GoogleHangoutsButton />
+        <JoinButton />
     </div>
   )
 }
