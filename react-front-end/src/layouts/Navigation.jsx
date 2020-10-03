@@ -45,7 +45,11 @@ export default function Navigation() {
         </svg>
       </Link>
       <Link to="/signup"></Link>
-      {logStatus ? <Logout /> : <LoginModal setLogStatus={setLogStatus} />}
+      {logStatus ? (
+        <Logout setLogStatus={setLogStatus} />
+      ) : (
+        <LoginModal setLogStatus={setLogStatus} />
+      )}
     </nav>
   );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const Logout = (props) => {
   // const buttonClass = classnames("button", {
@@ -6,11 +7,18 @@ const Logout = (props) => {
   //   "button--danger": props.danger,
   // });
 
+  const handleLogout = () => {
+    axios.post("/users/logout").then((res) => {
+      props.setLogStatus(false);
+      localStorage.setItem("userName", "");
+    });
+  };
+
   return (
     <>
       <button
         // className={buttonClass}
-        onClick={() => console.log("LOGOUT clicked")}
+        onClick={() => handleLogout()}
         // disabled={props.disabled}
       >
         LOGOUT
