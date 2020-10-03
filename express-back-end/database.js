@@ -14,9 +14,9 @@ exports.pool = pool;
 const getNames = () => {
   return pool
     .query(
-      `
-    SELECT * FROM names;
-  `
+    `
+      SELECT * FROM names;
+    `
     )
     .then((res) => res.rows)
     .catch((err) => console.error(err));
@@ -78,3 +78,47 @@ const getUserWithId = (id, type) => {
     });
 };
 exports.getUserWithId = getUserWithId;
+
+const getUserAppointments = (userID, type) => {
+  if (type === "clinic") {
+    console.log('clinic ')
+    return pool
+    .query(
+      `
+    SELECT * 
+    FROM appointments
+    WHERE clinic_id = $1
+    `,
+      [userID]
+    )
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+  }
+
+  console.log('owner')
+  return pool
+    .query(
+      `
+    SELECT * 
+    FROM appointments
+    JOIN pets ON appointments.pet_id = pets.id
+    JOIN owners on owners.id = pets.owner_id
+    WHERE pets.owner_id = $1
+    `,
+      [userID]
+    )
+    .then((res) => {
+      console.log(res.rows)
+      return res.rows;
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.getUserAppointments = getUserAppointments;

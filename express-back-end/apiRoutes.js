@@ -10,10 +10,16 @@ module.exports = function(router, database) {
   });
 
 
-
-
-
-
+  router.get('/appointments', (req, res) => {
+    const userID = req.session.userId;
+    const accountType = req.session.userType;
+    database.getUserAppointments(userID, accountType)
+    .then(appointments => res.send({appointments}))
+    .catch(e => {
+      console.error(e);
+      res.send(e)
+    }); 
+  });
 
   
   // router.post('/items', (req, res) => {
