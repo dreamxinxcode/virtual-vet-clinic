@@ -1,11 +1,10 @@
 INSERT INTO clinics
-    (id, name, address, telephone, email, password, image)
+    (id, name, city, address, telephone, email, password, image)
 VALUES
-    (1, 'Vancouver Veterinary Clinic', '547 Vet street', '543-432-3211', 'contact@vancouvervetclinic.com', '#RR4tr54ff34$#r', 'path/to/image'),
-    (2, 'Victoria Veterinary Clinic', '547 Vet street', '873-742-5671', 'contact@victoriavetclinic.com', '#RR4tr54ff34$#r', 'path/to/image'),
-    (3, 'Calgary Veterinary Clinic', '547 Vet street', '743-432-3541', 'contact@calgaryvetclinic.com', '#RR4tr54ff34$#r', 'path/to/image'),
-    (4, 'Toronto Veterinary Clinic', '547 Vet street', '763-352-3211', 'contact@torontovetclinic.com', '#RR4tr54ff34$#r', 'path/to/image')
-;
+    (1, 'Happy Pet', 'Vancouver', '123 Dawson street', '543-432-3211', 'contact@vancouvervetclinic.com', '#RR4tr54ff34$#r', 'https://static.bookinghealth.com/uploads/clinics/gallery/m/9247-Clinic-for-Plastic-and-Aesthetic-Surgery-Cologne_800.jpg'),
+    (2, 'Best For Pets', 'Calgary', '547 Vet street', '873-742-5671', 'contact@victoriavetclinic.com', '#RR4tr54ff34$#r', 'https://karandash.ua/site/assets/files/46097/img_0281.jpg'),
+    (3, 'Pet Life Care', 'Victoria', '12 Marine Dr.', '743-432-3541', 'contact@calgaryvetclinic.com', '#RR4tr54ff34$#r', 'https://i.pinimg.com/originals/3f/23/a4/3f23a4402227b7e3733a9a1137d852c2.jpg'),
+    (4, 'Fauna Vet Clinic', 'Toronto', '3 Ave. - 145', '763-352-3211', 'contact@torontovetclinic.com', '#RR4tr54ff34$#r', 'https://signaturesmilez.ca/wp-content/uploads/2020/06/IMG_1236.jpg');
 
 INSERT INTO pet_types
     (id, type)
@@ -32,7 +31,6 @@ VALUES
     (10, 3, 3),
     (11, 3, 4),
     (12, 3, 5),
-    (13, 3, 1),
     (14, 4, 2),
     (15, 4, 3),
     (16, 4, 4)

@@ -5,9 +5,10 @@ import Navigation from "./layouts/Navigation";
 import Home from "./layouts/Home";
 import myCalendar from "./layouts/Calendar/Calendar";
 import Dashboard from "./layouts/Dashboard/Dashboad";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 import AppointmentRoom from "./layouts/Dashboard/AppointmentRoom";
 import Register from "./layouts/Register/Register";
+import Clinics from "./layouts/Clinics/Clinics";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // homepage
 // dashboard
@@ -22,7 +23,7 @@ export default function App(props) {
   const fetchData = () => {
     axios
       .get("/api/names") // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
+      .then(response => {
         // handle success
         console.log(response.data); // The entire response from the Rails API
 
@@ -41,7 +42,7 @@ export default function App(props) {
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/appointment" exact component={AppointmentRoom}></Route>
           <Route path="/register" exact component={Register}></Route>
-
+          <Route path="/clinics" exact component={Clinics}></Route>
         </Switch>
 
         <Footer />
