@@ -58,6 +58,7 @@ module.exports = function (router, database) {
     req.session.userId = null;
     req.session.userType = null;
     res.send({});
+    res.redirect('/');
   });
 
   router.get("/me", (req, res) => {
