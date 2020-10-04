@@ -48,7 +48,7 @@ export default function Appointment(props) {
   const save = (date, time) => {
     const booking = { date, time };
     axios
-      .put("/api/bookings", booking)
+      .post("/api/booking/", booking)
       .then((res) => console.log("returned from BE put/bookings", res));
   };
 
@@ -72,12 +72,22 @@ export default function Appointment(props) {
   };
 
   useEffect(() => {
-    axios.get("/api/bookings", date).then((res) => {
-      const slots = hourExtracter(res.data.times);
-      setCurrentSlots([...slots]);
-      console.log("response on Date change", res.data);
-      console.log("CurrentSlots Updated", currentSlots);
-    });
+    const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
+    const clinic_id = clinic_info.id;
+    const date_str = date.getTime();
+    console.log("ID", clinic_id);
+    const data = { date };
+    axios
+      .get(`http://localhost:8080/api/bookings/${clinic_id}/${date}`)
+      .then((res) => {
+        // const slots = hourExtracter(res.data.times);
+        // setCurrentSlots([...slots]);
+        console.log(
+          "query from BE on clinic bookings",
+          Date.parse(res.data.bookings.date_apt)
+        );
+        // console.log("CurrentSlots Updated", currentSlots);
+      });
   }, [date]);
 
   return (

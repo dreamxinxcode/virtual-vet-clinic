@@ -160,3 +160,33 @@ const getUserAppointments = (userID, type) => {
     });
 };
 exports.getUserAppointments = getUserAppointments;
+
+// 5
+const getClinicBookings = (id, date) => {
+  console.log("DB query with ID, and type", id, date);
+  return pool
+    .query(`    SELECT * FROM appointments    WHERE id = $1;`, [id])
+    .then((res) => {
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.getClinicBookings = getClinicBookings;
+
+// 6
+const addClinicBooking = (id, date) => {
+  console.log("DB query with ID, and type", id, date);
+  return pool
+    .query(`    SELECT * FROM appointments    WHERE id = $1;`, [id])
+    .then((res) => {
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.addClinicBooking = addClinicBooking;
