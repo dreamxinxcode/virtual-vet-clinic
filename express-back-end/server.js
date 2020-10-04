@@ -2,6 +2,7 @@ const database = require("./database");
 const apiRoutes = require("./apiRoutes");
 const userRoutes = require("./userRoutes");
 const fs = require("fs");
+const cors = require("cors");
 
 const { addUser, getUser, getUsersInRoom } = require("./chatUsers");
 
@@ -30,6 +31,7 @@ app.use(
   })
 );
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -64,13 +66,13 @@ app.get("/test", (req, res) => {
 //   });
 // });
 
-const getApiAndEmit = socket => {
+const getApiAndEmit = (socket) => {
   const response = new Date();
   // Emitting a new message. Will be consumed by the client
   socket.emit("FromAPI", response);
 };
 
-io.on("connect", socket => {
+io.on("connect", (socket) => {
   console.log("New client connected to CHAT");
   socket.on("join", ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
@@ -154,7 +156,7 @@ Promise.all([
         });
     });
   })
-  .catch(error => {
+  .catch((error) => {
     console.log(`Error setting up the reset route: ${error}`);
   });
 
@@ -164,12 +166,14 @@ app.close = function () {
 
 // ============== PORT ===================
 const port = process.env.PORT || 8080;
-server.listen(port, err => console.log(err || `listening on port ${port} 😎`));
+server.listen(port, (err) =>
+  console.log(err || `listening on port ${port} 😎`)
+);
 
 // Video
 const videoUsers = {};
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
   if (!videoUsers[socket.id]) {
     videoUsers[socket.id] = socket.id;
     console.log("Connection to video chat with no user id", socket.id);
@@ -180,7 +184,7 @@ io.on("connection", socket => {
     delete videoUsers[socket.id];
   });
 
-  socket.on("callUser", data => {
+  socket.on("callUser", (data) => {
     console.log("Connecting on event called callUser");
     io.to(data.userToCall).emit("hey", {
       signal: data.signalData,
@@ -188,7 +192,7 @@ io.on("connection", socket => {
     });
   });
 
-  socket.on("acceptCall", data => {
+  socket.on("acceptCall", (data) => {
     console.log("Accepting call on event acceptCall");
     io.to(data.to).emit("callAccepted", data.signal);
   });
