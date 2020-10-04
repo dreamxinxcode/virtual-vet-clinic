@@ -88,6 +88,7 @@ module.exports = function (router, database) {
         res.send(e);
       });
   });
+  
   // 5
 
   router.get('/pets', (req, res) => {
@@ -98,6 +99,17 @@ module.exports = function (router, database) {
     .then(pets => res.send({ pets }))
     .catch(e => e)
   });
+
+// 6
+
+router.get('/pets/:petID', (req, res) => {
+  const id = req.params.petID;
+
+  database
+  .getPetInfo(id)
+  .then(pet => res.send({ pet }))
+  .catch(e => e)
+});
 
 
   return router;
