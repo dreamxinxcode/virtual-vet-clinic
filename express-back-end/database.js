@@ -1,5 +1,4 @@
-// const properties = require('./json/properties.json');
-// const users = require('./json/users.json');
+// CREATE POOL
 const { Pool } = require("pg");
 
 const pool = new Pool({
@@ -11,18 +10,7 @@ const pool = new Pool({
 
 exports.pool = pool;
 
-const getNames = () => {
-  return pool
-    .query(
-    `
-      SELECT * FROM names;
-    `
-    )
-    .then((res) => res.rows)
-    .catch((err) => console.error(err));
-};
-exports.getNames = getNames;
-
+// 1
 const getUserWithEmail = (email, type) => {
   let account_type;
   console.log("DB query with EMAIl & TYPE", email, type);
@@ -54,6 +42,7 @@ const getUserWithEmail = (email, type) => {
 };
 exports.getUserWithEmail = getUserWithEmail;
 
+// 2
 const getUserWithId = (id, type) => {
   let account_type;
   console.log("DB query with ID, and type", id, type);
@@ -79,16 +68,65 @@ const getUserWithId = (id, type) => {
 };
 exports.getUserWithId = getUserWithId;
 
+// 3
+const getClinic = (options) => {
+  const queryParams = [];
+  let queryString = `
+  SELECT DISTINCT clinics.* FROM pet_types
+  JOIN clinic_pet_types ON pet_type_id = pet_types.id
+  JOIN clinics ON clinic_id = clinics.id
+
+  `;
+  if (options.clinicName) {
+    queryParams.push(`%${options.clinicName}%`);
+    queryString += `WHERE name LIKE $${queryParams.length} `;
+  }
+  if (options.clinicCity) {
+    if (queryString.includes("WHERE")) {
+      queryString += ` AND `;
+    } else {
+      queryString += ` WHERE `;
+    }
+    queryParams.push(`%${options.clinicCity}%`);
+    queryString += `city LIKE $${queryParams.length}`;
+  }
+  if (options.animalType) {
+    if (queryString.includes("WHERE")) {
+      queryString += ` AND `;
+    } else {
+      queryString += ` WHERE `;
+    }
+    queryParams.push(options.animalType);
+    queryString += `pet_types.type = $${queryParams.length}`;
+  }
+
+  console.log("queryString:", queryString);
+  console.log("queryParams:", queryParams);
+
+  return pool
+    .query(queryString, queryParams)
+    .then((res) => {
+      return res.rows;
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.getClinic = getClinic;
+
+// 4
+
 const getUserAppointments = (userID, type) => {
   if (type === "clinic") {
     console.log('clinic', userID)
     return pool
     .query(
       `
-    SELECT CONCAT(owners.first_name + ' ' + owners.last_name) as owner_full_name,  
+    SELECT CONCAT(owners.first_name, ' ', owners.last_name) as owner_full_name, pets.name as pet_name, appointments.date_apt as appointment_date, appointments.time_id as appointment_time
     FROM appointments
-    JOIN owners ON owners.id = appointments.owner_id
-    JOIN pets ON pets.owner_id = owners.id
+    JOIN pets ON pets.id = appointments.pet_id
+    JOIN owners ON pets.owner_id = owners.id
     WHERE clinic_id = $1
     ;
     `,

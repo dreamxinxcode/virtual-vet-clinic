@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Clinics from "../Clinics/Clinics";
 
-export default function SearchButton () {
-  const [loading, setLoading] = useState(false);
-  
+function SearchButton(props) {
   return (
-    <button className={loading ? 'loading ui purple button' : 'ui purple button'} onClick={() => setLoading(!loading) }>
-      <i className="icon search"></i>
-      Search
-    </button>
-  )
-};
+    <>
+      <button Link className={"ui purple button"} onClick={props.handleSubmit}>
+        <i className="icon search"></i>
+        Search
+      </button>
+    </>
+  );
+}
+
+export default SearchButton;

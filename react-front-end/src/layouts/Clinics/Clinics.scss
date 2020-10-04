@@ -1,0 +1,21 @@
+.clinic-box {
+  border: 3px solid lightseagreen;
+  border-radius: 10px;
+  padding: 3rem;
+}
+
+.clinic-container {
+  width: 800px;
+  height: 600px;
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+  margin: 3rem;
+  flex-direction: row;
+}
+h4,
+h2 {
+  margin: 0;
+}

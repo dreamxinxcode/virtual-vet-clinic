@@ -1,14 +1,24 @@
-module.exports = function(router, database) {
-
-  router.get('/names', (req, res) => {
-    database.getNames(req.query, 200)
-    .then(names => res.send({names}))
-    .catch(e => {
-      console.error(e);
-      res.send(e)
-    }); 
+module.exports = function (router, database) {
+  router.get("/names", (req, res) => {
+    database
+      .getNames(req.query, 200)
+      .then(names => res.send({ names }))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
   });
 
+  router.post("/clinics", (req, res) => {
+    console.log("BODY from REQ:", req.body);
+    database
+      .getClinic(req.body, 200)
+      .then(clinics => res.send({ clinics }))
+      .catch(e => {
+        console.error(e);
+        res.send(e);
+      });
+  });
 
   router.get('/appointments', (req, res) => {
     const userID = req.session.userId;
@@ -21,7 +31,6 @@ module.exports = function(router, database) {
     }); 
   });
 
-  
   // router.post('/items', (req, res) => {
   //   console.log('req to add new item:', req.body);
   //   console.log('res:', res);
@@ -37,4 +46,4 @@ module.exports = function(router, database) {
   // });
 
   return router;
-}
+};
