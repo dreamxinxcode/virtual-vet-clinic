@@ -46,10 +46,22 @@ export default function Appointment(props) {
   const [currentSlots, setCurrentSlots] = useState([]);
 
   const save = (date, time) => {
-    const booking = { date, time };
+    const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
+    const clinic_id = clinic_info.id;
+    const booking = { clinic_id, pet_id: 1, date, time };
+
     axios
-      .post("/api/booking/", booking)
-      .then((res) => console.log("returned from BE put/bookings", res));
+      .get("users/me")
+      .then((res) => {
+        console.log("USERS/ME", res.data.user.pets_id);
+        return axios.post("/api/booking/", {
+          clinic_id,
+          pet_id: res.data.user.pets_id,
+          date,
+          time,
+        });
+      })
+      .then((res) => setTime(""));
   };
 
   const slots = times.map((slot) => {
@@ -76,15 +88,16 @@ export default function Appointment(props) {
     const clinic_id = clinic_info.id;
     const date_str = date.getTime();
     console.log("ID", clinic_id);
-    const data = { date };
+    const data = date.toISOString();
+    console.log("data", data);
     axios
-      .get(`http://localhost:8080/api/bookings/${clinic_id}/${date}`)
+      .get(`http://localhost:8080/api/bookings/${clinic_id}/${data}`)
       .then((res) => {
         // const slots = hourExtracter(res.data.times);
         // setCurrentSlots([...slots]);
         console.log(
           "query from BE on clinic bookings",
-          Date.parse(res.data.bookings.date_apt)
+          Date.parse(res.data.bookings)
         );
         // console.log("CurrentSlots Updated", currentSlots);
       });
