@@ -15,7 +15,6 @@ export default function PatientAppointmentsCard() {
       axios.get('/api/appointments')
     ])
       .then((res) => {
-        let apts = [];
         let account = res[0].data.type;
         console.log('account:', account, typeof account);
         setAccountType(account)
