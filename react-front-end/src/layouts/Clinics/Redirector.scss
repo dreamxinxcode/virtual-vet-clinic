@@ -1,0 +1,29 @@
+.redirector {
+  text-transform: uppercase;
+  width: 190px;
+  // letter-spacing: 1px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  height: 3em;
+  line-height: 2.9em;
+  // min-width: 3em;
+  background-color: transparent;
+  border: solid 2px #fff;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  position: absolute;
+  top: -20px;
+  right: -270px;
+  backface-visibility: hidden;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: #fff;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    text-shadow: none;
+    color: rgb(15, 34, 116);
+  }
+}
