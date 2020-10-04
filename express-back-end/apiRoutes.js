@@ -34,20 +34,34 @@ module.exports = function (router, database) {
       });
   });
 
+  // #4
+  router.post("/booking", (req, res) => {
+    const { date, time } = req.body;
+    console.log("PUT => /api/bookings/id", date, time);
+
+    database
+      .addClinicBooking(clinic_id, date)
+      .then((bookings) => res.send({ bookings }))
+      .catch((e) => {
+        console.error(e);
+        res.send(e);
+      });
+    // res.send("OK");
+  });
+
   // #3
-  router.post("/bookings/:id", (req, res) => {
+  router.get("/bookings/:id/:date", (req, res) => {
     const clinic_id = req.params.id;
-    const date = req.body.date;
+    const date = req.params.date;
     console.log("/api/bookings/id", clinic_id, date);
 
-    // database
-    //   .getUserAppointments(userID, accountType)
-    //   .then((appointments) => res.send({ appointments }))
-    //   .catch((e) => {
-    //     console.error(e);
-    //     res.send(e);
-    //   });
-    res.send(clinic_id);
+    database
+      .getClinicBookings(clinic_id, date)
+      .then((bookings) => res.send({ bookings }))
+      .catch((e) => {
+        console.error(e);
+        res.send(e);
+      });
   });
 
   // router.post('/items', (req, res) => {
