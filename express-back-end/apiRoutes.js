@@ -77,6 +77,28 @@ module.exports = function (router, database) {
   //       res.send(e)
   //     });
   // });
+  router.get("/appointments", (req, res) => {
+    const userID = req.session.userId;
+    const accountType = req.session.userType;
+    database
+      .getUserAppointments(userID, accountType)
+      .then((appointments) => res.send({ appointments }))
+      .catch((e) => {
+        console.error(e);
+        res.send(e);
+      });
+  });
+  // 5
+
+  router.get('/pets', (req, res) => {
+    const userID = req.session.userId;
+    
+    database
+    .getPetsForClinic(userID)
+    .then(pets => res.send({ pets }))
+    .catch(e => e)
+  });
+
 
   return router;
 };

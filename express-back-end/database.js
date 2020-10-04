@@ -194,3 +194,23 @@ const addClinicBooking = (id, date) => {
     });
 };
 exports.addClinicBooking = addClinicBooking;
+
+// 7
+
+const getPetsForClinic = (clinicID) => {
+  return pool
+  .query(`
+    SELECT pets.*, pet_types.type as pet_type, CONCAT(owners.first_name, ' ', owners.last_name) as owner_name 
+    FROM pets
+    JOIN pet_types ON pet_types.id = pets.type_id
+    JOIN owners ON owners.id = pets.owner_id
+    JOIN appointments ON appointments.pet_id = pets.id
+    WHERE appointments.clinic_id = $1
+    ; 
+  `, [clinicID])
+  .then(res => {
+    return res.rows;
+  })
+  .catch(e => e);
+};
+exports.getPetsForClinic = getPetsForClinic;

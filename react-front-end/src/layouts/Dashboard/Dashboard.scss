@@ -4,7 +4,6 @@
 }
 
 #dashboard-container {
-  padding: 5%;
   overflow-y: scroll;
   width: 100%;
 }
@@ -12,6 +11,7 @@
 .dashboard-card {
   border-radius: 10px;
   box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
+  margin: 3rem;
 }
 
 .card-title {
