@@ -8,7 +8,7 @@ export default function Sidebar(props) {
   
   return (
     <div id="sidebar">
-        <p>{user}</p>
+        <h2 id='sidebar-user' >{user}</h2>
         <JoinButton />
     </div>
   )
