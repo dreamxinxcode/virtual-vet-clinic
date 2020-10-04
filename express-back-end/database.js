@@ -43,21 +43,19 @@ const getUserWithEmail = (email, type) => {
 exports.getUserWithEmail = getUserWithEmail;
 
 // 2
+// SELECT owners.*, pets.* FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = 1;
 const getUserWithId = (id, type) => {
-  let account_type;
+  let queryString;
   console.log("DB query with ID, and type", id, type);
   if (type === "pet") {
     console.log("PET TYPE recieved");
-    account_type = "owners";
+    queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
   } else if (type === "clinic") {
     console.log(" CLINIC TYPE recieved");
-    account_type = "clinics";
+    queryString = `SELECT *    FROM clinics    WHERE id = $1    LIMIT 1;`;
   }
   return pool
-    .query(
-      `    SELECT *    FROM ${account_type}    WHERE id = $1    LIMIT 1;    `,
-      [id]
-    )
+    .query(queryString, [id])
     .then((res) => {
       return res.rows[0];
     })
@@ -164,8 +162,12 @@ exports.getUserAppointments = getUserAppointments;
 // 5
 const getClinicBookings = (id, date) => {
   console.log("DB query with ID, and type", id, date);
+  const date_stamp = Date.parse(date);
   return pool
-    .query(`    SELECT * FROM appointments    WHERE id = $1;`, [id])
+    .query(
+      `    SELECT * FROM appointments    WHERE clinic_id = $1 AND date_apt = $2;`,
+      [id, date]
+    )
     .then((res) => {
       return res.rows[0];
     })
@@ -177,11 +179,24 @@ const getClinicBookings = (id, date) => {
 exports.getClinicBookings = getClinicBookings;
 
 // 6
-const addClinicBooking = (id, date) => {
-  console.log("DB query with ID, and type", id, date);
+const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
+  console.log(
+    "ADD BOOKING with DATE & TIME",
+    clinic_id,
+    pet_id,
+    typeof date_apt,
+    time_id
+  );
   return pool
-    .query(`    SELECT * FROM appointments    WHERE id = $1;`, [id])
+    .query(
+      `INSERT INTO appointments
+    (clinic_id, pet_id, date_apt, time_id)
+    VALUES
+    ($1, $2, $3, $4);`,
+      [clinic_id, pet_id, date_apt, time_id]
+    )
     .then((res) => {
+      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {

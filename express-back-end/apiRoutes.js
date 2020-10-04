@@ -36,12 +36,12 @@ module.exports = function (router, database) {
 
   // #4
   router.post("/booking", (req, res) => {
-    const { date, time } = req.body;
-    console.log("PUT => /api/bookings/id", date, time);
+    const { clinic_id, pet_id, date, time } = req.body;
+    console.log("PUT => /api/bookings/id", clinic_id, pet_id, date, time);
 
     database
-      .addClinicBooking(clinic_id, date)
-      .then((bookings) => res.send({ bookings }))
+      .addClinicBooking(clinic_id, pet_id, date, time)
+      .then((booking) => res.send({ booking }))
       .catch((e) => {
         console.error(e);
         res.send(e);
