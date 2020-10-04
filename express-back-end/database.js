@@ -223,9 +223,21 @@ const getPetsForClinic = (clinicID) => {
     WHERE appointments.clinic_id = $1
     ; 
   `, [clinicID])
-  .then(res => {
-    return res.rows;
-  })
+  .then(res => res.rows)
   .catch(e => e);
 };
 exports.getPetsForClinic = getPetsForClinic;
+
+// 8
+
+const getPetInfo = (petID) => {
+  return pool.query(`
+    SELECT * 
+    FROM pets
+    WHERE pets.id = $1
+    ;
+  `, [petID])
+  .then(res => res.rows)
+  .catch(e => e);
+};
+exports.getPetInfo = getPetInfo;

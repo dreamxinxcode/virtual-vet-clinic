@@ -7,7 +7,6 @@ import axios from 'axios';
 export default function Dashboard () {
   const [userInfo, setUserInfo] = useState({});
 
-
   useEffect(() => {
     axios.get('users/me')
     .then(res => {
