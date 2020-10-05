@@ -26,7 +26,7 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState("");
-  const [bottom, setBottom] = useState("");
+  const [bottom, setBottom] = useState('');
 
   useEffect(() => {
     socket = io(ENDPOINT);
