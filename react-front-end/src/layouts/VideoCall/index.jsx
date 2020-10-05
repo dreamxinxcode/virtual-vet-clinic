@@ -184,11 +184,14 @@ const VideoCall = () => {
     );
   }
   return (
+    <>
     <div id="video-container">
+      <Chat />
       {UserVideo}
       {PartnerVideo}
       <Controls />
     </div>
+    </>
   );
 }
 

@@ -4,6 +4,7 @@ import Search from "../Search/Search";
 import { Link } from 'react-router-dom';
 
 export default function Intro() {
+  
   return (
     <div id="intro">
       <div id="intro-area">
