@@ -31,15 +31,15 @@ const ClinicPetList = () => {
         </thead>
         <tbody>
           {pets.map(pet =>
-          <>
+          <tr>
             <td>{pet.name}</td>
-            <td>{pet.age}</td>
+            <td>{pet.age} years</td>
             <td>{pet.gender}</td>
             <td>{pet.weight} lbs</td>
             <td>{pet.pet_type}</td>
             <td>{pet.breed}</td>
             <td>{pet.owner_name}</td>
-          </>
+          </tr>
             )}
         </tbody>
       </table>
