@@ -42,6 +42,35 @@ export default function Appointment(props) {
 
   const [time, setTime] = useState(null);
   const [currentSlots, setCurrentSlots] = useState([]);
+  const [petID, setPetID] = useState("");
+
+  // HELPER 1
+  const findTimeID = (id) => {
+    for (let item of currentSlots) {
+      if (item.time_id === id) {
+        return true;
+      }
+    }
+  };
+
+  // HELPER 2
+  const petIdMatch = (id) => {
+    for (let item of currentSlots) {
+      // console.log(item.time_id, id);
+      if (item.time_id === id && item.pet_id === petID) {
+        console.log("ID was found", item.id);
+        return item.id;
+      }
+    }
+  };
+
+  // SET PET ID
+  useEffect(() => {
+    axios.get("users/me").then((res) => {
+      setPetID(res.data.user.pets_id);
+      console.log("SETTING PET ID = ", res.data.user.pets_id);
+    });
+  }, []);
 
   const save = (date, time) => {
     const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
@@ -67,8 +96,12 @@ export default function Appointment(props) {
         key={slot.id}
         value={slot.id}
         hour={slot.hour}
-        disabled={currentSlots.find((id) => slot.id === id) ? true : null}
+        mybooking={"booked"}
+        // disabled={currentSlots.find((id) => slot.id === time_id) ? true : null}
+        disabled={findTimeID(slot.id)}
         setTime={setTime}
+        cancelBooking={(e) => cancelBooking(petIdMatch(slot.id))}
+        bookingId={petIdMatch(slot.id)}
       />
     );
   });
@@ -90,11 +123,21 @@ export default function Appointment(props) {
     axios
       .get(`http://localhost:8080/api/bookings/${clinic_id}/${data}`)
       .then((res) => {
+        console.log("LIST of BOOKINGS", res.data.bookings);
         const slots = hourExtracter(res.data.bookings);
-        setCurrentSlots([...slots]);
+        setCurrentSlots([...res.data.bookings]);
       });
   }, [date]);
 
+  // CANCEL MY APPOINTMENT
+  const cancelBooking = (id) => {
+    console.log("Cancel booking has been activated");
+    axios
+      .get(`http://localhost:8080/api/booking/delete/${id}`)
+      .then((res) => console.log("deleted?", res.data));
+  };
+
+  // ===============================================================
   return (
     <div className="timeBox">
       <div className="timeSlot-outerContainer">
