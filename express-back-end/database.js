@@ -117,10 +117,10 @@ exports.getClinic = getClinic;
 
 const getUserAppointments = (userID, type) => {
   if (type === "clinic") {
-    console.log('clinic', userID)
+    console.log("clinic", userID);
     return pool
-    .query(
-      `
+      .query(
+        `
     SELECT CONCAT(owners.first_name, ' ', owners.last_name) as owner_full_name, pets.name as pet_name, appointments.date_apt as appointment_date, appointments.time_id as appointment_time
     FROM appointments
     JOIN pets ON pets.id = appointments.pet_id
@@ -128,21 +128,21 @@ const getUserAppointments = (userID, type) => {
     WHERE clinic_id = $1
     ;
     `,
-    [userID]
-    )
-    .then((res) => {
-      return res.rows;
-    })
-    .catch((err) => {
-      console.error("query error", err.stack);
-      return null;
-    });
+        [userID]
+      )
+      .then((res) => {
+        return res.rows;
+      })
+      .catch((err) => {
+        console.error("query error", err.stack);
+        return null;
+      });
   }
 
-  console.log('owner', userID)
+  console.log("owner", userID);
   return pool
     .query(
-    `
+      `
     SELECT clinics.name as clinic_name, pets.name as pet_name, appointments.date_apt as appointment_date, appointments.time_id as appointment_time
     FROM appointments
     JOIN clinics ON clinics.id = appointments.clinic_id
@@ -153,7 +153,7 @@ const getUserAppointments = (userID, type) => {
       [userID]
     )
     .then((res) => {
-      console.log(res.rows)
+      console.log(res.rows);
       return res.rows;
     })
     .catch((err) => {
@@ -165,15 +165,16 @@ exports.getUserAppointments = getUserAppointments;
 
 // 5
 const getClinicBookings = (id, date) => {
-  console.log("DB query with ID, and type", id, date);
-  const date_stamp = Date.parse(date);
+  // console.log("DB query with ID, and type", id, date);
+  // const date_stamp = Date.parse(date);
   return pool
     .query(
       `    SELECT * FROM appointments    WHERE clinic_id = $1 AND date_apt = $2;`,
       [id, date]
     )
     .then((res) => {
-      return res.rows[0];
+      // console.log("returned query on DB for clinic bookings found", res.rows);
+      return res.rows;
     })
     .catch((err) => {
       console.error("query error", err.stack);
@@ -184,13 +185,13 @@ exports.getClinicBookings = getClinicBookings;
 
 // 6
 const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
-  console.log(
-    "ADD BOOKING with DATE & TIME",
-    clinic_id,
-    pet_id,
-    typeof date_apt,
-    time_id
-  );
+  // console.log(
+  //   "ADD BOOKING with DATE & TIME",
+  //   clinic_id,
+  //   pet_id,
+  //   typeof date_apt,
+  //   time_id
+  // );
   return pool
     .query(
       `INSERT INTO appointments
@@ -200,7 +201,7 @@ const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
       [clinic_id, pet_id, date_apt, time_id]
     )
     .then((res) => {
-      console.log(res.rows[0]);
+      // console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
@@ -214,7 +215,8 @@ exports.addClinicBooking = addClinicBooking;
 
 const getPetsForClinic = (clinicID) => {
   return pool
-  .query(`
+    .query(
+      `
     SELECT pets.*, pet_types.type as pet_type, CONCAT(owners.first_name, ' ', owners.last_name) as owner_name 
     FROM pets
     JOIN pet_types ON pet_types.id = pets.type_id
@@ -222,22 +224,28 @@ const getPetsForClinic = (clinicID) => {
     JOIN appointments ON appointments.pet_id = pets.id
     WHERE appointments.clinic_id = $1
     ; 
-  `, [clinicID])
-  .then(res => res.rows)
-  .catch(e => e);
+  `,
+      [clinicID]
+    )
+    .then((res) => res.rows)
+    .catch((e) => e);
 };
 exports.getPetsForClinic = getPetsForClinic;
 
 // 8
 
 const getPetInfo = (petID) => {
-  return pool.query(`
+  return pool
+    .query(
+      `
     SELECT * 
     FROM pets
     WHERE pets.id = $1
     ;
-  `, [petID])
-  .then(res => res.rows)
-  .catch(e => e);
+  `,
+      [petID]
+    )
+    .then((res) => res.rows)
+    .catch((e) => e);
 };
 exports.getPetInfo = getPetInfo;
