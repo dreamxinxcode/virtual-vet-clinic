@@ -11,7 +11,7 @@ module.exports = function (router, database) {
 
   // #1
   router.post("/clinics", (req, res) => {
-    console.log("BODY from REQ:", req.body);
+    // console.log("BODY from REQ:", req.body);
     database
       .getClinic(req.body, 200)
       .then((clinics) => res.send({ clinics }))
@@ -37,7 +37,7 @@ module.exports = function (router, database) {
   // #4
   router.post("/booking", (req, res) => {
     const { clinic_id, pet_id, date, time } = req.body;
-    console.log("PUT => /api/bookings/id", clinic_id, pet_id, date, time);
+    // console.log("PUT => /api/bookings/id", clinic_id, pet_id, date, time);
 
     database
       .addClinicBooking(clinic_id, pet_id, date, time)
@@ -46,14 +46,13 @@ module.exports = function (router, database) {
         console.error(e);
         res.send(e);
       });
-    // res.send("OK");
   });
 
   // #3
   router.get("/bookings/:id/:date", (req, res) => {
     const clinic_id = req.params.id;
     const date = req.params.date;
-    console.log("/api/bookings/id", clinic_id, date);
+    // console.log("/api/bookings/id", clinic_id, date);
 
     database
       .getClinicBookings(clinic_id, date)
@@ -88,29 +87,35 @@ module.exports = function (router, database) {
         res.send(e);
       });
   });
-  
+
   // 5
 
-  router.get('/pets', (req, res) => {
+  router.get("/pets", (req, res) => {
     const userID = req.session.userId;
-    
+
     database
-    .getPetsForClinic(userID)
-    .then(pets => res.send({ pets }))
-    .catch(e => e)
+      .getPetsForClinic(userID)
+      .then((pets) => res.send({ pets }))
+      .catch((e) => e);
   });
 
-// 6
+  // 6
 
-router.get('/pets/:petID', (req, res) => {
-  const id = req.params.petID;
+  router.get("/pets/:petID", (req, res) => {
+    const id = req.params.petID;
 
-  database
-  .getPetInfo(id)
-  .then(pet => res.send({ pet }))
-  .catch(e => e)
-});
-
+    database
+      .getPetInfo(id)
+      .then((pet) => res.send({ pet }))
+      .catch((e) => e);
+  });
 
   return router;
 };
+
+// 7
+router.post("/booking/delete", (req, res) => {
+  console.log("DELETE FROM FAVS", req.body);
+  req.body.user_id = req.session.userId;
+  database.removeBooking(req.body);
+});

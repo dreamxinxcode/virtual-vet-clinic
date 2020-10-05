@@ -130,10 +130,10 @@ const getUserAppointments = (userID, type) => {
     `,
         [userID]
       )
-      .then(res => {
+      .then((res) => {
         return res.rows;
       })
-      .catch(err => {
+      .catch((err) => {
         console.error("query error", err.stack);
         return null;
       });
@@ -152,7 +152,7 @@ const getUserAppointments = (userID, type) => {
     `,
       [userID]
     )
-    .then(res => {
+    .then((res) => {
       console.log(res.rows);
       return res.rows;
     })
@@ -165,15 +165,16 @@ exports.getUserAppointments = getUserAppointments;
 
 // 5
 const getClinicBookings = (id, date) => {
-  console.log("DB query with ID, and type", id, date);
-  const date_stamp = Date.parse(date);
+  // console.log("DB query with ID, and type", id, date);
+  // const date_stamp = Date.parse(date);
   return pool
     .query(
       `    SELECT * FROM appointments    WHERE clinic_id = $1 AND date_apt = $2;`,
       [id, date]
     )
-    .then(res => {
-      return res.rows[0];
+    .then((res) => {
+      // console.log("returned query on DB for clinic bookings found", res.rows);
+      return res.rows;
     })
     .catch(err => {
       console.error("query error", err.stack);
@@ -184,13 +185,13 @@ exports.getClinicBookings = getClinicBookings;
 
 // 6
 const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
-  console.log(
-    "ADD BOOKING with DATE & TIME",
-    clinic_id,
-    pet_id,
-    typeof date_apt,
-    time_id
-  );
+  // console.log(
+  //   "ADD BOOKING with DATE & TIME",
+  //   clinic_id,
+  //   pet_id,
+  //   typeof date_apt,
+  //   time_id
+  // );
   return pool
     .query(
       `INSERT INTO appointments
@@ -199,8 +200,8 @@ const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
     ($1, $2, $3, $4);`,
       [clinic_id, pet_id, date_apt, time_id]
     )
-    .then(res => {
-      console.log(res.rows[0]);
+    .then((res) => {
+      // console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(err => {
@@ -226,14 +227,14 @@ const getPetsForClinic = clinicID => {
   `,
       [clinicID]
     )
-    .then(res => res.rows)
-    .catch(e => e);
+    .then((res) => res.rows)
+    .catch((e) => e);
 };
 exports.getPetsForClinic = getPetsForClinic;
 
 // 8
 
-const getPetInfo = petID => {
+const getPetInfo = (petID) => {
   return pool
     .query(
       `
@@ -279,3 +280,4 @@ const addUser = user => {
       });
 };
 exports.addUser = addUser;
+
