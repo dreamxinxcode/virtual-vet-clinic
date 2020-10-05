@@ -1,7 +1,7 @@
 import React from "react";
 import "./Intro.scss";
 import Search from "../Search/Search";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function Intro() {
   
@@ -13,8 +13,11 @@ export default function Intro() {
           amount of patients they see at one time. Our service provides a safe
           and affordable alternative to in-person vet visits.
         </p>
-        <button className="ui purple button">Find a vet</button>
-        <Link to='/register'>
+        <a href="#search-form">
+          <button className="ui purple button">Find a vet</button>
+        </a>
+
+        <Link to="/register">
           <button className="ui inverted purple button">Sign up</button>
         </Link>
       </div>

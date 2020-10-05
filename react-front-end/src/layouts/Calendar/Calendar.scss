@@ -50,3 +50,49 @@
     color: #cccccc !important;
   }
 }
+
+.calendar-ul {
+  list-style: none;
+}
+.inside {
+  display: flex;
+  align-items: center;
+}
+.calendar-li {
+  margin-top: 1rem;
+  font-style: italic;
+  display: inline-block;
+  margin-right: 3rem;
+  opacity: 0.3;
+  cursor: pointer;
+  padding-bottom: 0.3rem;
+  transition: all 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+  svg {
+    fill: $medical-dark-blue;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.calendar-page-header {
+  margin: 1rem 0;
+  width: 100%;
+}
+.calendar-header {
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+  font-size: 1.8rem;
+  font-style: italic;
+  color: rgb(151, 151, 151);
+}
+.cliniccc {
+  font-weight: bold;
+  font-size: 3rem;
+  font-style: normal;
+  color: black;
+}
