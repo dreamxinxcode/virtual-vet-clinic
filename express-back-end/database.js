@@ -13,12 +13,12 @@ exports.pool = pool;
 // 1
 const getUserWithEmail = (email, type) => {
   let account_type;
-  console.log("DB query with EMAIl & TYPE", email, type);
+  // console.log("DB query with EMAIl & TYPE", email, type);
   if (type === "pet") {
-    console.log("PET TYPE recieved");
+    // console.log("PET TYPE recieved");
     account_type = "owners";
   } else if (type === "clinic") {
-    console.log(" CLINIC TYPE recieved");
+    // console.log(" CLINIC TYPE recieved");
     account_type = "clinics";
   }
   return pool
@@ -32,7 +32,7 @@ const getUserWithEmail = (email, type) => {
       [email]
     )
     .then((res) => {
-      console.log(res.rows[0]);
+      // console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
@@ -46,12 +46,12 @@ exports.getUserWithEmail = getUserWithEmail;
 // SELECT owners.*, pets.* FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = 1;
 const getUserWithId = (id, type) => {
   let queryString;
-  console.log("DB query with ID, and type", id, type);
+  // console.log("DB query with ID, and type", id, type);
   if (type === "pet") {
-    console.log("PET TYPE recieved");
+    // console.log("PET TYPE recieved");
     queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
   } else if (type === "clinic") {
-    console.log(" CLINIC TYPE recieved");
+    // console.log(" CLINIC TYPE recieved");
     queryString = `SELECT *    FROM clinics    WHERE id = $1    LIMIT 1;`;
   }
   return pool
@@ -98,8 +98,8 @@ const getClinic = (options) => {
     queryString += `pet_types.type = $${queryParams.length}`;
   }
 
-  console.log("queryString:", queryString);
-  console.log("queryParams:", queryParams);
+  // console.log("queryString:", queryString);
+  // console.log("queryParams:", queryParams);
 
   return pool
     .query(queryString, queryParams)
@@ -117,7 +117,7 @@ exports.getClinic = getClinic;
 
 const getUserAppointments = (userID, type) => {
   if (type === "clinic") {
-    console.log("clinic", userID);
+    // console.log("clinic", userID);
     return pool
       .query(
         `
@@ -139,7 +139,7 @@ const getUserAppointments = (userID, type) => {
       });
   }
 
-  console.log("owner", userID);
+  // console.log("owner", userID);
   return pool
     .query(
       `
@@ -153,7 +153,7 @@ const getUserAppointments = (userID, type) => {
       [userID]
     )
     .then((res) => {
-      console.log(res.rows);
+      // console.log(res.rows);
       return res.rows;
     })
     .catch((err) => {
@@ -253,7 +253,7 @@ exports.getPetInfo = getPetInfo;
 // 9
 
 const addUser = (user) => {
-  console.log("ADD USER FUNC IS ACTIVE!", user);
+  // console.log("ADD USER FUNC IS ACTIVE!", user);
   if (user.accountType === "pet")
     return pool
       .query(
@@ -271,7 +271,7 @@ const addUser = (user) => {
         ]
       )
       .then((res) => {
-        console.log(res.rows[0]);
+        // console.log(res.rows[0]);
         return res.rows[0];
       })
       .catch((err) => {
@@ -283,7 +283,7 @@ exports.addUser = addUser;
 
 // # 10
 const removeBooking = (id) => {
-  console.log("Remove from BOOKINGS", id);
+  // console.log("Remove from BOOKINGS", id);
   return pool
     .query(`DELETE FROM appointments WHERE id =$1;`, [id])
     .then((res) => res.rows[0])
