@@ -37,7 +37,7 @@ export default function PatientAppointmentsCard() {
   
   return (
     <div className="dashboard-card">
-      <h2 class="ui header"><i aria-hidden="true" class="calendar alternate outline icon"></i><div class="content">Appointments<div class="sub header">See your appointment history</div></div></h2>
+      <h2 class="ui header dashboard-header"><i aria-hidden="true" class="calendar alternate outline icon"></i><div class="content">Appointments<div class="sub header dashboard-header">See your appointment history</div></div></h2>
       <table class="ui striped table">
         <thead>
           <tr>

@@ -11,10 +11,10 @@ const ClinicPetList = () => {
 
   return (
     <div className="dashboard-card">
-      <h2 class="ui header">
+      <h2 class="ui header dashboard-header">
         <i aria-hidden="true" class="paw icon"></i>
         <div class="content">
-          Patient Pets List<div class="sub header">See a list of animals you visit</div>
+          Patient Pets List<div class="sub header dashboard-header">See a list of animals you visit</div>
         </div>
       </h2>
       <table class="ui striped table">

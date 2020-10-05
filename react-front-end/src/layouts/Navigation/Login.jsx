@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { useAppData } from "../hooks/useAppData";
+import { useAppData } from "../../hooks/useAppData";
 
 import {
   Button,
@@ -11,8 +11,8 @@ import {
   Form,
   Checkbox,
 } from "semantic-ui-react";
-import "../layouts/Login.scss";
-import InputField from "../components/Input";
+import "./Login.scss";
+import InputField from "../../components/Input";
 
 function LoginModal(props) {
   const { getMyCredentials } = useAppData;

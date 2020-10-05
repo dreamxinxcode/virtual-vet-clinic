@@ -1,4 +1,4 @@
-@import "../../public/styles/variables.scss";
+@import "../../../public/styles/variables.scss";
 
 .login {
   &-button {
@@ -105,7 +105,7 @@
 }
 
 .image.content {
-  background: url("../layouts/Calendar/Appoinments/images/city.png") center !important;
+  background: url("../../layouts/Calendar/Appoinments/images/city.png") center !important;
 }
 
 .actions {

@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
-import "../layouts/Navigation.scss";
+import "./Navigation.scss";
 import LoginModal from "./Login";
 import Logout from "./Logout";
+import DashboardButton from "./DashboardButton";
+
 // import pkg from "semantic-ui-react/package.json";
 
 const styleLink = document.createElement("link");
@@ -46,7 +48,10 @@ export default function Navigation() {
       </Link>
       <Link to="/signup"></Link>
       {logStatus ? (
-        <Logout setLogStatus={setLogStatus} />
+        <>
+          <DashboardButton />
+          <Logout setLogStatus={setLogStatus} />
+        </>
       ) : (
         <LoginModal setLogStatus={setLogStatus} />
       )}
