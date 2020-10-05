@@ -26,7 +26,7 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState("");
-  const [bottom, setBottom] = useState('none');
+  const [bottom, setBottom] = useState("");
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -80,14 +80,13 @@ const Chat = () => {
       setIsHidden("hidden");
     }
 
-    if (window.location.href.endsWith('appointment')) {
-      if (bottom === 'none') {
-        setBottom('chat-bottom');
+    if (window.location.href.endsWith("appointment")) {
+      if (bottom === "none") {
+        setBottom("chat-bottom");
       } else {
-        setBottom('none');
+        setBottom("none");
       }
     }
-
   };
 
   return (
@@ -147,7 +146,7 @@ const Chat = () => {
           <g></g>
         </svg>
       </button>
-      <div className={`chat-container ` + isHidden + ' ' + bottom + ' ' }>
+      <div className={`chat-container ` + isHidden + " " + bottom + " "}>
         <InfoBar room={room} />
         <h1 className="chat-header"> Welcome to chat! {response}</h1>
         <Messages messages={messages} name={"TIMA"} />

@@ -31,11 +31,11 @@ const getUserWithEmail = (email, type) => {
     `,
       [email]
     )
-    .then((res) => {
+    .then(res => {
       console.log(res.rows[0]);
       return res.rows[0];
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -56,10 +56,10 @@ const getUserWithId = (id, type) => {
   }
   return pool
     .query(queryString, [id])
-    .then((res) => {
+    .then(res => {
       return res.rows[0];
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -67,7 +67,7 @@ const getUserWithId = (id, type) => {
 exports.getUserWithId = getUserWithId;
 
 // 3
-const getClinic = (options) => {
+const getClinic = options => {
   const queryParams = [];
   let queryString = `
   SELECT DISTINCT clinics.* FROM pet_types
@@ -103,10 +103,10 @@ const getClinic = (options) => {
 
   return pool
     .query(queryString, queryParams)
-    .then((res) => {
+    .then(res => {
       return res.rows;
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -156,7 +156,7 @@ const getUserAppointments = (userID, type) => {
       console.log(res.rows);
       return res.rows;
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -176,7 +176,7 @@ const getClinicBookings = (id, date) => {
       // console.log("returned query on DB for clinic bookings found", res.rows);
       return res.rows;
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -204,7 +204,7 @@ const addClinicBooking = (clinic_id, pet_id, date_apt, time_id) => {
       // console.log(res.rows[0]);
       return res.rows[0];
     })
-    .catch((err) => {
+    .catch(err => {
       console.error("query error", err.stack);
       return null;
     });
@@ -213,7 +213,7 @@ exports.addClinicBooking = addClinicBooking;
 
 // 7
 
-const getPetsForClinic = (clinicID) => {
+const getPetsForClinic = clinicID => {
   return pool
     .query(
       `
@@ -245,7 +245,39 @@ const getPetInfo = (petID) => {
   `,
       [petID]
     )
-    .then((res) => res.rows)
-    .catch((e) => e);
+    .then(res => res.rows)
+    .catch(e => e);
 };
 exports.getPetInfo = getPetInfo;
+
+// 9
+
+const addUser = user => {
+  console.log("ADD USER FUNC IS ACTIVE!", user);
+  if (user.accountType === "pet")
+    return pool
+      .query(
+        `
+    INSERT INTO owners(first_name, last_name, telephone, email, password)
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING *;
+  `,
+        [
+          user.first_name,
+          user.last_name,
+          user.telephone,
+          user.email,
+          user.password,
+        ]
+      )
+      .then(res => {
+        console.log(res.rows[0]);
+        return res.rows[0];
+      })
+      .catch(err => {
+        console.error("query error", err.stack);
+        return null;
+      });
+};
+exports.addUser = addUser;
+

@@ -9,6 +9,7 @@ import {
   Checkbox,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [accountType, setAccountType] = React.useState("pet");
@@ -20,16 +21,31 @@ const Register = () => {
   const [phone, setPhone] = React.useState("");
   const [password, setPassword] = React.useState("");
 
-  // const validateCredentials = () => {
-  //   return email.length > 0 && password.length > 0;
-  // };
+  const validateCredentials = () => {
+    return email.length > 0 && password.length > 0;
+  };
 
-  // const handleSubmit = () => {
-  //   const user = {
-  //     email: email,
-  //     password: password,
-  //     type: type,
-  //   };
+  const handleSubmit = () => {
+    const user = {
+      first_name: firstName,
+      last_name: lastName,
+      telephone: phone,
+      email: email,
+      password: password,
+      accountType: accountType,
+    };
+
+    axios
+      .post("/users/signup", user)
+      .then(res => {
+        // localStorage.setItem("userName", res[0].data.user.email);
+        // props.setLogStatus(true);
+        console.log("RECIEVED user details from BE", res[0].data);
+      })
+      .catch(error => {
+        console.log("registration error", error);
+      });
+  };
 
   return (
     <div className="wrapper">
@@ -304,8 +320,8 @@ const Register = () => {
               labelPosition="right"
               icon="checkmark"
               positive
-              // onClick={handleSubmit}
-              // disabled={!validateCredentials()}
+              onClick={handleSubmit}
+              disabled={!validateCredentials()}
             />
           </div>
         </div>
