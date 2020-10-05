@@ -4,8 +4,11 @@ VALUES
     (1, 'Happy Pet', 'Vancouver', '123 Dawson street', '543-432-3211', 'contact@vancouvervetclinic.com', '#RR4tr54ff34$#r', 'https://static.bookinghealth.com/uploads/clinics/gallery/m/9247-Clinic-for-Plastic-and-Aesthetic-Surgery-Cologne_800.jpg'),
     (2, 'Best For Pets', 'Calgary', '547 Vet street', '873-742-5671', 'contact@victoriavetclinic.com', '#RR4tr54ff34$#r', 'https://karandash.ua/site/assets/files/46097/img_0281.jpg'),
     (3, 'Pet Life Care', 'Victoria', '12 Marine Dr.', '743-432-3541', 'contact@calgaryvetclinic.com', '#RR4tr54ff34$#r', 'https://i.pinimg.com/originals/3f/23/a4/3f23a4402227b7e3733a9a1137d852c2.jpg'),
-    (4, 'Fauna Vet Clinic', 'Toronto', '3 Ave. - 145', '763-352-3211', 'contact@torontovetclinic.com', '#RR4tr54ff34$#r', 'https://signaturesmilez.ca/wp-content/uploads/2020/06/IMG_1236.jpg');
-
+    (4, 'Fauna Vet Clinic', 'Toronto', '3 Ave. - 145', '763-352-3211', 'contact@torontovetclinic.com', '#RR4tr54ff34$#r', 'https://signaturesmilez.ca/wp-content/uploads/2020/06/IMG_1236.jpg'),
+    (10, 'For Your Pet', 'Toronto', '999 Cat street', '123-312-2311', 'contact@bbar.com', '#RR4tr54ff34$#r', 'https://www.beautybarclinics.com/wp-content/uploads/IMG_20041-800x600.jpg'),
+    (11, 'Vancouver Pets', 'Vancouver', '989 Plumb street', '753-892-9911', 'contact@vetar.com', '#RR4tr54ff34$#r', 'https://i.pinimg.com/originals/e4/b6/ef/e4b6eff574286cb748ea5c1ca4e24a51.jpg'),
+    (12, 'Parrot Vet', 'Vancouver', '333 Parrot street', '573-132-9988', 'contact@someemael.com', '#RR4tr54ff34$#r', 'https://static.bookinghealth.com/uploads/clinics/gallery/m/9408-4305-Kontakt_web.jpg'),
+    (13, 'Best Vet For Best Pet', 'Victoria', '533 Foster Ave.', '153-342-9344', 'cdfsaefct@gmail.com', '#RR4tr54ff34$#r', 'https://s3-media0.fl.yelpcdn.com/bphoto/AeYdp656gB1qpmmF7AnQjQ/o.jpg');
 INSERT INTO pet_types
     (id, type)
 VALUES
@@ -33,7 +36,18 @@ VALUES
     (12, 3, 5),
     (14, 4, 2),
     (15, 4, 3),
-    (16, 4, 4)
+    (16, 4, 4),
+    (20, 10, 1),
+    (21, 10, 2),
+    (22, 10, 3),
+    (23, 11, 3),
+    (24, 11, 4),
+    (25, 11, 5),
+    (26, 12, 1),
+    (27, 12, 2),
+    (28, 12, 3),
+    (29, 13, 4),
+    (30, 13, 5)
 ;
 
 
