@@ -110,12 +110,13 @@ module.exports = function (router, database) {
       .catch((e) => e);
   });
 
+  // 7
+  router.get("/booking/delete/:id", (req, res) => {
+    const id = req.params.id;
+    console.log("DELETE APPOINTMENT", req.body);
+    req.body.user_id = req.session.userId;
+    database.removeBooking(id);
+  });
+
   return router;
 };
-
-// 7
-router.post("/booking/delete", (req, res) => {
-  console.log("DELETE FROM FAVS", req.body);
-  req.body.user_id = req.session.userId;
-  database.removeBooking(req.body);
-});
