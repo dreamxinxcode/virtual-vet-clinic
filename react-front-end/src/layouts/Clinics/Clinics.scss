@@ -20,9 +20,9 @@
 
 $color-box-1: #0f9bc0;
 $color-box-2: rgba(34, 65, 154, 0.8);
-$color-box-3: $medical-yellow;
+$color-box-3: rgb(117, 52, 122);
 $color-box-4: #e660e3;
-$color-box-5: $medical-dark-blue;
+$color-box-5: rgb(83, 42, 116);
 $color-box-6: #9b1308;
 $color-box-7: #de8b3e;
 
@@ -476,10 +476,9 @@ $color-box-7: #de8b3e;
   transition: all 0.2s ease-in-out;
 }
 .cards__list svg {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2rem;
+  height: 2rem;
   fill: white;
-  margin-right: 0.5rem;
   transition: all 0.2s ease-in-out;
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 }

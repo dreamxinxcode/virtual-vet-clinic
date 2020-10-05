@@ -8,6 +8,7 @@ import {
   Form,
   Checkbox,
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [accountType, setAccountType] = React.useState("pet");
@@ -291,15 +292,22 @@ const Register = () => {
             </>
           )}
 
-          <Button
-            className="signupBtn"
-            content="SIGNUP"
-            labelPosition="right"
-            icon="checkmark"
-            positive
-            // onClick={handleSubmit}
-            // disabled={!validateCredentials()}
-          />
+          <div className="buttons">
+            <Link to="/">
+              <Button className="cancelBtn" color="red">
+                CANCEL
+              </Button>
+            </Link>
+            <Button
+              className="signupBtn"
+              content="SIGNUP"
+              labelPosition="right"
+              icon="checkmark"
+              positive
+              // onClick={handleSubmit}
+              // disabled={!validateCredentials()}
+            />
+          </div>
         </div>
       </div>
     </div>
