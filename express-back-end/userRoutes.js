@@ -4,12 +4,12 @@ module.exports = function (router, database) {
   // Create a new user
   router.post("/signup", (req, res) => {
     const user = req.body;
-    // user.password = bcrypt.hashSync(user.password, 12);
+    user.password = bcrypt.hashSync(user.password, 12);
     // console.log("password:", user.password);
-    console.log("USER OBJ SIGNUP!", user);
+    // console.log("USER OBJ SIGNUP!", user);
     database
       .addUser(user)
-      .then(user => {
+      .then((user) => {
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -17,7 +17,7 @@ module.exports = function (router, database) {
         req.session.userId = user.id;
         res.send("🤗");
       })
-      .catch(e => res.send(e));
+      .catch((e) => res.send(e));
   });
 
   /**
@@ -26,12 +26,13 @@ module.exports = function (router, database) {
    * @param {String} password encrypted
    */
   const login = function (email, type, password) {
-    return database.getUserWithEmail(email, type).then(user => {
-      // if (bcrypt.compareSync(password, user.password)) {
-      //   return user;
-      // }
-
-      return user;
+    const the_password = bcrypt.hashSync(password, 12);
+    console.log(the_password);
+    return database.getUserWithEmail(email, type).then((user) => {
+      if (bcrypt.compareSync(password, user.password)) {
+        // console.log("Passwords match ===========================");
+        return user;
+      }
     });
   };
   exports.login = login;
@@ -39,7 +40,7 @@ module.exports = function (router, database) {
   router.post("/login", (req, res) => {
     const { email, password, type } = req.body;
     login(req.body.email, req.body.type, req.body.password)
-      .then(user => {
+      .then((user) => {
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -52,7 +53,7 @@ module.exports = function (router, database) {
           type,
         });
       })
-      .catch(e => res.send(e));
+      .catch((e) => res.send(e));
   });
 
   router.post("/logout", (req, res) => {
@@ -71,7 +72,7 @@ module.exports = function (router, database) {
     }
     database
       .getUserWithId(userId, type)
-      .then(user => {
+      .then((user) => {
         if (!user) {
           res.send({ error: "no user with that id" });
           return;
@@ -82,7 +83,7 @@ module.exports = function (router, database) {
           type,
         });
       })
-      .catch(e => res.send(e));
+      .catch((e) => res.send(e));
   });
 
   return router;
