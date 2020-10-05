@@ -24,7 +24,7 @@ import TimeSlots from "./TimeSlots";
 // const SAVING = "SAVING";
 // const SHOW = "SHOW";
 
-// DUMMY DATA
+// SLOT PLACEHOLDERS
 const times = [
   { id: 9, hour: "09:00" },
   { id: 10, hour: "10:00" },
@@ -37,8 +37,6 @@ const times = [
   { id: 17, hour: "17:00" },
 ];
 
-let apislots = [11, 12, 13];
-
 export default function Appointment(props) {
   const { date, setDate } = props;
 
@@ -48,7 +46,6 @@ export default function Appointment(props) {
   const save = (date, time) => {
     const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
     const clinic_id = clinic_info.id;
-    const booking = { clinic_id, pet_id: 1, date, time };
 
     axios
       .get("users/me")
@@ -64,14 +61,13 @@ export default function Appointment(props) {
       .then((res) => setTime(""));
   };
 
-  const slots = times.map((slot) => {
+  let slots = times.map((slot) => {
     return (
       <TimeSlots
         key={slot.id}
         value={slot.id}
         hour={slot.hour}
         disabled={currentSlots.find((id) => slot.id === id) ? true : null}
-        // disabled={slot.disabled}
         setTime={setTime}
       />
     );
@@ -79,7 +75,8 @@ export default function Appointment(props) {
 
   const hourExtracter = (hourArr) => {
     const bookedHours = [];
-    for (const key of hourArr) bookedHours.push(key.hour);
+    for (const key of hourArr) bookedHours.push(key.time_id);
+    // console.log("booked hours Array", bookedHours);
     return bookedHours;
   };
 
@@ -93,13 +90,8 @@ export default function Appointment(props) {
     axios
       .get(`http://localhost:8080/api/bookings/${clinic_id}/${data}`)
       .then((res) => {
-        // const slots = hourExtracter(res.data.times);
-        // setCurrentSlots([...slots]);
-        console.log(
-          "query from BE on clinic bookings",
-          Date.parse(res.data.bookings)
-        );
-        // console.log("CurrentSlots Updated", currentSlots);
+        const slots = hourExtracter(res.data.bookings);
+        setCurrentSlots([...slots]);
       });
   }, [date]);
 
