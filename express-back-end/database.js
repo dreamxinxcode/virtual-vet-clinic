@@ -48,15 +48,17 @@ const getUserWithId = (id, type) => {
   let queryString;
   // console.log("DB query with ID, and type", id, type);
   if (type === "pet") {
-    // console.log("PET TYPE recieved");
-    queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
+    console.log("PET TYPE recieved");
+    queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners LEFT JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
   } else if (type === "clinic") {
     // console.log(" CLINIC TYPE recieved");
     queryString = `SELECT *    FROM clinics    WHERE id = $1    LIMIT 1;`;
   }
+  console.log("GET USER WITH ID, query string:", queryString, id);
   return pool
     .query(queryString, [id])
     .then((res) => {
+      console.log("res.rows[0]", res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
