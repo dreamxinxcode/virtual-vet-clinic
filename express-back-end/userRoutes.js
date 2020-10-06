@@ -30,7 +30,7 @@ module.exports = function (router, database) {
     console.log(the_password);
     return database.getUserWithEmail(email, type).then((user) => {
       if (bcrypt.compareSync(password, user.password)) {
-        // console.log("Passwords match ===========================");
+        console.log("Passwords match ===========================");
         return user;
       }
     });
@@ -39,6 +39,7 @@ module.exports = function (router, database) {
 
   router.post("/login", (req, res) => {
     const { email, password, type } = req.body;
+    console.log("LOGIN :", req.body);
     login(req.body.email, req.body.type, req.body.password)
       .then((user) => {
         if (!user) {
@@ -82,6 +83,23 @@ module.exports = function (router, database) {
           user,
           type,
         });
+      })
+      .catch((e) => res.send(e));
+  });
+
+  // Create a new pet
+  router.post("/addpet", (req, res) => {
+    const pet = req.body;
+    pet.userId = req.session.userId;
+    console.log("PET OBJ SIGNUP!", pet);
+    database
+      .addPet(pet)
+      .then((pet) => {
+        if (!pet) {
+          res.send({ error: "error" });
+          return;
+        }
+        res.send(pet);
       })
       .catch((e) => res.send(e));
   });

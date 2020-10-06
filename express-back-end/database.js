@@ -32,7 +32,7 @@ const getUserWithEmail = (email, type) => {
       [email]
     )
     .then((res) => {
-      // console.log(res.rows[0]);
+      console.log("SENDING MY INFO FROM DB:", res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
@@ -49,7 +49,7 @@ const getUserWithId = (id, type) => {
   // console.log("DB query with ID, and type", id, type);
   if (type === "pet") {
     // console.log("PET TYPE recieved");
-    queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
+    queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners LEFT JOIN pets ON pets.id = owners.id WHERE owners.id = $1 LIMIT 1;`;
   } else if (type === "clinic") {
     // console.log(" CLINIC TYPE recieved");
     queryString = `SELECT *    FROM clinics    WHERE id = $1    LIMIT 1;`;
@@ -293,3 +293,35 @@ const removeBooking = (id) => {
     });
 };
 exports.removeBooking = removeBooking;
+
+// 11
+const addPet = (pet) => {
+  return pool
+    .query(
+      `
+    INSERT INTO pets(type_id, owner_id, name, age, gender, breed, weight, info, image )
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING *;
+  `,
+      [
+        pet.type_id,
+        pet.userId,
+        pet.name,
+        pet.age,
+        pet.gender,
+        pet.breed,
+        pet.weight,
+        pet.info,
+        pet.image,
+      ]
+    )
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.addPet = addPet;
