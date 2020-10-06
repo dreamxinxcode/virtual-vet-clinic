@@ -2,9 +2,16 @@
 #controls {
   display: flex;
   justify-content: center;
+  height: 15%;
   width: 100%;
   position: absolute;
   bottom: 0;
+  opacity: 0;
+  transition: .5s ease-in-out;
+}
+
+#controls:hover {
+  opacity: 1;
 }
 
 #hangup-button {
@@ -29,4 +36,8 @@
 #hangup-svg {
   height: 3rem;
   width: auto;
+}
+
+#controls:hover > #hangup-button {
+  margin-top: 0;
 }

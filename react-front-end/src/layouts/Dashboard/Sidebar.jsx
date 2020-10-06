@@ -4,7 +4,12 @@ import JoinButton from './JoinButton';
 
 export default function Sidebar(props) {
   let user;
-  props.name.name ? user = props.name.name : user = `${props.name.first_name} ${props.name.last_name}` 
+  
+  if (!props.userInfo.first_name) {
+    user = props.userInfo.name;
+  } else {
+    user = `${props.userInfo.first_name} ${props.userInfo.last_name}`;
+  } 
   
   return (
     <div id="sidebar">
