@@ -14,10 +14,8 @@ const ENDPOINT = "http://localhost:8080";
 let socket;
 
 // DUMMY MESSAGES
-const messagess = ["Hello world", "Nice to meet you"];
-const location = `/chat?name=AAA&room=myRoom`;
 let name = "TTT";
-let room = "myRoom";
+let room = "Chat";
 
 // const users = {};
 
@@ -26,11 +24,11 @@ const Chat = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState("");
-  const [bottom, setBottom] = useState('');
+  const [bottom, setBottom] = useState("");
 
   useEffect(() => {
     socket = io(ENDPOINT);
-    socket.on("FromAPI", data => {
+    socket.on("FromAPI", (data) => {
       setResponse(data);
     });
   }, []);
@@ -44,7 +42,7 @@ const Chat = () => {
     // setName(name)
 
     name = localStorage.getItem("userName");
-    socket.emit("join", { name, room }, error => {
+    socket.emit("join", { name, room }, (error) => {
       if (error) {
         alert(error);
       }
@@ -53,8 +51,8 @@ const Chat = () => {
   // }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on("message", message => {
-      setMessages(messages => [...messages, message]);
+    socket.on("message", (message) => {
+      setMessages((messages) => [...messages, message]);
     });
 
     // socket.on("roomData", ({ users }) => {
@@ -63,7 +61,7 @@ const Chat = () => {
   }, []);
 
   // SEND MESSAGE
-  const sendMessage = event => {
+  const sendMessage = (event) => {
     event.preventDefault();
 
     if (message) {

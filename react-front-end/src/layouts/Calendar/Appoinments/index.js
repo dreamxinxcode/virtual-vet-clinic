@@ -97,7 +97,6 @@ export default function Appointment(props) {
   useEffect(() => {
     const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
     const clinic_id = clinic_info.id;
-    const date_str = date.getTime();
     console.log("ID", clinic_id);
     const data = date.toISOString();
     console.log("data", data);

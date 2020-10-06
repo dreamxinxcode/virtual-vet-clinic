@@ -5,7 +5,7 @@ import "./DashboardButton.scss";
 const DashboardButton = () => {
   return (
     <Link to="/dashboard">
-      <button class="dsh-button">
+      <button className="dsh-button">
         <svg
           className="svg-dashboard"
           height="512pt"
