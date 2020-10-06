@@ -131,7 +131,7 @@ export default function Appointment(props) {
 
   // CANCEL MY APPOINTMENT
   const cancelBooking = (id) => {
-    console.log("Cancel booking has been activated");
+    // console.log("Cancel booking has been activated", id);
     axios
       .get(`http://localhost:8080/api/booking/delete/${id}`)
       .then((res) => console.log("deleted?", res.data));
