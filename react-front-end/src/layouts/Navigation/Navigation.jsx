@@ -20,7 +20,7 @@ export default function Navigation() {
   const [userI, setUserI] = useState("");
 
   useEffect(() => {
-    axios.get("/users/me").then(res => {
+    axios.get("/users/me").then((res) => {
       if (res.data.user) {
         let name = res.data.user.first_name;
         setUserI(name);
@@ -57,9 +57,6 @@ export default function Navigation() {
       <Link to="/signup"></Link>
       {logStatus ? (
         <>
-          <Link to="/addpet">
-            <button>Add a new pet!</button>
-          </Link>
           <span className="welcome">
             <span className="welcome-name">{userI}</span>, welcome back!
           </span>

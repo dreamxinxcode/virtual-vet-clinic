@@ -60,13 +60,14 @@ module.exports = function (router, database) {
   router.post("/logout", (req, res) => {
     req.session.userId = null;
     req.session.userType = null;
-    res.send({});
+    res.send("OK");
     res.redirect("/");
   });
 
   router.get("/me", (req, res) => {
     const userId = req.session.userId;
     const type = req.session.userType;
+    console.log("users/me", type, userId);
     if (!userId) {
       res.send({ message: "not logged in" });
       return;
@@ -78,7 +79,7 @@ module.exports = function (router, database) {
           res.send({ error: "no user with that id" });
           return;
         }
-
+        console.log("USER FOUND, sending to FE", user, type);
         res.send({
           user,
           type,

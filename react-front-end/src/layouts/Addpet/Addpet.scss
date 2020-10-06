@@ -47,7 +47,8 @@
   display: flex;
 }
 
-#typeID {
+#typeID,
+#gender {
   margin: 0;
   max-width: 100%;
   -webkit-box-flex: 1;
@@ -65,4 +66,22 @@
   border-radius: 0.28571429rem;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   box-shadow: none;
+}
+
+.main-add {
+  padding: 2rem;
+  & select {
+    width: 100%;
+  }
+}
+.addBtn {
+  width: 100%;
+  height: 3rem;
+}
+.cancelBtn2 {
+  height: 3rem;
+}
+.buttons2 {
+  display: flex;
+  justify-content: flex-end;
 }

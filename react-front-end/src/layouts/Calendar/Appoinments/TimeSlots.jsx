@@ -1,5 +1,6 @@
 import React from "react";
 import "./TimeSlots.scss";
+import CancelBooking from "./CancelBooking";
 
 function TimeSlots(props) {
   const { value, hour, setTime, mybooking, cancelBooking, bookingId } = props;
@@ -15,7 +16,7 @@ function TimeSlots(props) {
         <br />
       </button>
       <div className="btnContainer">
-        {bookingId ? (
+        {/* {bookingId ? (
           <button
             className="close-booking"
             onClick={() => {
@@ -41,7 +42,8 @@ function TimeSlots(props) {
               </g>
             </svg>
           </button>
-        ) : null}
+        ) : null} */}
+        {bookingId ? <CancelBooking cancelBooking={cancelBooking} /> : null}
       </div>
     </>
   );

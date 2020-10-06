@@ -21,9 +21,9 @@ function Addpet() {
   const [info, setInfo] = React.useState("");
   const [image, setImage] = React.useState("");
 
-  // const validateCredentials = () => {
-  //   return email.length > 0 && password.length > 0;
-  // };
+  const validateCredentials = () => {
+    return name.length > 0 && age.length > 0 && gender && breed.length > 0;
+  };
 
   const handleSubmit = () => {
     const pet = {
@@ -51,100 +51,108 @@ function Addpet() {
   };
 
   return (
-    <div className="wrapper">
-      <div className="register-form">
-        <h2 className="signup-header">Fill the register form</h2>
-        <div className="signupContent"></div>
-        <select
-          onChange={(e) => setTypeID(Number(e.target.value))}
-          name="typeID"
-          id="typeID"
-        >
-          <option value="1">Bird</option>
-          <option value="2">Cat</option>
-          <option value="3">Dog</option>
-          <option value="4">Fish</option>
-          <option value="5">Reptile</option>
-        </select>
+    <div className="wrapper wrapper2">
+      <div className="register-form form2">
+        <h2 className="signup-header">Information about Pet</h2>
+        <div className="main-add">
+          <select
+            onChange={(e) => setTypeID(Number(e.target.value))}
+            name="typeID"
+            id="typeID"
+          >
+            <option value="" disabled selected>
+              Select an animal type...
+            </option>
+            <option value="1">Bird</option>
+            <option value="2">Cat</option>
+            <option value="3">Dog</option>
+            <option value="4">Fish</option>
+            <option value="5">Reptile</option>
+          </select>
 
-        <Form.Input
-          fluid
-          icon="male"
-          iconPosition="left"
-          placeholder="Name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          name="name"
-        />
-        <Form.Input
-          fluid
-          icon="male"
-          iconPosition="left"
-          placeholder="Age"
-          onChange={(e) => setAge(e.target.value)}
-          value={age}
-          name="age"
-        />
-        <Form.Input
-          fluid
-          icon="user"
-          iconPosition="left"
-          placeholder="Gender"
-          onChange={(e) => setGender(e.target.value)}
-          value={gender}
-          name="gender"
-        />
-        <Form.Input
-          fluid
-          icon="phone"
-          iconPosition="left"
-          placeholder="Breed"
-          onChange={(e) => setBreed(e.target.value)}
-          value={breed}
-          name="breed"
-        />
-        <Form.Input
-          fluid
-          icon="lock"
-          iconPosition="left"
-          placeholder="Weight"
-          onChange={(e) => setWeight(e.target.value)}
-          value={weight}
-          name="weight"
-        />
-        <Form.Input
-          fluid
-          icon="lock"
-          iconPosition="left"
-          placeholder="Info"
-          onChange={(e) => setInfo(e.target.value)}
-          value={info}
-          name="info"
-        />
-        <Form.Input
-          fluid
-          icon="lock"
-          iconPosition="left"
-          placeholder="Image"
-          onChange={(e) => setImage(e.target.value)}
-          value={image}
-          name="image"
-        />
-        <div className="buttons">
-          <Link to="/">
-            <Button className="cancelBtn" color="red">
-              CANCEL
-            </Button>
-          </Link>
-          <Button
-            className="signupBtn"
-            content="SIGNUP"
-            labelPosition="right"
-            icon="checkmark"
-            positive
-            onClick={handleSubmit}
-            // disabled={!validateCredentials()}
+          <Form.Input
+            fluid
+            icon="eye"
+            iconPosition="left"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+            name="name"
           />
+          <Form.Input
+            fluid
+            icon="clock"
+            iconPosition="left"
+            placeholder="Age"
+            onChange={(e) => setAge(e.target.value)}
+            value={age}
+            name="age"
+          />
+          <select
+            onChange={(e) => setGender(e.target.value)}
+            name="gender"
+            id="gender"
+          >
+            <option value="" disabled selected>
+              Select a gender...
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <Form.Input
+            fluid
+            icon="bug"
+            iconPosition="left"
+            placeholder="Breed"
+            onChange={(e) => setBreed(e.target.value)}
+            value={breed}
+            name="breed"
+          />
+          <Form.Input
+            fluid
+            icon="balance scale"
+            iconPosition="left"
+            placeholder="Weight"
+            onChange={(e) => setWeight(e.target.value)}
+            value={weight}
+            name="weight"
+          />
+          <Form.Input
+            fluid
+            icon="info circle"
+            iconPosition="left"
+            placeholder="Info"
+            onChange={(e) => setInfo(e.target.value)}
+            value={info}
+            name="info"
+          />
+          <Form.Input
+            fluid
+            icon="images"
+            iconPosition="left"
+            placeholder="Image"
+            onChange={(e) => setImage(e.target.value)}
+            value={image}
+            name="image"
+          />
+          <div className="buttons buttons2">
+            <Link to="/dashboard">
+              <Button className="cancelBtn cancelBtn2" color="red">
+                CANCEL
+              </Button>
+            </Link>
+            <Link to="/dashboard">
+              <Button
+                className="signupBtn addBtn"
+                content="ADD A PET"
+                labelPosition="right"
+                icon="checkmark"
+                positive
+                onClick={handleSubmit}
+                disabled={!validateCredentials()}
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

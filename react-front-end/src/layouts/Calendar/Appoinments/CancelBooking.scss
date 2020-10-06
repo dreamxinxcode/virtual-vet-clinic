@@ -1,0 +1,45 @@
+// .ui.button {
+//   outline: none;
+//   position: absolute;
+//   cursor: pointer;
+//   top: -24px;
+//   right: 26px;
+//   width: 27px;
+//   height: 27px;
+//   border-top-right-radius: 50%;
+//   border-bottom-left-radius: 50%;
+//   background-color: rgba(255, 0, 0, 0.678);
+//   color: #fff;
+//   border: none;
+//   font-weight: bold;
+// }
+// .ui.button svg {
+//   width: 0.7rem;
+//   height: 0.7rem;
+// }
+// .ui.button:hover {
+//   background-color: red;
+// }
+
+.close-booking {
+  outline: none;
+  position: absolute;
+  cursor: pointer;
+  top: -24px;
+  right: 26px;
+  width: 27px;
+  height: 27px;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.678);
+  color: #fff;
+  border: none;
+  font-weight: bold;
+}
+.close-booking svg {
+  width: 0.7rem;
+  height: 0.7rem;
+}
+.close-booking:hover {
+  background-color: red;
+}

@@ -22,3 +22,21 @@
 
 .card-title {
 }
+.image2 {
+  background-color: #5829bb;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image2-in {
+  cursor: pointer;
+  background: url("./ADD.png") center;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+}
