@@ -20,7 +20,7 @@ export default function Dashboard() {
 
   return (
     <div id="dashboard-wrapper">
-      <Sidebar name={userInfo} />
+      <Sidebar userInfo={userInfo} />
       <div id="dashboard-container">
         <AppointmentsCard />
         <ClinicPetList />
