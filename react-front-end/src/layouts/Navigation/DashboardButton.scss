@@ -1,15 +1,16 @@
 @import "../../../public/styles/variables.scss";
 
-#logout-button {
+.dsh-button {
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   font-weight: bold;
   border: 2px solid white;
   color: white;
   background: $medical-blue;
   cursor: pointer;
-  width: 4rem;
+  width: 12rem;
   height: 4rem;
   padding: 1rem;
   transition: all 0.5s;
@@ -26,8 +27,8 @@
   }
 }
 
-.logout-svg {
-  width: 2rem;
-  height: 2rem;
+.svg-dashboard {
+  width: 1.7rem;
+  height: 1.7rem;
   transition: all 0.5s;
 }

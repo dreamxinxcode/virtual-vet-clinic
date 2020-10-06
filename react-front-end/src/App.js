@@ -5,12 +5,12 @@ import Navigation from "./layouts/Navigation/Navigation";
 import Home from "./layouts/Home";
 import myCalendar from "./layouts/Calendar/Calendar";
 import Dashboard from "./layouts/Dashboard/Dashboad";
-import Footer from './layouts/Footer';
+import Footer from "./layouts/Footer";
 import VideoCall from "./layouts/VideoCall";
 import Register from "./layouts/Register/Register";
 import Clinics from "./layouts/Clinics/Clinics";
+import Addpet from "./layouts/Addpet/Addpet";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 
 export default function App(props) {
   const [message, setMessage] = useState("Hi");
@@ -37,6 +37,7 @@ export default function App(props) {
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/appointment" exact component={VideoCall}></Route>
           <Route path="/register" exact component={Register}></Route>
+          <Route path="/addpet" exact component={Addpet}></Route>
           <Route path="/clinics" exact component={Clinics}></Route>
         </Switch>
 

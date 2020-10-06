@@ -67,8 +67,8 @@ export default function Appointment(props) {
   // SET PET ID
   useEffect(() => {
     axios.get("users/me").then((res) => {
+      console.log("SETTING PET ID = ", res.data.user);
       setPetID(res.data.user.pets_id);
-      console.log("SETTING PET ID = ", res.data.user.pets_id);
     });
   }, []);
 

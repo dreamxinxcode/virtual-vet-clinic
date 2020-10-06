@@ -36,9 +36,10 @@ function LoginModal(props) {
 
     // Promise.all([axios.post("/users/login", user), axios.get("/users/me")])
     Promise.all([axios.post("/users/login", user)])
-      .then((res) => {
+      .then(res => {
         localStorage.setItem("userName", res[0].data.user.email);
         props.setLogStatus(true);
+        window.location.reload();
         console.log(
           "RECIEVED user details from BE",
           res[0].data.user,

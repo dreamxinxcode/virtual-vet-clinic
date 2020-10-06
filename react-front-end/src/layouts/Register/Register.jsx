@@ -314,15 +314,17 @@ const Register = () => {
                 CANCEL
               </Button>
             </Link>
-            <Button
-              className="signupBtn"
-              content="SIGNUP"
-              labelPosition="right"
-              icon="checkmark"
-              positive
-              onClick={handleSubmit}
-              disabled={!validateCredentials()}
-            />
+            <Link to="/">
+              <Button
+                className="signupBtn"
+                content="SIGNUP"
+                labelPosition="right"
+                icon="checkmark"
+                positive
+                onClick={handleSubmit}
+                disabled={!validateCredentials()}
+              />
+            </Link>
           </div>
         </div>
       </div>
