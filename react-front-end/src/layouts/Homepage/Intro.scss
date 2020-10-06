@@ -1,4 +1,4 @@
-@import '../../../public/styles/variables.scss';
+@import "../../../public/styles/variables.scss";
 
 #intro {
   height: 70vh;
@@ -32,5 +32,6 @@
 }
 
 #intro button {
-  margin: .5rem;
+  // width: 50%;
+  margin: 0.5rem;
 }

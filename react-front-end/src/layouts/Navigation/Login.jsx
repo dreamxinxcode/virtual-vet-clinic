@@ -39,6 +39,7 @@ function LoginModal(props) {
       .then((res) => {
         localStorage.setItem("userName", res[0].data.user.email);
         props.setLogStatus(true);
+        window.location.reload();
         console.log(
           "RECIEVED user details from BE",
           res[0].data.user,
@@ -71,7 +72,7 @@ function LoginModal(props) {
           <svg
             className="login-accImage"
             id="Capa_1"
-            enable-background="new 0 0 512 512"
+            enableBackground="new 0 0 512 512"
             height="512"
             viewBox="0 0 512 512"
             width="512"

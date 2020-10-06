@@ -1,15 +1,33 @@
-@import '../../../public/styles/variables.scss';
+@import "../../../public/styles/variables.scss";
 
 #logout-button {
-  color: #fff;
-  padding: .6rem;
-  background-color: $medical-blue;
-  font-family: 'Poppins';
-  font-weight: 600;
-  transition: 0.6s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 2px solid white;
+  color: white;
+  background: $medical-blue;
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  transition: all 0.5s;
+  border-radius: 10px;
+  outline: none;
+
+  &:hover {
+    background: white;
+    transition: all 0.5s;
+    color: $medical-blue;
+    svg {
+      fill: $medical-blue;
+    }
+  }
 }
 
-#logout-button:hover {
-  background-color: #fff;
-  color: $medical-blue;
+.logout-svg {
+  width: 2rem;
+  height: 2rem;
+  transition: all 0.5s;
 }

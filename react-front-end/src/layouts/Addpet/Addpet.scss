@@ -1,0 +1,87 @@
+@import "../../../public/styles/variables.scss";
+.register-form {
+  background-color: rgba(255, 255, 255, 0.753);
+  border: 2px solid $medical-blue;
+  border-radius: 10px;
+  display: flex;
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  flex-direction: column;
+}
+.ui.fluid.left.icon.input {
+  margin: 10px 0;
+}
+.wrapper {
+  background: url("../Register/signup.png") no-repeat center;
+  background-size: contain;
+}
+
+.signupBtn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 !important;
+}
+.cancelBtn {
+  height: 3.5rem;
+}
+
+.signup-header {
+  background-color: $medical-blue;
+  color: #fff;
+  padding: 1rem;
+}
+
+.signupContent {
+  padding: 2rem;
+}
+.login-accImage2 {
+  width: 16rem;
+  height: 20rem;
+  padding: 2rem;
+  border-radius: 10px;
+}
+.buttons {
+  margin-top: 3rem;
+  display: flex;
+}
+
+#typeID,
+#gender {
+  margin: 0;
+  max-width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  outline: 0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 0.28571429rem;
+  transition: box-shadow 0.1s ease, border-color 0.1s ease;
+  box-shadow: none;
+}
+
+.main-add {
+  padding: 2rem;
+  & select {
+    width: 100%;
+  }
+}
+.addBtn {
+  width: 100%;
+  height: 3rem;
+}
+.cancelBtn2 {
+  height: 3rem;
+}
+.buttons2 {
+  display: flex;
+  justify-content: flex-end;
+}

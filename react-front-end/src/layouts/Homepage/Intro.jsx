@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Intro.scss";
 import Search from "../Search/Search";
 import { Link } from "react-router-dom";
 
 export default function Intro() {
-  
+  const [logStatus, setLogStatus] = useState(false);
+
+  useEffect(() => {
+    axios.get("/users/me").then(res => {
+      if (res.data.user) setLogStatus(true);
+    });
+  }, []);
+
   return (
     <div id="intro">
       <div id="intro-area">
@@ -13,13 +21,24 @@ export default function Intro() {
           amount of patients they see at one time. Our service provides a safe
           and affordable alternative to in-person vet visits.
         </p>
-        <a href="#search-form">
-          <button className="ui purple button">Find a vet</button>
-        </a>
 
-        <Link to="/register">
-          <button className="ui inverted purple button">Sign up</button>
-        </Link>
+        {logStatus ? (
+          <>
+            <a href="#search-form">
+              <button className="ui purple button">Find a vet</button>
+            </a>
+          </>
+        ) : (
+          <>
+            <a href="#search-form">
+              <button className="ui purple button">Find a vet</button>
+            </a>
+
+            <Link to="/register">
+              <button className="ui inverted purple button">Sign up</button>
+            </Link>
+          </>
+        )}
       </div>
       <svg
         data-aos="fade-right"

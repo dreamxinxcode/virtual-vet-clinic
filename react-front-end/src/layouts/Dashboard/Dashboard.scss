@@ -9,19 +9,34 @@
 }
 
 .dashboard-header {
-  background-color: #5829BB;
+  background-color: #5829bb;
   color: #f2f3f4 !important;
   padding: 1rem !important;
 }
 
-
-
 .dashboard-card {
   border-radius: 10px;
-  box-shadow: 0 0 6px 2px rgba(0,0,0,.1);
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
   margin: 3rem;
 }
 
 .card-title {
-
+}
+.image2 {
+  background-color: #5829bb;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image2-in {
+  cursor: pointer;
+  background: url("./ADD.png") center;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
 }

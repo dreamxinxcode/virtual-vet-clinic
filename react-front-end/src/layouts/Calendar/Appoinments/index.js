@@ -2,27 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import "./styles.scss";
-// import Confirm from "./Confirm";
-import Empty from "./Empty";
-// import Error from "./Error";
 import Form from "./Form";
-// import Header from "./Header";
-import Show from "./Show";
-// import Status from "./Status";
 import TimeSlots from "./TimeSlots";
-
-// // import useVisualMode from "hooks/useVisualMode";
-
-// identifiers to switch to any mode
-// const CONFIRM = "CONFIRM";
-// const CREATE = "CREATE";
-// const DELETE = "DELETE";
-// const EDIT = "EDIT";
-// const ERROR_DELETE = "ERROR_DELETE";
-// const ERROR_SAVE = "ERROR_SAVE";
-// const EMPTY = "EMPTY";
-// const SAVING = "SAVING";
-// const SHOW = "SHOW";
 
 // SLOT PLACEHOLDERS
 const times = [
@@ -67,8 +48,8 @@ export default function Appointment(props) {
   // SET PET ID
   useEffect(() => {
     axios.get("users/me").then((res) => {
+      console.log("SETTING PET ID = ", res.data.user);
       setPetID(res.data.user.pets_id);
-      console.log("SETTING PET ID = ", res.data.user.pets_id);
     });
   }, []);
 
@@ -116,7 +97,6 @@ export default function Appointment(props) {
   useEffect(() => {
     const clinic_info = JSON.parse(localStorage.getItem("clinic_info"));
     const clinic_id = clinic_info.id;
-    const date_str = date.getTime();
     console.log("ID", clinic_id);
     const data = date.toISOString();
     console.log("data", data);
@@ -154,8 +134,6 @@ export default function Appointment(props) {
           onSave={save}
         />
       ) : null}
-
-      {/* <Show /> */}
     </div>
   );
 }

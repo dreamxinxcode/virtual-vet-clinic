@@ -37,12 +37,12 @@ const Register = () => {
 
     axios
       .post("/users/signup", user)
-      .then(res => {
+      .then((res) => {
         // localStorage.setItem("userName", res[0].data.user.email);
         // props.setLogStatus(true);
         console.log("RECIEVED user details from BE", res[0].data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("registration error", error);
       });
   };
@@ -54,7 +54,7 @@ const Register = () => {
         <div className="signupContent">
           <div
             className="login-imgBox"
-            onChange={e => setAccountType(e.target.value)}
+            onChange={(e) => setAccountType(e.target.value)}
           >
             <label className="login-label">
               <div className="login-Imgbox">Clinic</div>
@@ -67,7 +67,7 @@ const Register = () => {
               <svg
                 className="login-accImage2"
                 id="Capa_1"
-                enable-background="new 0 0 512 512"
+                enableBackground="new 0 0 512 512"
                 height="512"
                 viewBox="0 0 512 512"
                 width="512"
@@ -219,7 +219,7 @@ const Register = () => {
                 icon="male"
                 iconPosition="left"
                 placeholder="First Name"
-                onChange={e => setFirstName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 name="firstName"
               />
@@ -228,7 +228,7 @@ const Register = () => {
                 icon="male"
                 iconPosition="left"
                 placeholder="Last Name"
-                onChange={e => setLastName(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 name="lastName"
               />
@@ -237,7 +237,7 @@ const Register = () => {
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail Address"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 name="email"
               />
@@ -246,7 +246,7 @@ const Register = () => {
                 icon="phone"
                 iconPosition="left"
                 placeholder="Phone"
-                onChange={e => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value)}
                 value={phone}
                 name="phone"
               />
@@ -255,7 +255,7 @@ const Register = () => {
                 icon="lock"
                 iconPosition="left"
                 placeholder="Password"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
               />
             </>
@@ -266,7 +266,7 @@ const Register = () => {
                 icon="hospital"
                 iconPosition="left"
                 placeholder="Name"
-                onChange={e => setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                 value={name}
                 name="name"
               />
@@ -275,7 +275,7 @@ const Register = () => {
                 icon="address card"
                 iconPosition="left"
                 placeholder="Address"
-                onChange={e => setAddress(e.target.value)}
+                onChange={(e) => setAddress(e.target.value)}
                 value={address}
                 name="address"
               />
@@ -284,7 +284,7 @@ const Register = () => {
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail Address"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 name="email"
               />
@@ -293,7 +293,7 @@ const Register = () => {
                 icon="phone"
                 iconPosition="left"
                 placeholder="Phone"
-                onChange={e => setPhone(e.target.value)}
+                onChange={(e) => setPhone(e.target.value)}
                 value={phone}
                 name="phone"
               />
@@ -302,7 +302,7 @@ const Register = () => {
                 icon="lock"
                 iconPosition="left"
                 placeholder="Password"
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
               />
             </>
@@ -314,15 +314,17 @@ const Register = () => {
                 CANCEL
               </Button>
             </Link>
-            <Button
-              className="signupBtn"
-              content="SIGNUP"
-              labelPosition="right"
-              icon="checkmark"
-              positive
-              onClick={handleSubmit}
-              disabled={!validateCredentials()}
-            />
+            <Link to="/">
+              <Button
+                className="signupBtn"
+                content="SIGNUP"
+                labelPosition="right"
+                icon="checkmark"
+                positive
+                onClick={handleSubmit}
+                disabled={!validateCredentials()}
+              />
+            </Link>
           </div>
         </div>
       </div>

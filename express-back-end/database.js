@@ -32,7 +32,7 @@ const getUserWithEmail = (email, type) => {
       [email]
     )
     .then((res) => {
-      // console.log(res.rows[0]);
+      console.log("SENDING MY INFO FROM DB:", res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
@@ -295,3 +295,35 @@ const removeBooking = (id) => {
     });
 };
 exports.removeBooking = removeBooking;
+
+// 11
+const addPet = (pet) => {
+  return pool
+    .query(
+      `
+    INSERT INTO pets(type_id, owner_id, name, age, gender, breed, weight, info, image )
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING *;
+  `,
+      [
+        pet.type_id,
+        pet.userId,
+        pet.name,
+        pet.age,
+        pet.gender,
+        pet.breed,
+        pet.weight,
+        pet.info,
+        pet.image,
+      ]
+    )
+    .then((res) => {
+      console.log(res.rows[0]);
+      return res.rows[0];
+    })
+    .catch((err) => {
+      console.error("query error", err.stack);
+      return null;
+    });
+};
+exports.addPet = addPet;

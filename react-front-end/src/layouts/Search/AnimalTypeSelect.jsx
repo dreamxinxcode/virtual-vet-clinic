@@ -1,12 +1,12 @@
 import React from "react";
 import "./AnimalTypeSelect.scss";
 
-const DropdownExampleSelection = props => (
+const DropdownExampleSelection = (props) => (
   <select
     className="select-animal"
     name="cars"
     id="animals"
-    onChange={e => props.setAnimalType(e.target.value)}
+    onChange={(e) => props.setAnimalType(e.target.value)}
   >
     <option value="" disabled selected>
       Select an animal type...

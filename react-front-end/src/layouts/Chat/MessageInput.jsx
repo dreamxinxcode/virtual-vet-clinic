@@ -8,13 +8,15 @@ const MessageInput = ({ setMessage, sendMessage, message }) => (
       placeholder="Type a message..."
       value={message}
       onChange={({ target: { value } }) => setMessage(value)}
-      onKeyPress={event => (event.key === "Enter" ? sendMessage(event) : null)}
+      onKeyPress={(event) =>
+        event.key === "Enter" ? sendMessage(event) : null
+      }
     />
-    <button className="chat-sendButton" onClick={e => sendMessage(e)}>
+    <button className="chat-sendButton" onClick={(e) => sendMessage(e)}>
       <svg
         className="chat-btnSend"
         id="Capa_1"
-        enable-background="new 0 0 465.882 465.882"
+        enableBackground="new 0 0 465.882 465.882"
         height="512"
         viewBox="0 0 465.882 465.882"
         width="512"
