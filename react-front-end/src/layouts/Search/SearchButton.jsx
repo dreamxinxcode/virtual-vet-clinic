@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import Clinics from "../Clinics/Clinics";
+import React from "react";
 
 function SearchButton(props) {
   return (

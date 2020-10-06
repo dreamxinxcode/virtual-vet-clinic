@@ -1,5 +1,8 @@
 @import "../../../../public/styles/variables.scss";
 
+h3 {
+  text-align: center;
+}
 .timeBox {
   display: flex;
   justify-content: space-between;
@@ -84,16 +87,19 @@
   outline: none;
   position: absolute;
   cursor: pointer;
-  top: -24px;
-  right: 26px;
+  top: -25px !important;
+  right: 22px !important;
   width: 27px;
   height: 27px;
-  border-top-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  background-color: rgba(255, 0, 0, 0.678);
+  border-top-right-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+  background-color: rgba(255, 0, 0, 0.678) !important;
   color: #fff;
   border: none;
   font-weight: bold;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 .close-booking svg {
   width: 0.7rem;
