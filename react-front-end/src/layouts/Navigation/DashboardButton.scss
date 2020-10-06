@@ -1,0 +1,19 @@
+@import '../../../public/styles/variables.scss';
+
+#dashboard-button {
+  background-color: $medical-blue;
+  font-family: 'Poppins';
+  color: #f2f3f4;
+  border: 2px solid #fff;
+  padding: .5rem;
+}
+
+#dashboard-button:hover {
+  background-color: #fff;
+  color: $medical-blue;
+  cursor: pointer;
+}
+
+#dashboard-button:active {
+  outline: none;
+}

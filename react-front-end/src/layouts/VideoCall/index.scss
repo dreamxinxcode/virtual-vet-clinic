@@ -1,19 +1,79 @@
 #video-container {
-  height: 100%;
+  height: 80vh;
   width: 100%;
   background-color: #000;
   position: relative;
 }
 
 #user-video {
-
-}
-
-#partner-video {
   height: 100px;
   width: auto;
   position: absolute;
-  bottom: 140;
-  right: 60;
+  bottom: 15%;
+  left: 75%;
   z-index: 9999;
+}
+
+#partner-video {
+  margin: auto;
+  height: 75%;
+}
+
+#incoming-call {
+  height: 4rem;
+  -webkit-animation: breathing 1.5s ease-out infinite normal;
+    animation: breathing 1.5s ease-out infinite normal;
+}
+
+
+@-webkit-keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    transform: scale(2);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+@keyframes breathing {
+  0% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  25% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+
+  60% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  100% {
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+
+#incoming-call:hover {
+  cursor: pointer;
 }
