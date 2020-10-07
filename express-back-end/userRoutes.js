@@ -1,12 +1,10 @@
 const bcrypt = require("bcrypt");
 
 module.exports = function (router, database) {
-  // Create a new user
+  // #1
   router.post("/signup", (req, res) => {
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
-    // console.log("password:", user.password);
-    // console.log("USER OBJ SIGNUP!", user);
     database
       .addUser(user)
       .then((user) => {
@@ -25,6 +23,8 @@ module.exports = function (router, database) {
    * @param {String} email
    * @param {String} password encrypted
    */
+
+  // HELPER FUNCTION
   const login = function (email, type, password) {
     const the_password = bcrypt.hashSync(password, 12);
     console.log(the_password);
@@ -37,6 +37,7 @@ module.exports = function (router, database) {
   };
   exports.login = login;
 
+  // #2
   router.post("/login", (req, res) => {
     const { email, password, type } = req.body;
     console.log("LOGIN :", req.body);
@@ -57,6 +58,7 @@ module.exports = function (router, database) {
       .catch((e) => res.send(e));
   });
 
+  // #3
   router.post("/logout", (req, res) => {
     req.session.userId = null;
     req.session.userType = null;
@@ -64,6 +66,7 @@ module.exports = function (router, database) {
     res.redirect("/");
   });
 
+  // #4
   router.get("/me", (req, res) => {
     const userId = req.session.userId;
     const type = req.session.userType;
@@ -88,7 +91,7 @@ module.exports = function (router, database) {
       .catch((e) => res.send(e));
   });
 
-  // Create a new pet
+  // #5
   router.post("/addpet", (req, res) => {
     const pet = req.body;
     pet.userId = req.session.userId;

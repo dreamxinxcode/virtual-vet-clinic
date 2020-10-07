@@ -21,11 +21,13 @@ export default function Navigation() {
 
   useEffect(() => {
     axios.get("/users/me").then((res) => {
+      let name = "";
       if (res.data.user) {
-        let name = res.data.user.first_name;
-        setUserI(name);
-        setLogStatus(true);
+        if (res.data.user.first_name) name = res.data.user.first_name;
+        else name = res.data.user.name;
       }
+      setUserI(name);
+      setLogStatus(true);
     });
   }, []);
   return (
