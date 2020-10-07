@@ -7,6 +7,7 @@ import axios from "axios";
 
 export default function Dashboard() {
   const [userInfo, setUserInfo] = useState({});
+  const [userType, setUserType] = useState("");
 
   useEffect(() => {
     axios
@@ -14,6 +15,7 @@ export default function Dashboard() {
       .then((res) => {
         console.log(res.data.user);
         setUserInfo(res.data.user);
+        setUserType(res.data.type);
       })
       .catch((e) => console.log(e));
   }, []);
@@ -23,7 +25,7 @@ export default function Dashboard() {
       <Sidebar userInfo={userInfo} />
       <div id="dashboard-container">
         <AppointmentsCard />
-        <ClinicPetList />
+        {userType === "clinic" ? <ClinicPetList /> : null}
       </div>
     </div>
   );
