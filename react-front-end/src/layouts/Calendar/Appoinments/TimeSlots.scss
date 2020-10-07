@@ -4,10 +4,12 @@ h3 {
   text-align: center;
 }
 .timeBox {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  margin-top: 3rem;
 }
 
 .timeSlot {
@@ -36,7 +38,6 @@ h3 {
     flex-wrap: wrap;
     margin: 1.5rem 0;
     background-color: #ffffff;
-    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
   }
 
   &:hover {
@@ -64,6 +65,7 @@ h3 {
     background-color: $medical-blue;
     padding: 0.7rem;
     margin: 0;
+    text-align: right;
     color: #fff;
   }
 

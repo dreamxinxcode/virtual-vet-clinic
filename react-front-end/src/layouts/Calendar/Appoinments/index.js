@@ -58,7 +58,7 @@ export default function Appointment(props) {
   useEffect(() => {
     axios.get("api/mypets").then((res) => {
       console.log("SETTING PET ID = ", res.data.pets);
-      setPetID([...res.data.pets]);
+      setPetsInfo([...res.data.pets]);
     });
   }, []);
 
@@ -114,7 +114,7 @@ export default function Appointment(props) {
       const slots = hourExtracter(res.data.bookings);
       setCurrentSlots([...res.data.bookings]);
     });
-  }, [date]);
+  }, [date, petID]);
 
   // CANCEL MY APPOINTMENT
   const cancelBooking = (id) => {
