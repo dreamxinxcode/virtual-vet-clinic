@@ -38,37 +38,38 @@ const MyPetList = () => {
           </tr>
         </thead>
         <tbody>
-          {pets.map((pet) => (
-            <tr>
-              <td>
-                <img class="pet-image" src={pet.image}></img>
-              </td>
-              <td>{pet.name}</td>
-              <td>{pet.age} years</td>
-              <td>{pet.gender}</td>
-              <td>{pet.weight} lbs</td>
-              <td>{pet.type}</td>
-              <td>{pet.breed}</td>
-              <td>
-                <svg
-                  onClick={() => <PetDetail name={pet.name} />}
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  viewBox="0 0 23.625 23.625"
-                  style={{
-                    height: "1.5rem",
-                    enableBackground: "new 0 0 23.625 23.625",
-                  }}
-                  xmlSpace="preserve"
-                >
-                  <g>
-                    <path
-                      style={{ fill: "#5829BB" }}
-                      d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813
+          {pets.length > 0
+            ? pets.map((pet) => (
+                <tr>
+                  <td>
+                    <img class="pet-image" src={pet.image}></img>
+                  </td>
+                  <td>{pet.name}</td>
+                  <td>{pet.age} years</td>
+                  <td>{pet.gender}</td>
+                  <td>{pet.weight} lbs</td>
+                  <td>{pet.type}</td>
+                  <td>{pet.breed}</td>
+                  <td>
+                    <svg
+                      onClick={() => <PetDetail name={pet.name} />}
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlnsXlink="http://www.w3.org/1999/xlink"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 23.625 23.625"
+                      style={{
+                        height: "1.5rem",
+                        enableBackground: "new 0 0 23.625 23.625",
+                      }}
+                      xmlSpace="preserve"
+                    >
+                      <g>
+                        <path
+                          style={{ fill: "#5829BB" }}
+                          d="M11.812,0C5.289,0,0,5.289,0,11.812s5.289,11.813,11.812,11.813s11.813-5.29,11.813-11.813
 		S18.335,0,11.812,0z M14.271,18.307c-0.608,0.24-1.092,0.422-1.455,0.548c-0.362,0.126-0.783,0.189-1.262,0.189
 		c-0.736,0-1.309-0.18-1.717-0.539s-0.611-0.814-0.611-1.367c0-0.215,0.015-0.435,0.045-0.659c0.031-0.224,0.08-0.476,0.147-0.759
 		l0.761-2.688c0.067-0.258,0.125-0.503,0.171-0.731c0.046-0.23,0.068-0.441,0.068-0.633c0-0.342-0.071-0.582-0.212-0.717
@@ -80,27 +81,28 @@ const MyPetList = () => {
 		 M14.137,7.429c-0.353,0.328-0.778,0.492-1.275,0.492c-0.496,0-0.924-0.164-1.28-0.492c-0.354-0.328-0.533-0.727-0.533-1.193
 		c0-0.465,0.18-0.865,0.533-1.196c0.356-0.332,0.784-0.497,1.28-0.497c0.497,0,0.923,0.165,1.275,0.497
 		c0.353,0.331,0.53,0.731,0.53,1.196C14.667,6.703,14.49,7.101,14.137,7.429z"
-                    />
-                  </g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                  <g></g>
-                </svg>
-              </td>
-            </tr>
-          ))}
+                        />
+                      </g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                      <g></g>
+                    </svg>
+                  </td>
+                </tr>
+              ))
+            : null}
         </tbody>
       </table>
     </div>
