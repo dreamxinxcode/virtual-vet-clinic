@@ -47,7 +47,7 @@ const MyPetList = () => {
               <td>{pet.age} years</td>
               <td>{pet.gender}</td>
               <td>{pet.weight} lbs</td>
-              <td>{pet.pet_type}</td>
+              <td>{pet.type}</td>
               <td>{pet.breed}</td>
               <td>
                 <svg

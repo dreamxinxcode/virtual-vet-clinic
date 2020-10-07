@@ -302,9 +302,10 @@ const getMyPetsInfo = (user_id) => {
   return pool
     .query(
       `
-    SELECT pets.*, owners.* 
+    SELECT pets.*, owners.*, pet_types.*
     FROM pets
     JOIN owners ON owners.id = pets.owner_id
+    JOIN pet_types ON pets.type_id = pet_types.id
     WHERE owners.id = $1
     ;
   `,
