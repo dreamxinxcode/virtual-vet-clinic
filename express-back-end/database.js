@@ -296,3 +296,22 @@ const addPet = (pet) => {
     });
 };
 exports.addPet = addPet;
+
+// #12
+const getMyPetsInfo = (user_id) => {
+  return pool
+    .query(
+      `
+    SELECT pets.*, owners.*, pet_types.*
+    FROM pets
+    JOIN owners ON owners.id = pets.owner_id
+    JOIN pet_types ON pets.type_id = pet_types.id
+    WHERE owners.id = $1
+    ;
+  `,
+      [user_id]
+    )
+    .then((res) => res.rows)
+    .catch((e) => e);
+};
+exports.getMyPetsInfo = getMyPetsInfo;
