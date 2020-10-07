@@ -9,7 +9,6 @@ export default function Appointment(props) {
       <td>{timestamp_date}</td>
       <td>
         {props.appointment.appointment_time}:00{" "}
-        {props.appointment.appointment_time > 5 ? "am" : "pm"}
       </td>
     </tr>
   );
