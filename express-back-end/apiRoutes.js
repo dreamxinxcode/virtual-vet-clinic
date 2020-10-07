@@ -77,5 +77,16 @@ module.exports = function (router, database) {
     database.removeBooking(id);
   });
 
+  // 8
+
+  router.get("/mypets", (req, res) => {
+    const userID = req.session.userId;
+
+    database
+      .getMyPetsInfo(userID)
+      .then((pets) => res.send({ pets }))
+      .catch((e) => e);
+  });
+
   return router;
 };

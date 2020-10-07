@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import AppointmentsCard from "./patient/AppointmentsCard";
 import ClinicPetList from "../Dashboard/clinic/ClinicPetList";
+import PetInfo from "./patient/PetInfo";
 import axios from "axios";
 
 export default function Dashboard() {
@@ -25,7 +26,7 @@ export default function Dashboard() {
       <Sidebar userInfo={userInfo} />
       <div id="dashboard-container">
         <AppointmentsCard />
-        {userType === "clinic" ? <ClinicPetList /> : null}
+        {userType === "clinic" ? <ClinicPetList /> : <PetInfo />}
       </div>
     </div>
   );
