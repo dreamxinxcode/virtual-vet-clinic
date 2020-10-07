@@ -63,13 +63,15 @@ export default function PatientAppointmentsCard() {
           </tr>
         </thead>
         <tbody>
-          {appointmentsList.map((appointment) =>
-            accountType === "pet" ? (
-              <PatientRow appointment={appointment} key={appointment.id} />
-            ) : (
-              <ClinicRow appointment={appointment} key={appointment.id} />
-            )
-          )}
+          {appointmentsList.length > 0
+            ? appointmentsList.map((appointment) =>
+                accountType === "pet" ? (
+                  <PatientRow appointment={appointment} key={appointment.id} />
+                ) : (
+                  <ClinicRow appointment={appointment} key={appointment.id} />
+                )
+              )
+            : null}
         </tbody>
       </table>
     </div>

@@ -141,7 +141,7 @@ function Addpet() {
                 CANCEL
               </Button>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/">
               <Button
                 className="signupBtn addBtn"
                 content="ADD A PET"

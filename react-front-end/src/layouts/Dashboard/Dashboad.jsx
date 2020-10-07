@@ -23,7 +23,7 @@ export default function Dashboard() {
 
   return (
     <div id="dashboard-wrapper">
-      <Sidebar userInfo={userInfo} />
+      <Sidebar userInfo={userInfo} userType={userType} />
       <div id="dashboard-container">
         <AppointmentsCard />
         {userType === "clinic" ? <ClinicPetList /> : <PetInfo />}
