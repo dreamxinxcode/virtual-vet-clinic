@@ -4,6 +4,7 @@ import axios from "axios";
 import "./styles.scss";
 import Form from "./Form";
 import TimeSlots from "./TimeSlots";
+import SelectMyPet from "./SelectMyPet";
 
 // SLOT PLACEHOLDERS
 const times = [
@@ -18,12 +19,20 @@ const times = [
   { id: 17, hour: "17:00" },
 ];
 
+/// TEMP DATA
+// const petsInfo = [
+//   { id: 8, name: "Loki" },
+//   { id: 13, name: "Dexter" },
+//   { id: 18, name: "Leo" },
+// ];
+
 export default function Appointment(props) {
   const { date, setDate } = props;
 
   const [time, setTime] = useState(null);
   const [currentSlots, setCurrentSlots] = useState([]);
   const [petID, setPetID] = useState("");
+  const [petsInfo, setPetsInfo] = useState([]);
 
   // HELPER 1
   const findTimeID = (id) => {
@@ -47,9 +56,9 @@ export default function Appointment(props) {
 
   // SET PET ID
   useEffect(() => {
-    axios.get("users/me").then((res) => {
-      console.log("SETTING PET ID = ", res.data.user);
-      setPetID(res.data.user.pets_id);
+    axios.get("api/mypets").then((res) => {
+      console.log("SETTING PET ID = ", res.data.pets);
+      setPetID([...res.data.pets]);
     });
   }, []);
 
@@ -60,10 +69,10 @@ export default function Appointment(props) {
     axios
       .get("users/me")
       .then((res) => {
-        console.log("USERS/ME", res.data.user.pets_id);
+        console.log("USERS/ME", petID);
         return axios.post("/api/booking/", {
           clinic_id,
-          pet_id: res.data.user.pets_id,
+          pet_id: petID,
           date,
           time,
         });
@@ -122,6 +131,7 @@ export default function Appointment(props) {
         <h2 className="timeSlot-header">Choose an apointment time</h2>
         <div className="timeSlots">{slots}</div>
       </div>
+      <SelectMyPet petdetails={petsInfo} setPetID={setPetID} />
 
       {time ? (
         <Form
