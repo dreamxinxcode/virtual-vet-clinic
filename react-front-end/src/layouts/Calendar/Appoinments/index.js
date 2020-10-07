@@ -100,20 +100,18 @@ export default function Appointment(props) {
     console.log("ID", clinic_id);
     const data = date.toISOString();
     console.log("data", data);
-    axios
-      .get(`http://localhost:8080/api/bookings/${clinic_id}/${data}`)
-      .then((res) => {
-        console.log("LIST of BOOKINGS", res.data.bookings);
-        const slots = hourExtracter(res.data.bookings);
-        setCurrentSlots([...res.data.bookings]);
-      });
+    axios.get(`/api/bookings/${clinic_id}/${data}`).then((res) => {
+      console.log("LIST of BOOKINGS", res.data.bookings);
+      const slots = hourExtracter(res.data.bookings);
+      setCurrentSlots([...res.data.bookings]);
+    });
   }, [date]);
 
   // CANCEL MY APPOINTMENT
   const cancelBooking = (id) => {
     // console.log("Cancel booking has been activated", id);
     axios
-      .get(`http://localhost:8080/api/booking/delete/${id}`)
+      .get(`/api/booking/delete/${id}`)
       .then((res) => console.log("deleted?", res.data));
   };
 

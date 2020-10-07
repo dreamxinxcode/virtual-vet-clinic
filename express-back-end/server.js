@@ -8,7 +8,7 @@ const { addUser, getUser, getUsersInRoom } = require("./chatUsers");
 
 const path = require("path");
 
-// ===================== CHAT
+// =====================
 const socket = require("socket.io");
 const http = require("http");
 
@@ -18,11 +18,9 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-// ==================== CHAT
+// ==================== CREATE WEBSOCKET
 const server = http.createServer(app);
 const io = socket(server);
-
-// const showWidgets = require("./database");
 
 app.use(
   cookieSession({
@@ -50,28 +48,6 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.get("/test", (req, res) => {
   res.send("🤗");
 });
-
-
-// =========================+CHAT
-// let interval;
-
-// io.on("connection", (socket) => {
-//   console.log("New client connected");
-//   if (interval) {
-//     clearInterval(interval);
-//   }
-//   interval = setInterval(() => getApiAndEmit(socket), 1000);
-//   socket.on("disconnect", () => {
-//     console.log("Client disconnected");
-//     clearInterval(interval);
-//   });
-// });
-
-const getApiAndEmit = (socket) => {
-  const response = new Date();
-  // Emitting a new message. Will be consumed by the client
-  socket.emit("FromAPI", response);
-};
 
 io.on("connect", (socket) => {
   console.log("New client connected to CHAT");
@@ -171,7 +147,7 @@ server.listen(port, (err) =>
   console.log(err || `listening on port ${port} 😎`)
 );
 
-// Video
+// Video CHAT, RTC
 const videoUsers = {};
 
 io.on("connection", (socket) => {

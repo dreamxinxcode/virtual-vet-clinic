@@ -9,7 +9,7 @@ import Messages from "./Messages";
 import InfoBar from "./InfoBar";
 // import TextContainer from "./TextContainer";
 
-const ENDPOINT = "http://localhost:8080";
+const ENDPOINT = "/";
 
 let socket;
 
@@ -40,7 +40,6 @@ const Chat = () => {
 
     // setRoom(room);
     // setName(name)
-
     name = localStorage.getItem("userName");
     socket.emit("join", { name, room }, (error) => {
       if (error) {
