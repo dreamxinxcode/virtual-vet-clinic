@@ -33,7 +33,7 @@ export default function Form(props) {
 
   return (
     <div className="appointment__card appointment__card--create">
-      <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+      <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
         <div className="header"> Appoinment ticket </div>
         <h3 className="formHeader">
           <label className="labelForForm">Date: </label>
