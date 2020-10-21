@@ -42,16 +42,13 @@ exports.getUserWithEmail = getUserWithEmail;
 const getUserWithId = (id, type) => {
   let queryString;
   if (type === "pet") {
-    console.log("PET TYPE recieved");
     queryString = `SELECT owners.*, pets.*, pets.id AS pets_id FROM owners LEFT JOIN pets ON pets.owner_id = owners.id WHERE owners.id = $1 LIMIT 1;`;
   } else if (type === "clinic") {
     queryString = `SELECT *    FROM clinics    WHERE id = $1    LIMIT 1;`;
   }
-  console.log("GET USER WITH ID, query string:", queryString, id);
   return pool
     .query(queryString, [id])
     .then((res) => {
-      console.log("res.rows[0]", res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {
@@ -287,7 +284,6 @@ const addPet = (pet) => {
       ]
     )
     .then((res) => {
-      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch((err) => {

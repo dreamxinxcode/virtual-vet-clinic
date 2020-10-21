@@ -7,7 +7,7 @@ export const useAppData = () => {
   });
 
   const getMyCredentials = () => {
-    return axios.get("/users/me").then(res => {
+    return axios.get("/users/me").then((res) => {
       return res;
     });
   };
@@ -28,10 +28,6 @@ export const useAppData = () => {
         setState({ ...state, appointments });
       })
       .then(() => axios.get("/api/days"))
-      .then(res => setState(prev => ({ ...prev, days: res.data })));
+      .then((res) => setState((prev) => ({ ...prev, days: res.data })));
   };
-
-  // useEffect(() => {
-
-  // })
 };

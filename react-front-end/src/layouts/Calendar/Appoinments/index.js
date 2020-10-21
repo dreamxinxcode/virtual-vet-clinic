@@ -19,13 +19,6 @@ const times = [
   { id: 17, hour: "17:00" },
 ];
 
-/// TEMP DATA
-// const petsInfo = [
-//   { id: 8, name: "Loki" },
-//   { id: 13, name: "Dexter" },
-//   { id: 18, name: "Leo" },
-// ];
-
 export default function Appointment(props) {
   const { date, setDate } = props;
 
@@ -46,7 +39,6 @@ export default function Appointment(props) {
   // HELPER 2
   const petIdMatch = (id) => {
     for (let item of currentSlots) {
-      // console.log(item.time_id, id);
       if (item.time_id === id && item.pet_id === petID) {
         console.log("ID was found", item.id);
         return item.id;
@@ -87,7 +79,6 @@ export default function Appointment(props) {
         value={slot.id}
         hour={slot.hour}
         mybooking={"booked"}
-        // disabled={currentSlots.find((id) => slot.id === time_id) ? true : null}
         disabled={findTimeID(slot.id)}
         setTime={setTime}
         cancelBooking={(e) => cancelBooking(petIdMatch(slot.id))}
@@ -118,7 +109,6 @@ export default function Appointment(props) {
 
   // CANCEL MY APPOINTMENT
   const cancelBooking = (id) => {
-    // console.log("Cancel booking has been activated", id);
     axios
       .get(`/api/booking/delete/${id}`)
       .then((res) => console.log("deleted?", res.data));

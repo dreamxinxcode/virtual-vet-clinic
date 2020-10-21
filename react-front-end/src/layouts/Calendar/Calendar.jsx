@@ -9,7 +9,6 @@ import "./Calendar.scss";
 
 export default function myCalendar() {
   const [date, setDate] = useState(new Date());
-  console.log("date checnged", date);
   const [clinicInfo, setClinicInfo] = useState("");
 
   useEffect(() => {
@@ -33,7 +32,6 @@ export default function myCalendar() {
         <div className="calendar-page-header">
           <h1 className="calendar-header">Book an Appointment:</h1>
           <span className="cliniccc">{clinicInfo.name}</span>
-          {/* <img src={clinicInfo.image} alt="" /> */}
           <ul className="calendar-ul">
             <li className="calendar-li">
               <div className="inside">
