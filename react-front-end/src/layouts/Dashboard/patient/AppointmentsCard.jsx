@@ -16,17 +16,6 @@ export default function PatientAppointmentsCard() {
         console.log("account:", account, typeof account);
         setAccountType(account);
         setAppointmentsList(res[1].data.appointments);
-        // console.log('res:', res[0].data.type, 'account type:', accountType)
-
-        // accountType === 'pet' ?
-
-        // apts = res[1].data.appointments.map(appointment =>
-        //   <PatientRow appointment={appointment} key={appointment.id} />
-        // )
-        // :
-        // apts = res[1].data.appointments.map(appointment =>
-        //   <ClinicRow appointment={appointment} key={appointment.id} />
-        // )
       })
       .catch((err) => console.log(err));
   }, []);

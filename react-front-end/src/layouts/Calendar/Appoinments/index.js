@@ -90,7 +90,6 @@ export default function Appointment(props) {
   const hourExtracter = (hourArr) => {
     const bookedHours = [];
     for (const key of hourArr) bookedHours.push(key.time_id);
-    // console.log("booked hours Array", bookedHours);
     return bookedHours;
   };
 

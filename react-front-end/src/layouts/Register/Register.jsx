@@ -1,13 +1,6 @@
 import React from "react";
 import "./Register.scss";
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Form,
-  Checkbox,
-} from "semantic-ui-react";
+import { Button, Image, Modal, Form, Checkbox } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Clinics.scss";
 import Redirector from "./Redirector";
@@ -12,9 +11,7 @@ export default function Clinics(props) {
       ")",
   };
 
-  console.log("CLINIC ID: ", props.id);
   const clickHandler = () => {
-    console.log("BUTTON CLICKED AND CLINIC ID:", props.id);
     localStorage.setItem("clinic_info", JSON.stringify(props));
   };
   return (

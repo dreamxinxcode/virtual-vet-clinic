@@ -3,6 +3,7 @@ import React from "react";
 import onlineIcon from "./0_Icons/on.png";
 // import closeIcon from "./0_Icons/close.png";
 
+// IN CASE SOME INFO TO BE ADDED UNDER CHAT
 import "./TextContainer.css";
 
 // const TextContainer = ({ users }) => (

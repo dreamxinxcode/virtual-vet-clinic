@@ -38,6 +38,7 @@ const Chat = () => {
 
     socket = io(ENDPOINT);
 
+    // SET ROOM TO BE IMPLMENTED
     // setRoom(room);
     // setName(name)
     name = localStorage.getItem("userName");
@@ -152,6 +153,7 @@ const Chat = () => {
           setMessage={setMessage}
           sendMessage={sendMessage}
         />
+
         {/* <TextContainer users={users} /> */}
       </div>
     </>

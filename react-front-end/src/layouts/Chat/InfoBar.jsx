@@ -1,7 +1,5 @@
 import React from "react";
 
-import closeIcon from "./0_Icons/close.png";
-
 const InfoBar = ({ room }) => (
   <div className="chat-infoBar">
     <div className="chat-infoBar-leftInnerContainer">
