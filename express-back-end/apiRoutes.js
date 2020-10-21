@@ -26,7 +26,6 @@ module.exports = function (router, database) {
   // #3
   router.post("/booking", (req, res) => {
     const { clinic_id, pet_id, date, time } = req.body;
-    console.log(req.body);
     database
       .addClinicBooking(clinic_id, pet_id, date, time)
       .then((booking) => res.send({ booking }))
