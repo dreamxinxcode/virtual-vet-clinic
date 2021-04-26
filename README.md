@@ -9,7 +9,7 @@ Each account has its own dasboard containing information about pets and appointm
 
 ## ▶️ Clone this repo and run:
 
-### `npm start`
+#### `npm start`
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
