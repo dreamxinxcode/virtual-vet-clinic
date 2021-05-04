@@ -2,8 +2,8 @@
 
 In the post pandemical world our App helps to connect Vet clinics and patients(pets). <br>
 Within this App you can register as 
--  pet owner (client)
--  clinic (doctor)
+-  Pet owner (client)
+-  Clinic (doctor)
 
 Each account has its own dasboard containing information about pets and appointments.
 
